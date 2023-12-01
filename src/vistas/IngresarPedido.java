@@ -413,9 +413,14 @@ public class IngresarPedido extends javax.swing.JFrame {
     }//GEN-LAST:event_telefonoMousePressed
 
     private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
-        String idText = ID.getText();
-        int idEntero = Integer.parseInt(idText);
+        int idEntero = Integer.parseInt(ID.getText());
+        int nump = Integer.parseInt(num.getText());
+        double ab = Double.parseDouble(abono.getText());
+        String item = (String) estado.getSelectedItem();
+
+
         crud.insertarCliente(idEntero, nombreCliente.getText(), telefono.getText());
+        crud.insertarPedido(nump, idEntero, item, ab , fen.getText(), fet.getText() );
         ID.setText("Ingresar ID del cliente");
         nombreCliente.setText("Ingresar nombre del cliente");
         telefono.setText("Ingresar teléfono del cliente");

@@ -388,12 +388,12 @@ public class MenuIngreso extends javax.swing.JFrame {
 
     private void BotoncolegioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotoncolegioActionPerformed
         System.out.println("Se presionó el botón ingresarColegio");
-        IngresarColegio in = new IngresarColegio();
-        in.setVisible(true);
+        
     }//GEN-LAST:event_BotoncolegioActionPerformed
 
     private void BotonProvedorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonProvedorMouseEntered
         BotonProvedor.setBackground(new java.awt.Color(153, 153, 255));
+        
     }//GEN-LAST:event_BotonProvedorMouseEntered
 
     private void BotonProvedorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonProvedorMouseExited
@@ -403,7 +403,9 @@ public class MenuIngreso extends javax.swing.JFrame {
     private void BotonProvedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonProvedorActionPerformed
         System.out.println("Se presionó el botón provedor");
         IngresarProveedor p = new IngresarProveedor();
+        
         p.setVisible(true);
+        
     }//GEN-LAST:event_BotonProvedorActionPerformed
 
     private void BotonPedidoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonPedidoMouseEntered
@@ -421,11 +423,11 @@ public class MenuIngreso extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonPedidoActionPerformed
 
     private void BotonProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonProductoMouseEntered
-        // TODO add your handling code here:
+        BotonProducto.setBackground(new java.awt.Color(153, 153, 255));
     }//GEN-LAST:event_BotonProductoMouseEntered
 
     private void BotonProductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonProductoMouseExited
-        // TODO add your handling code here:
+        BotonProducto.setBackground(new java.awt.Color(21, 101, 192));
     }//GEN-LAST:event_BotonProductoMouseExited
 
     private void BotonProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonProductoActionPerformed
@@ -451,11 +453,11 @@ public class MenuIngreso extends javax.swing.JFrame {
     }//GEN-LAST:event_idColegio3MousePressed
 
     private void BotonVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonVentaMouseEntered
-        // TODO add your handling code here:
+        BotonVenta.setBackground(new java.awt.Color(153, 153, 255));
     }//GEN-LAST:event_BotonVentaMouseEntered
 
     private void BotonVentaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonVentaMouseExited
-        // TODO add your handling code here:
+        BotonVenta.setBackground(new java.awt.Color(21, 101, 192));
     }//GEN-LAST:event_BotonVentaMouseExited
 
     private void BotonVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonVentaActionPerformed
