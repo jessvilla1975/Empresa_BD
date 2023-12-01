@@ -3,14 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package vistas;
-
-
 /**
  *
  * @author Jess
  */
 public class MenuIngreso extends javax.swing.JFrame {
-
+    IngresarColegio cl = new IngresarColegio();
+    IngresarProveedor p = new IngresarProveedor();
+    IngresarPedido pd = new IngresarPedido();
+    IngresarProducto pr = new IngresarProducto();
+    IngresarVenta v = new IngresarVenta();
+    
     /**
      * Creates new form IngresarDatos
      */
@@ -388,6 +391,11 @@ public class MenuIngreso extends javax.swing.JFrame {
 
     private void BotoncolegioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotoncolegioActionPerformed
         System.out.println("Se presionó el botón ingresarColegio");
+        cl.setVisible(true);
+        p.setVisible(false);
+        pd.setVisible(false);
+        pr.setVisible(false);
+        v.setVisible(false);
         
     }//GEN-LAST:event_BotoncolegioActionPerformed
 
@@ -402,9 +410,13 @@ public class MenuIngreso extends javax.swing.JFrame {
 
     private void BotonProvedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonProvedorActionPerformed
         System.out.println("Se presionó el botón provedor");
-        IngresarProveedor p = new IngresarProveedor();
-        
         p.setVisible(true);
+        cl.setVisible(false);
+        pd.setVisible(false);
+        pr.setVisible(false);
+        v.setVisible(false);
+        
+        
         
     }//GEN-LAST:event_BotonProvedorActionPerformed
 
@@ -418,8 +430,11 @@ public class MenuIngreso extends javax.swing.JFrame {
 
     private void BotonPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPedidoActionPerformed
         System.out.println("Se presionó el botón pedido");
-        IngresarPedido pd = new IngresarPedido();
         pd.setVisible(true);
+        cl.setVisible(false);
+        p.setVisible(false);
+        pr.setVisible(false);
+        v.setVisible(false);
     }//GEN-LAST:event_BotonPedidoActionPerformed
 
     private void BotonProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonProductoMouseEntered
@@ -432,8 +447,11 @@ public class MenuIngreso extends javax.swing.JFrame {
 
     private void BotonProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonProductoActionPerformed
         System.out.println("Se presionó el botón producto");
-        IngresarProducto pd = new IngresarProducto();
-        pd.setVisible(true);
+        pr.setVisible(true);
+        cl.setVisible(false);
+        p.setVisible(false);
+        pd.setVisible(false);
+        v.setVisible(false);
     }//GEN-LAST:event_BotonProductoActionPerformed
 
     private void idColegio2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_idColegio2MousePressed
@@ -462,8 +480,12 @@ public class MenuIngreso extends javax.swing.JFrame {
 
     private void BotonVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonVentaActionPerformed
         System.out.println("Se presionó el botón venta");
-        IngresarVenta pd = new IngresarVenta();
-        pd.setVisible(true);
+        v.setVisible(true);
+        cl.setVisible(false);
+        p.setVisible(false);
+        pd.setVisible(false);
+        pr.setVisible(false);
+
     }//GEN-LAST:event_BotonVentaActionPerformed
 
     /**
