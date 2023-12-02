@@ -4,6 +4,7 @@ import getset.variables;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 
 public class crudsql extends conexionsql {
 
@@ -68,8 +69,44 @@ public class crudsql extends conexionsql {
             //JOptionPane.showMessageDialog(null, "El registro no se guardo " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+    public void insertarProducto(String Codigo, int Num_pedido, String Descripcion, int Cantidad_Existente, String Sexo, 
+            double Precio_venta, String Talla, String Medidas) {
+        try {
+            Connection conexion = conectar();
+            st = conexion.createStatement();
+            String sql = "INSERT INTO producto_terminado (Codigo, Num_pedido, Descripcion, Cantidad_Existente, Sexo, Precio_venta, Talla, Medidas) VALUES ('"
+            + Codigo + "','" + Num_pedido + "','" + Descripcion + "','" + Cantidad_Existente + "','" + Sexo + "','" 
+                    + Precio_venta + "','" + Talla + "','" + Medidas + "');";
+            st.execute(sql);
+            st.close();
+            conexion.close();
+            JOptionPane.showMessageDialog(null, "El registro se guardo correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "El registro no se guardo " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public ResultSet buscarClientePorId(int id) {
+    try {
+        Connection conexion = conectar();
+        String sql = "SELECT * FROM cliente INNER JOIN pedido ON cliente.id = pedido.id_cliente WHERE cliente.id = ?";
 
-    public void mostrar(String idempleado) {
+        PreparedStatement ps = conexion.prepareStatement(sql);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+        return rs;
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al buscar cliente por ID: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+        return null;
+    }
+}
+
+
+    
+    
+
+    /*public void mostrar(String idempleado) {
         try {
             Connection conexion = conectar();
             st = conexion.createStatement();
@@ -121,6 +158,6 @@ public class crudsql extends conexionsql {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al eliminar registro "+ e,"Error",JOptionPane.ERROR_MESSAGE);
         }
-    }
+    }*/
     
 }
