@@ -210,6 +210,80 @@ public class crudsql extends conexionsql {
     }
 }
 
+    public void editarColegio(int id, String nuevoNombre) {
+    try {
+        Connection conexion = conectar();
+
+        // Verificar si el colegio con el ID dado existe antes de editar
+        String verificarSql = "SELECT * FROM colegio WHERE id = ?";
+        PreparedStatement verificarPs = conexion.prepareStatement(verificarSql);
+        verificarPs.setInt(1, id);
+        ResultSet verificarRs = verificarPs.executeQuery();
+
+        if (!verificarRs.next()) {
+            JOptionPane.showMessageDialog(null, "No se encontró un colegio con el ID proporcionado", "Mensaje", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Si el colegio existe, realizar la actualización
+        String editarSql = "UPDATE colegio SET nombre = ? WHERE id = ?";
+        PreparedStatement ps = conexion.prepareStatement(editarSql);
+        ps.setString(1, nuevoNombre);
+        ps.setInt(2, id);
+
+        int filasAfectadas = ps.executeUpdate();
+
+        if (filasAfectadas > 0) {
+            JOptionPane.showMessageDialog(null, "Colegio editado correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo editar el colegio", "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+
+        ps.close();
+        conexion.close();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al editar colegio: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+    }
+}
+    
+    public void editarUniforme(String codigo, int idColegio, String tipo, String caracteristicas) {
+    try {
+        Connection conexion = conectar();
+
+        // Verificar si el uniforme con el código dado existe antes de editar
+        String verificarSql = "SELECT * FROM uniforme WHERE Codigo = ?";
+        PreparedStatement verificarPs = conexion.prepareStatement(verificarSql);
+        verificarPs.setString(1, codigo);
+        ResultSet verificarRs = verificarPs.executeQuery();
+
+        if (!verificarRs.next()) {
+            JOptionPane.showMessageDialog(null, "No se encontró un uniforme con el código proporcionado", "Mensaje", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Si el uniforme existe, realizar la actualización
+        String editarSql = "UPDATE uniforme SET Id_Colegio = ?, Tipo = ?, Caracteristicas = ? WHERE Codigo = ?";
+        PreparedStatement ps = conexion.prepareStatement(editarSql);
+        ps.setInt(1, idColegio);
+        ps.setString(2, tipo);
+        ps.setString(3, caracteristicas);
+        ps.setString(4, codigo);
+
+        int filasAfectadas = ps.executeUpdate();
+
+        if (filasAfectadas > 0) {
+            JOptionPane.showMessageDialog(null, "Uniforme editado correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo editar el uniforme", "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+
+        ps.close();
+        conexion.close();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al editar uniforme: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
 
     
     
