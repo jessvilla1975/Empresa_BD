@@ -37,7 +37,6 @@ public class IngresarProducto extends javax.swing.JFrame {
         numped = new javax.swing.JTextField();
         A = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
-        Title1 = new javax.swing.JLabel();
         jSeparator12 = new javax.swing.JSeparator();
         Guardar = new javax.swing.JButton();
         med = new javax.swing.JTextField();
@@ -51,10 +50,7 @@ public class IngresarProducto extends javax.swing.JFrame {
         desc = new javax.swing.JTextField();
         Text16 = new javax.swing.JLabel();
         jSeparator20 = new javax.swing.JSeparator();
-        Text17 = new javax.swing.JLabel();
-        jSeparator21 = new javax.swing.JSeparator();
         talla = new javax.swing.JComboBox<>();
-        invt = new javax.swing.JTextField();
         Text18 = new javax.swing.JLabel();
         sexo = new javax.swing.JComboBox<>();
         jSeparator22 = new javax.swing.JSeparator();
@@ -117,10 +113,6 @@ public class IngresarProducto extends javax.swing.JFrame {
 
         jSeparator5.setForeground(new java.awt.Color(0, 153, 255));
         jSeparator5.setPreferredSize(new java.awt.Dimension(200, 10));
-
-        Title1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        Title1.setText("Datos Inventario");
-        Title1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jSeparator12.setForeground(new java.awt.Color(0, 153, 255));
         jSeparator12.setPreferredSize(new java.awt.Dimension(200, 10));
@@ -201,27 +193,7 @@ public class IngresarProducto extends javax.swing.JFrame {
         jSeparator20.setForeground(new java.awt.Color(0, 153, 255));
         jSeparator20.setPreferredSize(new java.awt.Dimension(200, 10));
 
-        Text17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Text17.setText("Id inventario");
-
-        jSeparator21.setForeground(new java.awt.Color(0, 153, 255));
-        jSeparator21.setPreferredSize(new java.awt.Dimension(200, 10));
-
         talla.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "S", "M", "L", "XL" }));
-
-        invt.setForeground(new java.awt.Color(102, 102, 102));
-        invt.setText("Ingresar el id del inventario");
-        invt.setBorder(null);
-        invt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                invtMousePressed(evt);
-            }
-        });
-        invt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                invtActionPerformed(evt);
-            }
-        });
 
         Text18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Text18.setText("Sexo");
@@ -286,18 +258,12 @@ public class IngresarProducto extends javax.swing.JFrame {
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Text17)
-                            .addComponent(invt, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(PanelColegioLayout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addComponent(Title1))
                             .addComponent(Text15)
                             .addComponent(prec, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator19, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Text16)
                             .addComponent(desc, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator20, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator21, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Text19)
                             .addComponent(jSeparator23, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cant, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -368,15 +334,7 @@ public class IngresarProducto extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(desc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(12, 12, 12)
-                                .addComponent(jSeparator20, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(2, 2, 2)
-                                .addComponent(Title1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Text17)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(invt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSeparator21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jSeparator20, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addComponent(Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(52, Short.MAX_VALUE))
@@ -406,14 +364,14 @@ public class IngresarProducto extends javax.swing.JFrame {
            int nump = Integer.parseInt(numped.getText());
            int spiner = (int) cant.getValue();
            crud.insertarProducto(codpro.getText(), nump, desc.getText(), spiner, item, ab, item2, med.getText() );
-         
+           crud.insertarInventario(codpro.getText(), spiner, desc.getText());
            
            codpro.setText("Ingresar codigo del producto");
            numped.setText("Ingresar numero de pedido");
            med.setText("Ingresar medidas");
            prec.setText("Ingresar precio");
            desc.setText("Ingresar descripcion");
-           invt.setText("Ingresar el id del inventario");
+           //invt.setText("Ingresar el id del inventario");
            //canin.setText("Ingrese la cantidad del inventario");
         
         
@@ -452,11 +410,6 @@ public class IngresarProducto extends javax.swing.JFrame {
         desc.setText("");
     }//GEN-LAST:event_descMousePressed
 
-    private void invtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invtMousePressed
-        if(invt.getText().equals("Ingresar el id del inventario"))
-        invt.setText("");
-    }//GEN-LAST:event_invtMousePressed
-
     private void medMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_medMousePressed
         if(med.getText().equals("Ingresar medidas"))
         med.setText("");
@@ -470,10 +423,6 @@ public class IngresarProducto extends javax.swing.JFrame {
     private void precActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_precActionPerformed
-
-    private void invtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_invtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_invtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -518,21 +467,17 @@ public class IngresarProducto extends javax.swing.JFrame {
     private javax.swing.JLabel Text14;
     private javax.swing.JLabel Text15;
     private javax.swing.JLabel Text16;
-    private javax.swing.JLabel Text17;
     private javax.swing.JLabel Text18;
     private javax.swing.JLabel Text19;
     private javax.swing.JLabel Title;
-    private javax.swing.JLabel Title1;
     private javax.swing.JLabel X;
     private javax.swing.JSpinner cant;
     private javax.swing.JTextField codpro;
     private javax.swing.JTextField desc;
-    private javax.swing.JTextField invt;
     private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator18;
     private javax.swing.JSeparator jSeparator19;
     private javax.swing.JSeparator jSeparator20;
-    private javax.swing.JSeparator jSeparator21;
     private javax.swing.JSeparator jSeparator22;
     private javax.swing.JSeparator jSeparator23;
     private javax.swing.JSeparator jSeparator3;

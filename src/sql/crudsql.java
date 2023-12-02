@@ -87,6 +87,21 @@ public class crudsql extends conexionsql {
             JOptionPane.showMessageDialog(null, "El registro no se guardo " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
         }
     }
+    public void insertarInventario(String codigo, int cantidad, String descripcion) {
+        try {
+            Connection conexion = conectar();
+            st = conexion.createStatement();
+            String sql = "INSERT INTO inventario (Codigo, Cantidad_Existente, Descripcion) VALUES ('"
+                    + codigo + "','" + cantidad + "','" + descripcion + "');";
+            st.execute(sql);
+            st.close();
+            conexion.close();
+            JOptionPane.showMessageDialog(null, "El registro se guardó correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "El registro no se guardó " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+}
+
     
     public ResultSet buscarClientePorId(int id) {
     try {

@@ -296,7 +296,7 @@ public class MenuActualizar extends javax.swing.JFrame {
         });
         Panelmenu.add(ActPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 230, 30));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon_ingreso.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon_editar.png"))); // NOI18N
         Panelmenu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 150, 140));
 
         ActProducto.setBackground(new java.awt.Color(21, 101, 192));

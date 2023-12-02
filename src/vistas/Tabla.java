@@ -209,7 +209,7 @@ public class Tabla extends javax.swing.JFrame {
         );
 
         Buscar_id.setForeground(new java.awt.Color(102, 102, 102));
-        Buscar_id.setText("Ingresar el codigo de la venta ");
+        Buscar_id.setText("Ingresar id del cliente");
         Buscar_id.setBorder(null);
         Buscar_id.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -218,7 +218,7 @@ public class Tabla extends javax.swing.JFrame {
         });
 
         Text3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Text3.setText("Datos Cliente");
+        Text3.setText("Datos Cliente - Pedido");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -292,7 +292,7 @@ public class Tabla extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Error al convertir las fechas: " + ex.getMessage(), "Mensaje", JOptionPane.ERROR_MESSAGE);
             }
         }
-        Buscar_id.setText("Ingresar el codigo de la venta ");
+        Buscar_id.setText("Ingresar id del cliente");
         DefaultTableModel modelo = (DefaultTableModel) tablita.getModel();
         modelo.setRowCount(0);
 

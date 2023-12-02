@@ -229,7 +229,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="66" red="66" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Ingresar el codigo de la venta "/>
+        <Property name="text" type="java.lang.String" value="Ingresar id del cliente"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
@@ -243,7 +243,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Datos Cliente"/>
+        <Property name="text" type="java.lang.String" value="Datos Cliente - Pedido"/>
       </Properties>
     </Component>
   </SubComponents>
