@@ -31,11 +31,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Panelmenu = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        BotonConsular = new javax.swing.JButton();
+        salir = new javax.swing.JButton();
         Botoningresar = new javax.swing.JButton();
         BotonActualizar = new javax.swing.JButton();
         BotonEliminar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        BotonConsular1 = new javax.swing.JButton();
         IconTextil = new javax.swing.JLabel();
         LabelBienvenido = new javax.swing.JLabel();
 
@@ -56,26 +57,26 @@ public class MenuPrincipal extends javax.swing.JFrame {
         Panelmenu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 167, 220, 46));
         Panelmenu.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 219, 220, 10));
 
-        BotonConsular.setBackground(new java.awt.Color(21, 101, 192));
-        BotonConsular.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        BotonConsular.setForeground(new java.awt.Color(255, 255, 255));
-        BotonConsular.setText("Consultar");
-        BotonConsular.setBorder(null);
-        BotonConsular.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BotonConsular.addMouseListener(new java.awt.event.MouseAdapter() {
+        salir.setBackground(new java.awt.Color(21, 101, 192));
+        salir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        salir.setForeground(new java.awt.Color(255, 255, 255));
+        salir.setText("Salir");
+        salir.setBorder(null);
+        salir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                BotonConsularMouseEntered(evt);
+                salirMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                BotonConsularMouseExited(evt);
+                salirMouseExited(evt);
             }
         });
-        BotonConsular.addActionListener(new java.awt.event.ActionListener() {
+        salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonConsularActionPerformed(evt);
+                salirActionPerformed(evt);
             }
         });
-        Panelmenu.add(BotonConsular, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 230, 30));
+        Panelmenu.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, 150, 30));
 
         Botoningresar.setBackground(new java.awt.Color(21, 101, 192));
         Botoningresar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -144,6 +145,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logo2.png"))); // NOI18N
         Panelmenu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 150, 140));
 
+        BotonConsular1.setBackground(new java.awt.Color(21, 101, 192));
+        BotonConsular1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        BotonConsular1.setForeground(new java.awt.Color(255, 255, 255));
+        BotonConsular1.setText("Consultar");
+        BotonConsular1.setBorder(null);
+        BotonConsular1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BotonConsular1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BotonConsular1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BotonConsular1MouseExited(evt);
+            }
+        });
+        BotonConsular1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonConsular1ActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(BotonConsular1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 230, 30));
+
         jPanel1.add(Panelmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 500));
 
         IconTextil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/textil.png"))); // NOI18N
@@ -174,11 +196,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonConsularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonConsularActionPerformed
-        System.out.println("Se presionó el botón consultar");
-        Tabla in = new Tabla();
-        in.setVisible(true);
-        setVisible(false);
+       
     }//GEN-LAST:event_BotonConsularActionPerformed
+
+    
+    
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        System.out.println("Se presionó el botón salir ");
+        System.exit(0);
+    }//GEN-LAST:event_salirActionPerformed
+
+    
 
     private void BotoningresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotoningresarActionPerformed
         System.out.println("Se presionó el botón ingresar");
@@ -198,7 +226,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_BotoningresarMouseExited
 
     private void BotonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonActualizarActionPerformed
-        // TODO add your handling code here:
+        System.out.println("Se presionó el botón Actualizar");
+        MenuActualizar at = new MenuActualizar();
+        at.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_BotonActualizarActionPerformed
 
     private void BotonActualizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonActualizarMouseEntered
@@ -221,13 +252,28 @@ public class MenuPrincipal extends javax.swing.JFrame {
         BotonEliminar.setBackground(new java.awt.Color(21, 101, 192));
     }//GEN-LAST:event_BotonEliminarMouseExited
 
-    private void BotonConsularMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonConsularMouseEntered
-        BotonConsular.setBackground(new java.awt.Color(153, 153, 255));
-    }//GEN-LAST:event_BotonConsularMouseEntered
+    private void salirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseEntered
+        salir.setBackground(new java.awt.Color(153, 153, 255));
+    }//GEN-LAST:event_salirMouseEntered
 
-    private void BotonConsularMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonConsularMouseExited
-        BotonConsular.setBackground(new java.awt.Color(21, 101, 192));
-    }//GEN-LAST:event_BotonConsularMouseExited
+    private void salirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirMouseExited
+        salir.setBackground(new java.awt.Color(21, 101, 192));
+    }//GEN-LAST:event_salirMouseExited
+
+    private void BotonConsular1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonConsular1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonConsular1MouseEntered
+
+    private void BotonConsular1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonConsular1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonConsular1MouseExited
+
+    private void BotonConsular1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonConsular1ActionPerformed
+        System.out.println("Se presionó el botón consultar");
+        Tabla at = new Tabla();
+        at.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_BotonConsular1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -266,7 +312,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonActualizar;
-    private javax.swing.JButton BotonConsular;
+    private javax.swing.JButton BotonConsular1;
     private javax.swing.JButton BotonEliminar;
     private javax.swing.JButton Botoningresar;
     private javax.swing.JLabel IconTextil;
@@ -276,5 +322,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables
 }
