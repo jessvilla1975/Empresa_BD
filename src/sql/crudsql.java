@@ -24,6 +24,50 @@ public class crudsql extends conexionsql {
             JOptionPane.showMessageDialog(null, "El registro no se guardo " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+    public void insertarPedido(int numPedido, int idCliente, String estado, double abono, String fechaEncargo, String fechaEntrega) {
+        try {
+            Connection conexion = conectar();
+            st = conexion.createStatement();
+            String sql = "INSERT INTO pedido (Num_pedido, Id_Cliente, Estado, Abono, Fecha_Encargo, Fecha_Entrega) VALUES " +
+                 "('" + numPedido + "','" + idCliente + "','" + estado + "','" + abono + "','" + fechaEncargo + "','" + fechaEntrega + "');";
+            st.execute(sql);
+            st.close();
+            conexion.close();
+            //JOptionPane.showMessageDialog(null, "El registro se guardo correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            //JOptionPane.showMessageDialog(null, "El registro no se guardo " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void insertarColegio(int idColegio, String Nombre) {
+        try {
+            Connection conexion = conectar();
+            st = conexion.createStatement();
+            String sql = "INSERT INTO colegio(id, nombre) VALUES('" + idColegio + "','" + Nombre + "');";
+            st.execute(sql);
+            st.close();
+            conexion.close();
+            JOptionPane.showMessageDialog(null, "El registro se guardo correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "El registro no se guardo " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void insertarUniforme(String Codigo, int Id_Colegio, String Tipo, String Car) {
+        try {
+            Connection conexion = conectar();
+            st = conexion.createStatement();
+            String sql = "INSERT INTO uniforme(Codigo, Id_Colegio, Tipo, Caracteristicas) VALUES('" + Codigo + "','" + Id_Colegio + "','" + Tipo + "','" + Car + "');";
+
+            st.execute(sql);
+            st.close();
+            conexion.close();
+            //JOptionPane.showMessageDialog(null, "El registro se guardo correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            //JOptionPane.showMessageDialog(null, "El registro no se guardo " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
     public void mostrar(String idempleado) {
         try {
