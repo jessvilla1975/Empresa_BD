@@ -3,23 +3,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package vistas;
+
+
 /**
  *
  * @author Jess
  */
-public class MenuIngreso extends javax.swing.JFrame {
-    IngresarColegio cl = new IngresarColegio();
-    IngresarProveedor p = new IngresarProveedor();
-    IngresarPedido pd = new IngresarPedido();
-    IngresarProducto pr = new IngresarProducto();
-    IngresarVenta v = new IngresarVenta();
-    
+public class MenuEliminar extends javax.swing.JFrame {
+
     /**
      * Creates new form IngresarDatos
      */
-    public MenuIngreso() {
+    public MenuEliminar() {
         initComponents();
     }
+    Tablas at = new Tablas();
+    Tablas2 at1 = new Tablas2();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,15 +44,12 @@ public class MenuIngreso extends javax.swing.JFrame {
         jSeparator10 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         Panelmenu = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        titu = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         volver = new javax.swing.JButton();
-        Botoncolegio = new javax.swing.JButton();
-        BotonProvedor = new javax.swing.JButton();
-        BotonPedido = new javax.swing.JButton();
+        Actcolegio = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        BotonProducto = new javax.swing.JButton();
-        BotonVenta = new javax.swing.JButton();
+        Actprovedor = new javax.swing.JButton();
 
         PanelColegio1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -207,10 +203,10 @@ public class MenuIngreso extends javax.swing.JFrame {
         Panelmenu.setBackground(new java.awt.Color(0, 51, 255));
         Panelmenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("       INGRESAR ");
-        Panelmenu.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 220, 46));
+        titu.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        titu.setForeground(new java.awt.Color(255, 255, 255));
+        titu.setText("         Eliminar ");
+        Panelmenu.add(titu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 220, 46));
         Panelmenu.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 220, 10));
 
         volver.setBackground(new java.awt.Color(21, 101, 192));
@@ -234,114 +230,51 @@ public class MenuIngreso extends javax.swing.JFrame {
         });
         Panelmenu.add(volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 140, 30));
 
-        Botoncolegio.setBackground(new java.awt.Color(21, 101, 192));
-        Botoncolegio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Botoncolegio.setForeground(new java.awt.Color(255, 255, 255));
-        Botoncolegio.setText("Ingresar Colegio");
-        Botoncolegio.setAlignmentY(0.0F);
-        Botoncolegio.setBorder(null);
-        Botoncolegio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Botoncolegio.addMouseListener(new java.awt.event.MouseAdapter() {
+        Actcolegio.setBackground(new java.awt.Color(21, 101, 192));
+        Actcolegio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Actcolegio.setForeground(new java.awt.Color(255, 255, 255));
+        Actcolegio.setText("Colegio - Uniforme - Venta");
+        Actcolegio.setAlignmentY(0.0F);
+        Actcolegio.setBorder(null);
+        Actcolegio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Actcolegio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                BotoncolegioMouseEntered(evt);
+                ActcolegioMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                BotoncolegioMouseExited(evt);
+                ActcolegioMouseExited(evt);
             }
         });
-        Botoncolegio.addActionListener(new java.awt.event.ActionListener() {
+        Actcolegio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotoncolegioActionPerformed(evt);
+                ActcolegioActionPerformed(evt);
             }
         });
-        Panelmenu.add(Botoncolegio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 230, 30));
+        Panelmenu.add(Actcolegio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 230, 30));
 
-        BotonProvedor.setBackground(new java.awt.Color(21, 101, 192));
-        BotonProvedor.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        BotonProvedor.setForeground(new java.awt.Color(255, 255, 255));
-        BotonProvedor.setText("Ingresar Proveedor");
-        BotonProvedor.setBorder(null);
-        BotonProvedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BotonProvedor.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                BotonProvedorMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                BotonProvedorMouseExited(evt);
-            }
-        });
-        BotonProvedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonProvedorActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(BotonProvedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 230, 30));
-
-        BotonPedido.setBackground(new java.awt.Color(21, 101, 192));
-        BotonPedido.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        BotonPedido.setForeground(new java.awt.Color(255, 255, 255));
-        BotonPedido.setText("Ingresar Pedido");
-        BotonPedido.setBorder(null);
-        BotonPedido.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BotonPedido.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                BotonPedidoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                BotonPedidoMouseExited(evt);
-            }
-        });
-        BotonPedido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonPedidoActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(BotonPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 230, 30));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon_ingreso.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon_editar.png"))); // NOI18N
         Panelmenu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 150, 140));
 
-        BotonProducto.setBackground(new java.awt.Color(21, 101, 192));
-        BotonProducto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        BotonProducto.setForeground(new java.awt.Color(255, 255, 255));
-        BotonProducto.setText("Ingresar Producto");
-        BotonProducto.setBorder(null);
-        BotonProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BotonProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+        Actprovedor.setBackground(new java.awt.Color(21, 101, 192));
+        Actprovedor.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Actprovedor.setForeground(new java.awt.Color(255, 255, 255));
+        Actprovedor.setText("Product - Provee - Materia");
+        Actprovedor.setBorder(null);
+        Actprovedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Actprovedor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                BotonProductoMouseEntered(evt);
+                ActprovedorMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                BotonProductoMouseExited(evt);
+                ActprovedorMouseExited(evt);
             }
         });
-        BotonProducto.addActionListener(new java.awt.event.ActionListener() {
+        Actprovedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonProductoActionPerformed(evt);
+                ActprovedorActionPerformed(evt);
             }
         });
-        Panelmenu.add(BotonProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 360, 230, 30));
-
-        BotonVenta.setBackground(new java.awt.Color(21, 101, 192));
-        BotonVenta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        BotonVenta.setForeground(new java.awt.Color(255, 255, 255));
-        BotonVenta.setText("Ingresar Venta");
-        BotonVenta.setBorder(null);
-        BotonVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BotonVenta.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                BotonVentaMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                BotonVentaMouseExited(evt);
-            }
-        });
-        BotonVenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonVentaActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(BotonVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 230, 30));
+        Panelmenu.add(Actprovedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 230, 30));
 
         jPanel1.add(Panelmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 560));
 
@@ -372,92 +305,30 @@ public class MenuIngreso extends javax.swing.JFrame {
     }//GEN-LAST:event_volverMouseExited
 
     private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
-        System.out.println("Se presionó el botón volver");
+        System.out.println("Se presionó el botón venta");
         MenuPrincipal mp = new MenuPrincipal();
         mp.setVisible(true);
         setVisible(false);
-        cl.setVisible(false);
-        p.setVisible(false);
-        pd.setVisible(false);
-        pr.setVisible(false);
-        v.setVisible(false);
+        at.setVisible(false);
         
         
         
     }//GEN-LAST:event_volverActionPerformed
 
-    private void BotoncolegioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotoncolegioMouseEntered
-        Botoncolegio.setBackground(new java.awt.Color(153, 153, 255));
-    }//GEN-LAST:event_BotoncolegioMouseEntered
+    private void ActcolegioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActcolegioMouseEntered
+        Actcolegio.setBackground(new java.awt.Color(153, 153, 255));
+    }//GEN-LAST:event_ActcolegioMouseEntered
 
-    private void BotoncolegioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotoncolegioMouseExited
-        Botoncolegio.setBackground(new java.awt.Color(21, 101, 192));
-    }//GEN-LAST:event_BotoncolegioMouseExited
+    private void ActcolegioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActcolegioMouseExited
+        Actcolegio.setBackground(new java.awt.Color(21, 101, 192));
+    }//GEN-LAST:event_ActcolegioMouseExited
 
-    private void BotoncolegioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotoncolegioActionPerformed
-        System.out.println("Se presionó el botón ingresarColegio");
-        cl.setVisible(true);
-        p.setVisible(false);
-        pd.setVisible(false);
-        pr.setVisible(false);
-        v.setVisible(false);
+    private void ActcolegioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActcolegioActionPerformed
+        System.out.println("Se presionó el botón xd");
+        at1.setVisible(false);
+        at.setVisible(true);
         
-    }//GEN-LAST:event_BotoncolegioActionPerformed
-
-    private void BotonProvedorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonProvedorMouseEntered
-        BotonProvedor.setBackground(new java.awt.Color(153, 153, 255));
-        
-    }//GEN-LAST:event_BotonProvedorMouseEntered
-
-    private void BotonProvedorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonProvedorMouseExited
-        BotonProvedor.setBackground(new java.awt.Color(21, 101, 192));
-    }//GEN-LAST:event_BotonProvedorMouseExited
-
-    private void BotonProvedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonProvedorActionPerformed
-        System.out.println("Se presionó el botón provedor");
-        p.setVisible(true);
-        cl.setVisible(false);
-        pd.setVisible(false);
-        pr.setVisible(false);
-        v.setVisible(false);
-        
-        
-        
-    }//GEN-LAST:event_BotonProvedorActionPerformed
-
-    private void BotonPedidoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonPedidoMouseEntered
-        BotonPedido.setBackground(new java.awt.Color(153, 153, 255));
-    }//GEN-LAST:event_BotonPedidoMouseEntered
-
-    private void BotonPedidoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonPedidoMouseExited
-        BotonPedido.setBackground(new java.awt.Color(21, 101, 192));
-    }//GEN-LAST:event_BotonPedidoMouseExited
-
-    private void BotonPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPedidoActionPerformed
-        System.out.println("Se presionó el botón pedido");
-        pd.setVisible(true);
-        cl.setVisible(false);
-        p.setVisible(false);
-        pr.setVisible(false);
-        v.setVisible(false);
-    }//GEN-LAST:event_BotonPedidoActionPerformed
-
-    private void BotonProductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonProductoMouseEntered
-        BotonProducto.setBackground(new java.awt.Color(153, 153, 255));
-    }//GEN-LAST:event_BotonProductoMouseEntered
-
-    private void BotonProductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonProductoMouseExited
-        BotonProducto.setBackground(new java.awt.Color(21, 101, 192));
-    }//GEN-LAST:event_BotonProductoMouseExited
-
-    private void BotonProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonProductoActionPerformed
-        System.out.println("Se presionó el botón producto");
-        pr.setVisible(true);
-        cl.setVisible(false);
-        p.setVisible(false);
-        pd.setVisible(false);
-        v.setVisible(false);
-    }//GEN-LAST:event_BotonProductoActionPerformed
+    }//GEN-LAST:event_ActcolegioActionPerformed
 
     private void idColegio2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_idColegio2MousePressed
         // TODO add your handling code here:
@@ -475,23 +346,19 @@ public class MenuIngreso extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_idColegio3MousePressed
 
-    private void BotonVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonVentaMouseEntered
-        BotonVenta.setBackground(new java.awt.Color(153, 153, 255));
-    }//GEN-LAST:event_BotonVentaMouseEntered
+    private void ActprovedorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActprovedorMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ActprovedorMouseEntered
 
-    private void BotonVentaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonVentaMouseExited
-        BotonVenta.setBackground(new java.awt.Color(21, 101, 192));
-    }//GEN-LAST:event_BotonVentaMouseExited
+    private void ActprovedorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActprovedorMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ActprovedorMouseExited
 
-    private void BotonVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonVentaActionPerformed
+    private void ActprovedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActprovedorActionPerformed
         System.out.println("Se presionó el botón venta");
-        v.setVisible(true);
-        cl.setVisible(false);
-        p.setVisible(false);
-        pd.setVisible(false);
-        pr.setVisible(false);
-
-    }//GEN-LAST:event_BotonVentaActionPerformed
+        at.setVisible(false);
+        at1.setVisible(true);
+    }//GEN-LAST:event_ActprovedorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -530,11 +397,8 @@ public class MenuIngreso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotonPedido;
-    private javax.swing.JButton BotonProducto;
-    private javax.swing.JButton BotonProvedor;
-    private javax.swing.JButton BotonVenta;
-    private javax.swing.JButton Botoncolegio;
+    private javax.swing.JButton Actcolegio;
+    private javax.swing.JButton Actprovedor;
     private javax.swing.JPanel PanelColegio1;
     private javax.swing.JPanel Panelmenu;
     private javax.swing.JLabel Text6;
@@ -544,7 +408,6 @@ public class MenuIngreso extends javax.swing.JFrame {
     private javax.swing.JLabel Title3;
     private javax.swing.JTextField idColegio2;
     private javax.swing.JTextField idColegio3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
@@ -553,6 +416,7 @@ public class MenuIngreso extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTextField nombreColegio1;
+    private javax.swing.JLabel titu;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 }

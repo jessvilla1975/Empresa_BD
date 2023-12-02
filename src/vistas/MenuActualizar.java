@@ -47,9 +47,9 @@ public class MenuActualizar extends javax.swing.JFrame {
         titu = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         volver = new javax.swing.JButton();
-        Actcolegio = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         Actprovedor = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        Actcolegio = new javax.swing.JButton();
 
         PanelColegio1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -206,8 +206,8 @@ public class MenuActualizar extends javax.swing.JFrame {
         titu.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         titu.setForeground(new java.awt.Color(255, 255, 255));
         titu.setText("    ACTUALIZAR ");
-        Panelmenu.add(titu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 220, 46));
-        Panelmenu.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 220, 10));
+        Panelmenu.add(titu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 200, 46));
+        Panelmenu.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 230, 10));
 
         volver.setBackground(new java.awt.Color(21, 101, 192));
         volver.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -230,6 +230,31 @@ public class MenuActualizar extends javax.swing.JFrame {
         });
         Panelmenu.add(volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 140, 30));
 
+        Actprovedor.setBackground(new java.awt.Color(21, 101, 192));
+        Actprovedor.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Actprovedor.setForeground(new java.awt.Color(255, 255, 255));
+        Actprovedor.setText("Product - Provee - Materia");
+        Actprovedor.setAlignmentY(0.0F);
+        Actprovedor.setBorder(null);
+        Actprovedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Actprovedor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ActprovedorMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ActprovedorMouseExited(evt);
+            }
+        });
+        Actprovedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActprovedorActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(Actprovedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 250, 50));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon_editar.png"))); // NOI18N
+        Panelmenu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 150, 140));
+
         Actcolegio.setBackground(new java.awt.Color(21, 101, 192));
         Actcolegio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Actcolegio.setForeground(new java.awt.Color(255, 255, 255));
@@ -250,41 +275,15 @@ public class MenuActualizar extends javax.swing.JFrame {
                 ActcolegioActionPerformed(evt);
             }
         });
-        Panelmenu.add(Actcolegio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 230, 30));
+        Panelmenu.add(Actcolegio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 250, 50));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon_editar.png"))); // NOI18N
-        Panelmenu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 150, 140));
-
-        Actprovedor.setBackground(new java.awt.Color(21, 101, 192));
-        Actprovedor.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Actprovedor.setForeground(new java.awt.Color(255, 255, 255));
-        Actprovedor.setText("Product - Provee - Materia");
-        Actprovedor.setBorder(null);
-        Actprovedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Actprovedor.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ActprovedorMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                ActprovedorMouseExited(evt);
-            }
-        });
-        Actprovedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ActprovedorActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(Actprovedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 230, 30));
-
-        jPanel1.add(Panelmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 560));
+        jPanel1.add(Panelmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 560));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 859, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 898, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,20 +314,20 @@ public class MenuActualizar extends javax.swing.JFrame {
         
     }//GEN-LAST:event_volverActionPerformed
 
-    private void ActcolegioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActcolegioMouseEntered
-        Actcolegio.setBackground(new java.awt.Color(153, 153, 255));
-    }//GEN-LAST:event_ActcolegioMouseEntered
+    private void ActprovedorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActprovedorMouseEntered
+        Actprovedor.setBackground(new java.awt.Color(153, 153, 255));
+    }//GEN-LAST:event_ActprovedorMouseEntered
 
-    private void ActcolegioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActcolegioMouseExited
-        Actcolegio.setBackground(new java.awt.Color(21, 101, 192));
-    }//GEN-LAST:event_ActcolegioMouseExited
+    private void ActprovedorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActprovedorMouseExited
+        Actprovedor.setBackground(new java.awt.Color(21, 101, 192));
+    }//GEN-LAST:event_ActprovedorMouseExited
 
-    private void ActcolegioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActcolegioActionPerformed
-        System.out.println("Se presionó el botón xd");
-        at1.setVisible(false);
-        at.setVisible(true);
+    private void ActprovedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActprovedorActionPerformed
+        System.out.println("Se presionó el botón materia");
+        at.setVisible(false);
+        at1.setVisible(true);
         
-    }//GEN-LAST:event_ActcolegioActionPerformed
+    }//GEN-LAST:event_ActprovedorActionPerformed
 
     private void idColegio2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_idColegio2MousePressed
         // TODO add your handling code here:
@@ -346,19 +345,19 @@ public class MenuActualizar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_idColegio3MousePressed
 
-    private void ActprovedorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActprovedorMouseEntered
+    private void ActcolegioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActcolegioMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_ActprovedorMouseEntered
+    }//GEN-LAST:event_ActcolegioMouseEntered
 
-    private void ActprovedorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActprovedorMouseExited
+    private void ActcolegioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActcolegioMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_ActprovedorMouseExited
+    }//GEN-LAST:event_ActcolegioMouseExited
 
-    private void ActprovedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActprovedorActionPerformed
-        System.out.println("Se presionó el botón venta");
-        at.setVisible(false);
-        at1.setVisible(true);
-    }//GEN-LAST:event_ActprovedorActionPerformed
+    private void ActcolegioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActcolegioActionPerformed
+        System.out.println("Se presionó el botón colegio");
+        at1.setVisible(false);
+        at.setVisible(true);
+    }//GEN-LAST:event_ActcolegioActionPerformed
 
     /**
      * @param args the command line arguments
