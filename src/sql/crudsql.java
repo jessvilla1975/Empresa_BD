@@ -5,6 +5,7 @@ import java.sql.Connection;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
+import java.util.Date;
 
 public class crudsql extends conexionsql {
 
@@ -101,6 +102,88 @@ public class crudsql extends conexionsql {
         return null;
     }
 }
+    ///////////////////EDITAR///////////////////////////////////////
+    public void editarCliente(int id, String nuevoNombre, String nuevoTelefono) {
+    try {
+        Connection conexion = conectar();
+
+        // Verificar si el cliente con el ID dado existe antes de editar
+        String verificarSql = "SELECT * FROM cliente WHERE id = ?";
+        PreparedStatement verificarPs = conexion.prepareStatement(verificarSql);
+        verificarPs.setInt(1, id);
+        ResultSet verificarRs = verificarPs.executeQuery();
+
+        if (!verificarRs.next()) {
+            JOptionPane.showMessageDialog(null, "No se encontró un cliente con el ID proporcionado", "Mensaje", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Si el cliente existe, realizar la actualización
+        String editarSql = "UPDATE cliente SET nombre = ?, telefono = ? WHERE id = ?";
+        PreparedStatement ps = conexion.prepareStatement(editarSql);
+        ps.setString(1, nuevoNombre);
+        ps.setString(2, nuevoTelefono);
+        ps.setInt(3, id);
+
+        int filasAfectadas = ps.executeUpdate();
+
+        if (filasAfectadas > 0) {
+            JOptionPane.showMessageDialog(null, "Cliente editado correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo editar el cliente", "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+
+        ps.close();
+        conexion.close();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al editar cliente: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+    }
+}
+    
+    public void editarPedido(int numPedido, String estado, double abono, Date fechaEncargo, Date fechaEntrega) {
+    try {
+        Connection conexion = conectar();
+        
+        // Verificar si el pedido con el Num_pedido dado existe antes de editar
+        String verificarSql = "SELECT * FROM pedido WHERE Num_pedido = ?";
+        PreparedStatement verificarPs = conexion.prepareStatement(verificarSql);
+        verificarPs.setInt(1, numPedido);
+        ResultSet verificarRs = verificarPs.executeQuery();
+
+        if (!verificarRs.next()) {
+            JOptionPane.showMessageDialog(null, "No se encontró un pedido con el Num_pedido proporcionado", "Mensaje", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Si el pedido existe, realizar la actualización
+        String editarSql = "UPDATE pedido SET Estado = ?, Abono = ?, Fecha_Encargo = ?, Fecha_Entrega = ? WHERE Num_pedido = ?";
+        PreparedStatement ps = conexion.prepareStatement(editarSql);
+        ps.setString(1, estado);
+        ps.setDouble(2, abono);
+        ps.setDate(3, new java.sql.Date(fechaEncargo.getTime())); // Convertir a java.sql.Date
+        ps.setDate(4, new java.sql.Date(fechaEntrega.getTime())); // Convertir a java.sql.Date
+        ps.setInt(5, numPedido);
+
+        int filasAfectadas = ps.executeUpdate();
+
+        if (filasAfectadas > 0) {
+            JOptionPane.showMessageDialog(null, "Pedido editado correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo editar el pedido", "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+
+        ps.close();
+        conexion.close();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al editar pedido: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
+
+    
+    
+
+
 
 
     

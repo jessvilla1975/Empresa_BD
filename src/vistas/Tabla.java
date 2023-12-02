@@ -7,6 +7,9 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import sql.crudsql;
 import java.sql.ResultSet;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -79,40 +82,40 @@ public class Tabla extends javax.swing.JFrame {
     private void initComponents() {
 
         PanelColegio = new javax.swing.JPanel();
-        Guardar = new javax.swing.JButton();
+        Modificar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         Guardar1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablita = new javax.swing.JTable();
         Buscar_id = new javax.swing.JTextField();
-        jSeparator5 = new javax.swing.JSeparator();
         Text3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(400, 180));
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(620, 550));
         setResizable(false);
 
         PanelColegio.setBackground(new java.awt.Color(255, 255, 255));
         PanelColegio.setPreferredSize(new java.awt.Dimension(620, 550));
 
-        Guardar.setBackground(new java.awt.Color(18, 90, 173));
-        Guardar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        Guardar.setForeground(new java.awt.Color(255, 255, 255));
-        Guardar.setText("GUARDAR");
-        Guardar.setBorder(null);
-        Guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Guardar.addMouseListener(new java.awt.event.MouseAdapter() {
+        Modificar.setBackground(new java.awt.Color(18, 90, 173));
+        Modificar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Modificar.setForeground(new java.awt.Color(255, 255, 255));
+        Modificar.setText("MODIFICAR");
+        Modificar.setBorder(null);
+        Modificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Modificar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                GuardarMouseEntered(evt);
+                ModificarMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                GuardarMouseExited(evt);
+                ModificarMouseExited(evt);
             }
         });
-        Guardar.addActionListener(new java.awt.event.ActionListener() {
+        Modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GuardarActionPerformed(evt);
+                ModificarActionPerformed(evt);
             }
         });
 
@@ -163,26 +166,33 @@ public class Tabla extends javax.swing.JFrame {
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
+        tablita.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablitaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablita);
 
         javax.swing.GroupLayout PanelColegioLayout = new javax.swing.GroupLayout(PanelColegio);
         PanelColegio.setLayout(PanelColegioLayout);
         PanelColegioLayout.setHorizontalGroup(
             PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelColegioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(Guardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(247, 247, 247))
+            .addGroup(PanelColegioLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
+            .addGroup(PanelColegioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         PanelColegioLayout.setVerticalGroup(
             PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,10 +201,10 @@ public class Tabla extends javax.swing.JFrame {
                 .addComponent(Guardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 350, Short.MAX_VALUE)
-                .addComponent(Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 338, Short.MAX_VALUE)
+                .addComponent(Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34))
         );
 
@@ -207,9 +217,6 @@ public class Tabla extends javax.swing.JFrame {
             }
         });
 
-        jSeparator5.setForeground(new java.awt.Color(0, 153, 255));
-        jSeparator5.setPreferredSize(new java.awt.Dimension(200, 10));
-
         Text3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Text3.setText("Datos Cliente");
 
@@ -218,16 +225,11 @@ public class Tabla extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Text3)
-                            .addComponent(Buscar_id, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(339, Short.MAX_VALUE))
+                    .addComponent(Text3)
+                    .addComponent(Buscar_id, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(347, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -241,9 +243,7 @@ public class Tabla extends javax.swing.JFrame {
                 .addComponent(Text3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Buscar_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(458, 458, 458))
+                .addContainerGap(502, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(PanelColegio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -253,19 +253,52 @@ public class Tabla extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void GuardarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GuardarMouseEntered
-        Guardar.setBackground(new java.awt.Color(21, 101, 192));
-    }//GEN-LAST:event_GuardarMouseEntered
+    private void ModificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModificarMouseEntered
+        Modificar.setBackground(new java.awt.Color(21, 101, 192));
+    }//GEN-LAST:event_ModificarMouseEntered
 
-    private void GuardarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GuardarMouseExited
-        Guardar.setBackground(new java.awt.Color(153, 153, 255));
-    }//GEN-LAST:event_GuardarMouseExited
+    private void ModificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModificarMouseExited
+        Modificar.setBackground(new java.awt.Color(153, 153, 255));
+    }//GEN-LAST:event_ModificarMouseExited
 
-    private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
-        System.out.println("Se presionó el botón guardar");
-        Buscar_id.setText("Ingresar el codigo de la venta");
+    private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
+       System.out.println("Se presionó el botón modificar");
+        int filaSeleccionada = tablita.getSelectedRow();
+        if (filaSeleccionada != -1) {
+            try {
+                // Obtener datos de la fila seleccionada
+                int id = Integer.parseInt(tablita.getValueAt(filaSeleccionada, 0).toString());
+                String nombre = (String) tablita.getValueAt(filaSeleccionada, 1);
+                String telefono = (String) tablita.getValueAt(filaSeleccionada, 2);
+                int num = Integer.parseInt(tablita.getValueAt(filaSeleccionada, 3).toString());
+                String es = (String) tablita.getValueAt(filaSeleccionada, 4);
+                double ab = Double.parseDouble(tablita.getValueAt(filaSeleccionada, 5).toString());
+
+                // Convertir la fecha de encargo y fecha de entrega a String
+                String fechaEncargo = tablita.getValueAt(filaSeleccionada, 6).toString();
+                String fechaEntrega = tablita.getValueAt(filaSeleccionada, 7).toString();
+
+                // Abrir la ventana de edición
+                crud.editarCliente(id, nombre, telefono);
+
+                // Convertir las fechas de String a Date
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                Date parsedFechaEncargo = dateFormat.parse(fechaEncargo);
+                Date parsedFechaEntrega = dateFormat.parse(fechaEntrega);
+
+                crud.editarPedido(num, es, ab, parsedFechaEncargo, parsedFechaEntrega);
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Error al convertir las fechas: " + ex.getMessage(), "Mensaje", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        Buscar_id.setText("Ingresar el codigo de la venta ");
+        DefaultTableModel modelo = (DefaultTableModel) tablita.getModel();
+        modelo.setRowCount(0);
+
         setVisible(false);
-    }//GEN-LAST:event_GuardarActionPerformed
+
+    }//GEN-LAST:event_ModificarActionPerformed
 
     private void Buscar_idMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buscar_idMousePressed
         if(Buscar_id.getText().equals("Ingresar el codigo de la venta "))
@@ -288,6 +321,10 @@ public class Tabla extends javax.swing.JFrame {
     private void tablitaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablitaAncestorAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_tablitaAncestorAdded
+
+    private void tablitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablitaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tablitaMouseClicked
     
 
     /**
@@ -327,13 +364,12 @@ public class Tabla extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Buscar_id;
-    private javax.swing.JButton Guardar;
     private javax.swing.JButton Guardar1;
+    private javax.swing.JButton Modificar;
     private javax.swing.JPanel PanelColegio;
     private javax.swing.JLabel Text3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JTable tablita;
     // End of variables declaration//GEN-END:variables
 }

@@ -17,6 +17,7 @@ public class MenuActualizar extends javax.swing.JFrame {
     public MenuActualizar() {
         initComponents();
     }
+    Tabla at = new Tabla();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -373,6 +374,7 @@ public class MenuActualizar extends javax.swing.JFrame {
         MenuPrincipal mp = new MenuPrincipal();
         mp.setVisible(true);
         setVisible(false);
+        at.setVisible(false);
         
         
         
@@ -387,9 +389,10 @@ public class MenuActualizar extends javax.swing.JFrame {
     }//GEN-LAST:event_ActcolegioMouseExited
 
     private void ActcolegioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActcolegioActionPerformed
-        System.out.println("Se presionó el botón ingresarColegio");
-        IngresarColegio in = new IngresarColegio();
-        in.setVisible(true);
+        System.out.println("Se presionó el botón consultar");
+        
+        at.setVisible(true);
+        
     }//GEN-LAST:event_ActcolegioActionPerformed
 
     private void ActProvedorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActProvedorMouseEntered
