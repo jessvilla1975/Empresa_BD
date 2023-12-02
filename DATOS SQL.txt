@@ -123,6 +123,20 @@ VALUES
     (501, 'Hilo', 'Hilos azules', '10', 'Tubos'),
     (502, 'Tela', 'Tela de rallas', '25', 'Metros');
 
+-- Crear la tabla VENTA con Codigo_Fact como VARCHAR
+CREATE TABLE VENTA (
+  Codigo_Fact VARCHAR(20) PRIMARY KEY,
+  Num_pedido INT NOT NULL,
+  Id_Cliente INT,
+  Monto_Final FLOAT,
+  FOREIGN KEY (Num_pedido) REFERENCES PEDIDO(Num_pedido),
+  FOREIGN KEY (Id_Cliente) REFERENCES CLIENTE(ID)
+);
+
+-- Insertar datos en la tabla VENTA
+INSERT INTO VENTA (Codigo_Fact, Num_pedido, Id_Cliente, Monto_Final) VALUES ('V1', 101, 1, 300000);
+INSERT INTO VENTA (Codigo_Fact, Num_pedido, Id_Cliente, Monto_Final) VALUES ('V2', 102, 2, 400000);
+
 
 
 

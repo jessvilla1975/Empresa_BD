@@ -18,6 +18,7 @@ public class MenuActualizar extends javax.swing.JFrame {
         initComponents();
     }
     Tablas at = new Tablas();
+    Tablas2 at1 = new Tablas2();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,7 +49,7 @@ public class MenuActualizar extends javax.swing.JFrame {
         volver = new javax.swing.JButton();
         Actcolegio = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        ActVenta = new javax.swing.JButton();
+        Actprovedor = new javax.swing.JButton();
 
         PanelColegio1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -254,26 +255,26 @@ public class MenuActualizar extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon_editar.png"))); // NOI18N
         Panelmenu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 150, 140));
 
-        ActVenta.setBackground(new java.awt.Color(21, 101, 192));
-        ActVenta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        ActVenta.setForeground(new java.awt.Color(255, 255, 255));
-        ActVenta.setText("Product - Provee - Materia");
-        ActVenta.setBorder(null);
-        ActVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ActVenta.addMouseListener(new java.awt.event.MouseAdapter() {
+        Actprovedor.setBackground(new java.awt.Color(21, 101, 192));
+        Actprovedor.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Actprovedor.setForeground(new java.awt.Color(255, 255, 255));
+        Actprovedor.setText("Product - Provee - Materia");
+        Actprovedor.setBorder(null);
+        Actprovedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Actprovedor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ActVentaMouseEntered(evt);
+                ActprovedorMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                ActVentaMouseExited(evt);
+                ActprovedorMouseExited(evt);
             }
         });
-        ActVenta.addActionListener(new java.awt.event.ActionListener() {
+        Actprovedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ActVentaActionPerformed(evt);
+                ActprovedorActionPerformed(evt);
             }
         });
-        Panelmenu.add(ActVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 230, 30));
+        Panelmenu.add(Actprovedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 230, 30));
 
         jPanel1.add(Panelmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 560));
 
@@ -323,8 +324,8 @@ public class MenuActualizar extends javax.swing.JFrame {
     }//GEN-LAST:event_ActcolegioMouseExited
 
     private void ActcolegioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActcolegioActionPerformed
-        System.out.println("Se presionó el botón consultar");
-        
+        System.out.println("Se presionó el botón xd");
+        at1.setVisible(false);
         at.setVisible(true);
         
     }//GEN-LAST:event_ActcolegioActionPerformed
@@ -345,19 +346,19 @@ public class MenuActualizar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_idColegio3MousePressed
 
-    private void ActVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActVentaMouseEntered
+    private void ActprovedorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActprovedorMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_ActVentaMouseEntered
+    }//GEN-LAST:event_ActprovedorMouseEntered
 
-    private void ActVentaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActVentaMouseExited
+    private void ActprovedorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActprovedorMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_ActVentaMouseExited
+    }//GEN-LAST:event_ActprovedorMouseExited
 
-    private void ActVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActVentaActionPerformed
+    private void ActprovedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActprovedorActionPerformed
         System.out.println("Se presionó el botón venta");
-        Tablas2 tb = new Tablas2();
-        tb.setVisible(true);
-    }//GEN-LAST:event_ActVentaActionPerformed
+        at.setVisible(false);
+        at1.setVisible(true);
+    }//GEN-LAST:event_ActprovedorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -396,8 +397,8 @@ public class MenuActualizar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ActVenta;
     private javax.swing.JButton Actcolegio;
+    private javax.swing.JButton Actprovedor;
     private javax.swing.JPanel PanelColegio1;
     private javax.swing.JPanel Panelmenu;
     private javax.swing.JLabel Text6;
