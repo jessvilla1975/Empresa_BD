@@ -205,8 +205,8 @@ public class MenuActualizar extends javax.swing.JFrame {
 
         titu.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         titu.setForeground(new java.awt.Color(255, 255, 255));
-        titu.setText("    ACTUALIZAR ");
-        Panelmenu.add(titu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 200, 46));
+        titu.setText("      ACTUALIZAR ");
+        Panelmenu.add(titu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 230, 46));
         Panelmenu.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 230, 10));
 
         volver.setBackground(new java.awt.Color(21, 101, 192));

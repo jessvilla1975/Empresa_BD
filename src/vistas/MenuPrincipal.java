@@ -210,7 +210,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonActualizarMouseExited
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
-        // TODO add your handling code here:
+        System.out.println("Se presionó el botón Eliminar");
+        MenuEliminar me = new MenuEliminar();
+        me.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
     private void BotonEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonEliminarMouseEntered

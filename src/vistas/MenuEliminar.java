@@ -47,7 +47,7 @@ public class MenuEliminar extends javax.swing.JFrame {
         titu = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         volver = new javax.swing.JButton();
-        Actcolegio = new javax.swing.JButton();
+        tabla1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         Actprovedor = new javax.swing.JButton();
 
@@ -230,30 +230,30 @@ public class MenuEliminar extends javax.swing.JFrame {
         });
         Panelmenu.add(volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 140, 30));
 
-        Actcolegio.setBackground(new java.awt.Color(21, 101, 192));
-        Actcolegio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Actcolegio.setForeground(new java.awt.Color(255, 255, 255));
-        Actcolegio.setText("Colegio - Uniforme - Venta");
-        Actcolegio.setAlignmentY(0.0F);
-        Actcolegio.setBorder(null);
-        Actcolegio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Actcolegio.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabla1.setBackground(new java.awt.Color(21, 101, 192));
+        tabla1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        tabla1.setForeground(new java.awt.Color(255, 255, 255));
+        tabla1.setText("Colegio - Uniforme - Venta");
+        tabla1.setAlignmentY(0.0F);
+        tabla1.setBorder(null);
+        tabla1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tabla1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ActcolegioMouseEntered(evt);
+                tabla1MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                ActcolegioMouseExited(evt);
+                tabla1MouseExited(evt);
             }
         });
-        Actcolegio.addActionListener(new java.awt.event.ActionListener() {
+        tabla1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ActcolegioActionPerformed(evt);
+                tabla1ActionPerformed(evt);
             }
         });
-        Panelmenu.add(Actcolegio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 230, 30));
+        Panelmenu.add(tabla1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 230, 30));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon_editar.png"))); // NOI18N
-        Panelmenu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 150, 140));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eliminar.png"))); // NOI18N
+        Panelmenu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 150, 140));
 
         Actprovedor.setBackground(new java.awt.Color(21, 101, 192));
         Actprovedor.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -315,20 +315,24 @@ public class MenuEliminar extends javax.swing.JFrame {
         
     }//GEN-LAST:event_volverActionPerformed
 
-    private void ActcolegioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActcolegioMouseEntered
-        Actcolegio.setBackground(new java.awt.Color(153, 153, 255));
-    }//GEN-LAST:event_ActcolegioMouseEntered
+    private void tabla1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla1MouseEntered
+        tabla1.setBackground(new java.awt.Color(153, 153, 255));
+    }//GEN-LAST:event_tabla1MouseEntered
 
-    private void ActcolegioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActcolegioMouseExited
-        Actcolegio.setBackground(new java.awt.Color(21, 101, 192));
-    }//GEN-LAST:event_ActcolegioMouseExited
+    private void tabla1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla1MouseExited
+        tabla1.setBackground(new java.awt.Color(21, 101, 192));
+    }//GEN-LAST:event_tabla1MouseExited
 
-    private void ActcolegioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActcolegioActionPerformed
-        System.out.println("Se presionó el botón xd");
-        at1.setVisible(false);
-        at.setVisible(true);
+    private void tabla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tabla1ActionPerformed
+        System.out.println("Se presionó el botón eliminar Colegio - Uniforme - Venta");
+        TablasEliminar te = new TablasEliminar();
+        te.setVisible(true);
+        setVisible(false); 
         
-    }//GEN-LAST:event_ActcolegioActionPerformed
+        //at1.setVisible(false);
+        //at.setVisible(true);
+        
+    }//GEN-LAST:event_tabla1ActionPerformed
 
     private void idColegio2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_idColegio2MousePressed
         // TODO add your handling code here:
@@ -355,9 +359,13 @@ public class MenuEliminar extends javax.swing.JFrame {
     }//GEN-LAST:event_ActprovedorMouseExited
 
     private void ActprovedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActprovedorActionPerformed
-        System.out.println("Se presionó el botón venta");
-        at.setVisible(false);
-        at1.setVisible(true);
+        System.out.println("Se presionó el botón eliminar Producto - Proveedor - Materia");
+        TablasEliminar2 te = new TablasEliminar2();
+        te.setVisible(true);
+        setVisible(false); 
+        
+        //at.setVisible(false);
+        //at1.setVisible(true);
     }//GEN-LAST:event_ActprovedorActionPerformed
 
     /**
@@ -397,7 +405,6 @@ public class MenuEliminar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Actcolegio;
     private javax.swing.JButton Actprovedor;
     private javax.swing.JPanel PanelColegio1;
     private javax.swing.JPanel Panelmenu;
@@ -416,6 +423,7 @@ public class MenuEliminar extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTextField nombreColegio1;
+    private javax.swing.JButton tabla1;
     private javax.swing.JLabel titu;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables

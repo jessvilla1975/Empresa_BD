@@ -315,11 +315,11 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="    ACTUALIZAR "/>
+                <Property name="text" type="java.lang.String" value="      ACTUALIZAR "/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="10" y="150" width="200" height="46"/>
+                  <AbsoluteConstraints x="10" y="150" width="230" height="46"/>
                 </Constraint>
               </Constraints>
             </Component>
