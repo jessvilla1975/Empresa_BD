@@ -120,13 +120,13 @@ public class Tablas2 extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablita = new javax.swing.JTable();
         Text4 = new javax.swing.JLabel();
-        Buscacolegio = new javax.swing.JTextField();
+        Buscaprove = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         bus1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablita1 = new javax.swing.JTable();
         Text5 = new javax.swing.JLabel();
-        Buscacolegio1 = new javax.swing.JTextField();
+        Buscamat = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         bus2 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -234,17 +234,17 @@ public class Tablas2 extends javax.swing.JFrame {
         Text4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Text4.setText("Proveedor");
 
-        Buscacolegio.setForeground(new java.awt.Color(102, 102, 102));
-        Buscacolegio.setText("Ingresar nit del proveedor");
-        Buscacolegio.setBorder(null);
-        Buscacolegio.addMouseListener(new java.awt.event.MouseAdapter() {
+        Buscaprove.setForeground(new java.awt.Color(102, 102, 102));
+        Buscaprove.setText("Ingresar nit del proveedor");
+        Buscaprove.setBorder(null);
+        Buscaprove.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                BuscacolegioMousePressed(evt);
+                BuscaproveMousePressed(evt);
             }
         });
-        Buscacolegio.addActionListener(new java.awt.event.ActionListener() {
+        Buscaprove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscacolegioActionPerformed(evt);
+                BuscaproveActionPerformed(evt);
             }
         });
 
@@ -305,17 +305,17 @@ public class Tablas2 extends javax.swing.JFrame {
         Text5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Text5.setText("Materia prima");
 
-        Buscacolegio1.setForeground(new java.awt.Color(102, 102, 102));
-        Buscacolegio1.setText("Ingresar el codigo de la materia prima");
-        Buscacolegio1.setBorder(null);
-        Buscacolegio1.addMouseListener(new java.awt.event.MouseAdapter() {
+        Buscamat.setForeground(new java.awt.Color(102, 102, 102));
+        Buscamat.setText("Ingresar el codigo de la materia prima");
+        Buscamat.setBorder(null);
+        Buscamat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                Buscacolegio1MousePressed(evt);
+                BuscamatMousePressed(evt);
             }
         });
-        Buscacolegio1.addActionListener(new java.awt.event.ActionListener() {
+        Buscamat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Buscacolegio1ActionPerformed(evt);
+                BuscamatActionPerformed(evt);
             }
         });
 
@@ -405,7 +405,7 @@ public class Tablas2 extends javax.swing.JFrame {
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
                         .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Buscacolegio, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Buscaprove, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Text4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bus1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -420,7 +420,7 @@ public class Tablas2 extends javax.swing.JFrame {
                     .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
                         .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Buscacolegio1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Buscamat, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Text5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bus2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -452,7 +452,7 @@ public class Tablas2 extends javax.swing.JFrame {
                         .addGap(37, 37, 37)
                         .addComponent(Text4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Buscacolegio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Buscaprove, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
@@ -465,7 +465,7 @@ public class Tablas2 extends javax.swing.JFrame {
                     .addGroup(PanelColegioLayout.createSequentialGroup()
                         .addComponent(Text5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Buscacolegio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Buscamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
@@ -561,7 +561,7 @@ public class Tablas2 extends javax.swing.JFrame {
     }//GEN-LAST:event_ModificarActionPerformed
 
     private void Buscar_idMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buscar_idMousePressed
-        if(Buscar_id.getText().equals("Ingresar id del cliente"))
+        if(Buscar_id.getText().equals("Ingrese el codigo del producto"));
         Buscar_id.setText("");
     }//GEN-LAST:event_Buscar_idMousePressed
 
@@ -577,7 +577,7 @@ public class Tablas2 extends javax.swing.JFrame {
         guardar1Presionado = true;
         buscarPresionado = false;
         int idABuscar = Integer.parseInt(Buscar_id.getText());
-         actualizarTabla(idABuscar);
+        actualizarTabla(idABuscar);
          
          
     }//GEN-LAST:event_busActionPerformed
@@ -590,10 +590,10 @@ public class Tablas2 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tablitaMouseClicked
 
-    private void BuscacolegioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscacolegioMousePressed
-        if(Buscacolegio.getText().equals("Ingresar id del Colegio"))
-        Buscacolegio.setText("");
-    }//GEN-LAST:event_BuscacolegioMousePressed
+    private void BuscaproveMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscaproveMousePressed
+        if(Buscaprove.getText().equals("Ingresar nit del proveedor"));
+           Buscaprove.setText("");
+    }//GEN-LAST:event_BuscaproveMousePressed
 
     private void bus1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bus1MouseEntered
         // TODO add your handling code here:
@@ -607,7 +607,7 @@ public class Tablas2 extends javax.swing.JFrame {
         System.out.println("Se presionó el botón BUSCAR C");
         buscarPresionado = true;
         guardar1Presionado = false;
-        int xd = Integer.parseInt(Buscacolegio.getText());
+        int xd = Integer.parseInt(Buscaprove.getText());
         actualizarTabla2(xd);
         
     }//GEN-LAST:event_bus1ActionPerformed
@@ -624,17 +624,18 @@ public class Tablas2 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Buscar_idActionPerformed
 
-    private void BuscacolegioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscacolegioActionPerformed
+    private void BuscaproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscaproveActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BuscacolegioActionPerformed
+    }//GEN-LAST:event_BuscaproveActionPerformed
 
-    private void Buscacolegio1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buscacolegio1MousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Buscacolegio1MousePressed
+    private void BuscamatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscamatMousePressed
+        if(Buscamat.getText().equals("Ingresar el codigo de la materia prima"));
+           Buscamat.setText("");
+    }//GEN-LAST:event_BuscamatMousePressed
 
-    private void Buscacolegio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscacolegio1ActionPerformed
+    private void BuscamatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscamatActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Buscacolegio1ActionPerformed
+    }//GEN-LAST:event_BuscamatActionPerformed
 
     private void bus2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bus2MouseEntered
         // TODO add your handling code here:
@@ -693,8 +694,8 @@ public class Tablas2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Buscacolegio;
-    private javax.swing.JTextField Buscacolegio1;
+    private javax.swing.JTextField Buscamat;
+    private javax.swing.JTextField Buscaprove;
     private javax.swing.JTextField Buscar_id;
     private javax.swing.JButton Modificar;
     private javax.swing.JPanel PanelColegio;

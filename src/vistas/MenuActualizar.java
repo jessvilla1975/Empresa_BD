@@ -233,7 +233,7 @@ public class MenuActualizar extends javax.swing.JFrame {
         Actcolegio.setBackground(new java.awt.Color(21, 101, 192));
         Actcolegio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Actcolegio.setForeground(new java.awt.Color(255, 255, 255));
-        Actcolegio.setText("Colegio - Uniforme");
+        Actcolegio.setText("Colegio - Uniforme - Venta");
         Actcolegio.setAlignmentY(0.0F);
         Actcolegio.setBorder(null);
         Actcolegio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
