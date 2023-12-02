@@ -101,6 +101,38 @@ public class crudsql extends conexionsql {
             JOptionPane.showMessageDialog(null, "El registro no se guardó " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
         }
 }
+    
+    public void insertarProveedor(int nit, String nombre, String nomContacto, String telefono, String direccion) {
+    try {
+        Connection conexion = conectar();
+        st = conexion.createStatement();
+        String sql = "INSERT INTO proveedor(Nit, Nombre, Nom_contacto, Telefono, Direccion) VALUES('" + nit + "','" + nombre + "','" + nomContacto + "','" + telefono + "','" + direccion + "');";
+        st.execute(sql);
+        st.close();
+        conexion.close();
+        JOptionPane.showMessageDialog(null, "El registro se guardó correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "El registro no se guardó " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+    }
+}
+    
+    public void insertarMateria(int codigo, String tipo, String descripcion, int cantidadExistente, String unidadMedida) {
+    try {
+        Connection conexion = conectar();
+        st = conexion.createStatement();
+        
+        String sql = "INSERT INTO materia (Codigo, Tipo, Descripcion, Cantidad_Exist, Unidad_Medida) VALUES ('"
+            + codigo + "','" + tipo + "','" + descripcion + "','" + cantidadExistente + "','" + unidadMedida + "');";
+
+        st.execute(sql);
+        st.close();
+        conexion.close();
+        JOptionPane.showMessageDialog(null, "El registro se guardó correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "El registro no se guardó " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
 
     //////////////////  Buscar //////////////
     public ResultSet buscarClientePorId(int id) {

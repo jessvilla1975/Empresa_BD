@@ -146,7 +146,7 @@
                                           <Component id="jSeparator20" alignment="1" min="-2" pref="260" max="-2" attributes="0"/>
                                           <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                               <Component id="Text16" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="ext" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
+                                              <Component id="cantidad" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="103" alignment="0" groupAlignment="0" attributes="0">
@@ -156,7 +156,7 @@
                                               <EmptySpace min="-2" pref="147" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Component id="tipo1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="uni" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
@@ -213,13 +213,13 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="Text16" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="ext" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cantidad" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jSeparator20" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="Text17" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="tipo1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="uni" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jSeparator21" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -581,7 +581,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="ext">
+        <Component class="javax.swing.JTextField" name="cantidad">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="66" type="rgb"/>
@@ -592,7 +592,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="extMousePressed"/>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cantidadMousePressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="Text16">
@@ -646,7 +646,7 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JComboBox" name="tipo1">
+        <Component class="javax.swing.JComboBox" name="uni">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="3">
