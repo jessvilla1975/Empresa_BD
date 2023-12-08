@@ -146,7 +146,7 @@ public class IngresarColegio extends javax.swing.JFrame {
         Text10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Text10.setText("Carateristicas:");
 
-        Guardar.setBackground(new java.awt.Color(18, 90, 173));
+        Guardar.setBackground(new java.awt.Color(153, 153, 255));
         Guardar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Guardar.setForeground(new java.awt.Color(255, 255, 255));
         Guardar.setText("GUARDAR");

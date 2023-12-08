@@ -120,7 +120,7 @@ public class IngresarPedido extends javax.swing.JFrame {
         jSeparator12.setForeground(new java.awt.Color(0, 153, 255));
         jSeparator12.setPreferredSize(new java.awt.Dimension(200, 10));
 
-        Guardar.setBackground(new java.awt.Color(18, 90, 173));
+        Guardar.setBackground(new java.awt.Color(153, 153, 255));
         Guardar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Guardar.setForeground(new java.awt.Color(255, 255, 255));
         Guardar.setText("GUARDAR");

@@ -188,7 +188,7 @@ public class Tablas extends javax.swing.JFrame {
             }
         });
 
-        Modificar.setBackground(new java.awt.Color(18, 90, 173));
+        Modificar.setBackground(new java.awt.Color(153, 153, 255));
         Modificar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Modificar.setForeground(new java.awt.Color(255, 255, 255));
         Modificar.setText("MODIFICAR");
@@ -513,7 +513,7 @@ public class Tablas extends javax.swing.JFrame {
     }//GEN-LAST:event_ModificarMouseEntered
 
     private void ModificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModificarMouseExited
-        Modificar.setBackground(new java.awt.Color(153, 153, 255));
+        Modificar.setBackground(new java.awt.Color(18,90,173));
     }//GEN-LAST:event_ModificarMouseExited
 
     private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed

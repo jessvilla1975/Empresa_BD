@@ -256,6 +256,21 @@ public ResultSet buscarPedidoPorNumero(int numPedido) {
         return null;
     }
 }
+    public ResultSet buscarProveedorPorId(int idProveedor) {
+    try {
+        Connection conexion = conectar();
+        String sql = "SELECT * FROM proveedor WHERE nit = ?";
+
+        PreparedStatement ps = conexion.prepareStatement(sql);
+        ps.setInt(1, idProveedor);
+        ResultSet rs = ps.executeQuery();
+        return rs;
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al buscar proveedor por ID: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+        return null;
+    }
+}
+
 
 
 
@@ -263,6 +278,45 @@ public ResultSet buscarPedidoPorNumero(int numPedido) {
 
     
     ///////////////////EDITAR///////////////////////////////////////
+    public void editarProveedor(int idProveedor, String nuevoNombre, String nuevoContacto, String nuevoTelefono, String nuevaDireccion) {
+    try {
+        Connection conexion = conectar();
+
+        // Verificar si el proveedor con el ID dado existe antes de editar
+        String verificarSql = "SELECT * FROM proveedor WHERE nit = ?";
+        PreparedStatement verificarPs = conexion.prepareStatement(verificarSql);
+        verificarPs.setInt(1, idProveedor);
+        ResultSet verificarRs = verificarPs.executeQuery();
+
+        if (!verificarRs.next()) {
+            JOptionPane.showMessageDialog(null, "No se encontró un proveedor con el ID proporcionado", "Mensaje", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Si el proveedor existe, realizar la actualización
+        String editarSql = "UPDATE proveedor SET nombre = ?, nom_contacto = ?, telefono = ?, direccion = ? WHERE nit = ?";
+        PreparedStatement ps = conexion.prepareStatement(editarSql);
+        ps.setString(1, nuevoNombre);
+        ps.setString(2, nuevoContacto);
+        ps.setString(3, nuevoTelefono);
+        ps.setString(4, nuevaDireccion);
+        ps.setInt(5, idProveedor);
+
+        int filasAfectadas = ps.executeUpdate();
+
+        if (filasAfectadas > 0) {
+            JOptionPane.showMessageDialog(null, "Proveedor editado correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo editar el proveedor", "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+
+        ps.close();
+        conexion.close();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al editar proveedor: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
     public void editarCliente(int id, String nuevoNombre, String nuevoTelefono) {
     try {
         Connection conexion = conectar();
@@ -449,6 +503,87 @@ public ResultSet buscarPedidoPorNumero(int numPedido) {
         JOptionPane.showMessageDialog(null, "Error al editar venta: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
     }
 }
+    public void editarProductoTerminado(String codigo, int nuevoNumPedido, String nuevaDescripcion, int nuevaCantidadExistente,
+        String nuevoSexo, double nuevoPrecioVenta, String nuevaTalla, String nuevasMedidas) {
+    try {
+        Connection conexion = conectar();
+
+        // Verificar si el producto terminado con el código dado existe antes de editar
+        String verificarSql = "SELECT * FROM producto_terminado WHERE codigo = ?";
+        PreparedStatement verificarPs = conexion.prepareStatement(verificarSql);
+        verificarPs.setString(1, codigo);
+        ResultSet verificarRs = verificarPs.executeQuery();
+
+        if (!verificarRs.next()) {
+            JOptionPane.showMessageDialog(null, "No se encontró un producto terminado con el código proporcionado", "Mensaje", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Si el producto terminado existe, realizar la actualización
+        String editarSql = "UPDATE producto_terminado SET num_pedido = ?, descripcion = ?, cantidad_existente = ?, sexo = ?, precio_venta = ?, talla = ?, medidas = ? WHERE codigo = ?";
+        PreparedStatement ps = conexion.prepareStatement(editarSql);
+        ps.setInt(1, nuevoNumPedido);
+        ps.setString(2, nuevaDescripcion);
+        ps.setInt(3, nuevaCantidadExistente);
+        ps.setString(4, nuevoSexo);
+        ps.setDouble(5, nuevoPrecioVenta);
+        ps.setString(6, nuevaTalla);
+        ps.setString(7, nuevasMedidas);
+        ps.setString(8, codigo);
+
+        int filasAfectadas = ps.executeUpdate();
+
+        if (filasAfectadas > 0) {
+            JOptionPane.showMessageDialog(null, "Producto terminado editado correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo editar el producto terminado", "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+
+        ps.close();
+        conexion.close();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al editar producto terminado: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+    }
+}
+    
+    public void editarInventario(String codigo, int nuevaCantidadExistente, String nuevaDescripcion) {
+    try {
+        Connection conexion = conectar();
+
+        // Verificar si el producto terminado con el código dado existe antes de editar el inventario
+        String verificarSql = "SELECT * FROM inventario WHERE codigo = ?";
+        PreparedStatement verificarPs = conexion.prepareStatement(verificarSql);
+        verificarPs.setString(1, codigo);
+        ResultSet verificarRs = verificarPs.executeQuery();
+
+        if (!verificarRs.next()) {
+            JOptionPane.showMessageDialog(null, "No se encontró un registro en inventario con el código proporcionado", "Mensaje", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Si el registro en inventario existe, realizar la actualización
+        String editarSql = "UPDATE inventario SET cantidad_existente = ?, descripcion = ? WHERE codigo = ?";
+        PreparedStatement ps = conexion.prepareStatement(editarSql);
+        ps.setInt(1, nuevaCantidadExistente);
+        ps.setString(2, nuevaDescripcion);
+        ps.setString(3, codigo);
+
+        int filasAfectadas = ps.executeUpdate();
+
+        if (filasAfectadas > 0) {
+            JOptionPane.showMessageDialog(null, "Registro en inventario editado correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo editar el registro en inventario", "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+
+        ps.close();
+        conexion.close();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al editar registro en inventario: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
+
     //////////////////////ELIMINAR////////////////////////////////////////////////////
     public void eliminarCliente(int idCliente) {
     try {

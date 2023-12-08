@@ -31,6 +31,7 @@ public class Tablas2 extends javax.swing.JFrame {
     crudsql crud = new crudsql();
     private boolean guardar1Presionado = false;
     private boolean buscarPresionado = false;
+    private boolean buscarmateria = false;
 
     private void actualizarTabla(String id) {
     try {
@@ -69,30 +70,28 @@ public class Tablas2 extends javax.swing.JFrame {
 }
     private void actualizarTabla2(int id) {
     try {
-        ResultSet rs = crud.buscarColegioPorId(id);
+        ResultSet rs = crud.buscarProveedorPorId(id);
 
         // Crea el modelo de la tabla
         DefaultTableModel modelo = new DefaultTableModel(); 
         modelo.addColumn("ID");
-        modelo.addColumn("Nombre");
-        modelo.addColumn("Codigo");
-        modelo.addColumn("Tipo");
-        modelo.addColumn("Caracteristica");
-        
+        modelo.addColumn("Empresa");
+        modelo.addColumn("Nombre Contacto");
+        modelo.addColumn("Telefono");
+        modelo.addColumn("Direccion");
 
-      
         while (rs.next()) {
             Object[] fila = new Object[5];
-            fila[0] = rs.getInt("id");
+            fila[0] = rs.getInt("nit");
             fila[1] = rs.getString("nombre");
-            fila[2] = rs.getString("codigo");
-            fila[3] = rs.getString("tipo");
-            fila[4] = rs.getString("caracteristicas");
+            fila[2] = rs.getString("nom_contacto");
+            fila[3] = rs.getString("telefono");
+            fila[4] = rs.getString("direccion");
             modelo.addRow(fila);
         }
 
         // Asigna el modelo a la tabla
-        tablita1.setModel(modelo);
+        tablapro.setModel(modelo);
 
     } catch (Exception e) {
         JOptionPane.showMessageDialog(null, "Error al actualizar tabla: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
@@ -120,10 +119,10 @@ public class Tablas2 extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         bus2 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tablita2 = new javax.swing.JTable();
+        tablapro = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(400, 180));
+        setLocation(new java.awt.Point(430, 180));
         setUndecorated(true);
         setResizable(false);
 
@@ -147,7 +146,7 @@ public class Tablas2 extends javax.swing.JFrame {
             }
         });
 
-        Modificar.setBackground(new java.awt.Color(18, 90, 173));
+        Modificar.setBackground(new java.awt.Color(153, 153, 255));
         Modificar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Modificar.setForeground(new java.awt.Color(255, 255, 255));
         Modificar.setText("MODIFICAR");
@@ -331,12 +330,12 @@ public class Tablas2 extends javax.swing.JFrame {
             }
         });
 
-        tablita2.setModel(new javax.swing.table.DefaultTableModel(
+        tablapro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nombre", "Codigo", "Tipo", "Carateristica"
+                "ID", "Empresa", "Nombre Contacto", "Telefono", "Direccion"
             }
         ) {
             Class[] types = new Class [] {
@@ -347,21 +346,21 @@ public class Tablas2 extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        tablita2.addAncestorListener(new javax.swing.event.AncestorListener() {
+        tablapro.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                tablita2AncestorAdded(evt);
+                tablaproAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        tablita2.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablapro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablita2MouseClicked(evt);
+                tablaproMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(tablita2);
+        jScrollPane3.setViewportView(tablapro);
 
         javax.swing.GroupLayout PanelColegioLayout = new javax.swing.GroupLayout(PanelColegio);
         PanelColegio.setLayout(PanelColegioLayout);
@@ -370,10 +369,6 @@ public class Tablas2 extends javax.swing.JFrame {
             .addGroup(PanelColegioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(247, 247, 247))
                     .addGroup(PanelColegioLayout.createSequentialGroup()
                         .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -397,15 +392,15 @@ public class Tablas2 extends javax.swing.JFrame {
                             .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(bus, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(bus2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(95, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
-                        .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2))
-                        .addContainerGap())
-                    .addGroup(PanelColegioLayout.createSequentialGroup()
-                        .addComponent(jScrollPane3)
-                        .addContainerGap())))
+                        .addGap(0, 89, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane3))
+                .addContainerGap())
+            .addGroup(PanelColegioLayout.createSequentialGroup()
+                .addGap(320, 320, 320)
+                .addComponent(Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         PanelColegioLayout.setVerticalGroup(
             PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -447,9 +442,9 @@ public class Tablas2 extends javax.swing.JFrame {
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+                .addGap(36, 36, 36))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -473,7 +468,7 @@ public class Tablas2 extends javax.swing.JFrame {
     }//GEN-LAST:event_ModificarMouseEntered
 
     private void ModificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModificarMouseExited
-        Modificar.setBackground(new java.awt.Color(153, 153, 255));
+        Modificar.setBackground(new java.awt.Color(18,90,173));
     }//GEN-LAST:event_ModificarMouseExited
 
     private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
@@ -491,32 +486,32 @@ public class Tablas2 extends javax.swing.JFrame {
                 double precio_venta = Double.parseDouble(tablaprodu.getValueAt(filaSeleccionada, 5).toString());
                 String talla = (String) tablaprodu.getValueAt(filaSeleccionada, 6);
                 String medidas = (String) tablaprodu.getValueAt(filaSeleccionada, 7);
-
+                crud.editarProductoTerminado(cod, num_pedido, descripcion, cantidad_existente, sexo, precio_venta, talla, medidas);
+                crud.editarInventario(cod, cantidad_existente, descripcion);
                  
         }
            
         }else{
             if(buscarPresionado == true){
                 System.out.println("se presiono buscar true");
-                int filaSeleccionada2 = tablita1.getSelectedRow();
+                int filaSeleccionada2 = tablapro.getSelectedRow();
                 if (filaSeleccionada2 != -1) {
                     // Obtener datos de la fila seleccionada
-                    int idc = Integer.parseInt(tablita1.getValueAt(filaSeleccionada2, 0).toString());
-                    String nombrec = (String) tablita1.getValueAt(filaSeleccionada2, 1);
-                    String codu = (String) tablita1.getValueAt(filaSeleccionada2, 2);
-                    String tipo = (String) tablita1.getValueAt(filaSeleccionada2, 3);
-                    String car = (String) tablita1.getValueAt(filaSeleccionada2, 4);
-                    // Abrir la ventana de edición
-                    crud.editarColegio(idc, nombrec);
-                    crud.editarUniforme(codu, idc, tipo, car);
+                    int nit = Integer.parseInt(tablapro.getValueAt(filaSeleccionada2, 0).toString());
+                    String nombre = (String) tablapro.getValueAt(filaSeleccionada2, 1);
+                    String nom_contacto = (String) tablapro.getValueAt(filaSeleccionada2, 2);
+                    String telefono = (String) tablapro.getValueAt(filaSeleccionada2, 3);
+                    String direccion = (String) tablapro.getValueAt(filaSeleccionada2, 4);
+                    crud.editarProveedor(nit, nombre, nom_contacto, telefono, direccion);
+
                 }
             }
         }
-        Buscar_id.setText("Ingresar id del cliente");
+        Buscar_id.setText("Ingrese el codigo del producto");
         DefaultTableModel modelo = (DefaultTableModel) tablaprodu.getModel();
         modelo.setRowCount(0);
 
-        setVisible(false);
+        
 
     }//GEN-LAST:event_ModificarActionPerformed
 
@@ -536,6 +531,7 @@ public class Tablas2 extends javax.swing.JFrame {
     private void busActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_busActionPerformed
         guardar1Presionado = true;
         buscarPresionado = false;
+        buscarmateria = false;
         actualizarTabla(Buscar_id.getText());
          
          
@@ -566,6 +562,7 @@ public class Tablas2 extends javax.swing.JFrame {
         System.out.println("Se presionó el botón BUSCAR C");
         buscarPresionado = true;
         guardar1Presionado = false;
+        buscarmateria = false;
         int xd = Integer.parseInt(Buscaprove.getText());
         actualizarTabla2(xd);
         
@@ -605,16 +602,19 @@ public class Tablas2 extends javax.swing.JFrame {
     }//GEN-LAST:event_bus2MouseExited
 
     private void bus2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bus2ActionPerformed
-        // TODO add your handling code here:
+        System.out.println("Se presionó el botón buscar materia");
+        buscarPresionado = false;
+        guardar1Presionado = false;
+        buscarmateria = true;
     }//GEN-LAST:event_bus2ActionPerformed
 
-    private void tablita2AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablita2AncestorAdded
+    private void tablaproAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablaproAncestorAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_tablita2AncestorAdded
+    }//GEN-LAST:event_tablaproAncestorAdded
 
-    private void tablita2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablita2MouseClicked
+    private void tablaproMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaproMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tablita2MouseClicked
+    }//GEN-LAST:event_tablaproMouseClicked
     
 
     /**
@@ -670,8 +670,8 @@ public class Tablas2 extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JTable tablapro;
     private javax.swing.JTable tablaprodu;
     private javax.swing.JTable tablita1;
-    private javax.swing.JTable tablita2;
     // End of variables declaration//GEN-END:variables
 }
