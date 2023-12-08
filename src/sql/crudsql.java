@@ -132,6 +132,21 @@ public class crudsql extends conexionsql {
         JOptionPane.showMessageDialog(null, "El registro no se guardó " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
     }
 }
+    public void insertarVenta(String codigoFact, int numPedido, int idCliente, double montoFinal) {
+    try {
+        Connection conexion = conectar();
+        st = conexion.createStatement();
+        String sql = "INSERT INTO VENTA (Codigo_Fact, Num_pedido, Id_Cliente, Monto_Final) VALUES " +
+                     "('" + codigoFact + "','" + numPedido + "','" + idCliente + "','" + montoFinal + "');";
+        st.execute(sql);
+        st.close();
+        conexion.close();
+         JOptionPane.showMessageDialog(null, "La venta se guardó correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "La venta no se guardó: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
 
 
     //////////////////  Buscar //////////////
@@ -163,6 +178,21 @@ public class crudsql extends conexionsql {
         return null;
     }
 }
+    public ResultSet buscarVentaPorNumPedido(int numPedido) {
+        try {
+            Connection conexion = conectar();
+            String sql = "SELECT * FROM venta INNER JOIN pedido ON venta.num_pedido = pedido.num_pedido INNER JOIN cliente ON venta.id_cliente = cliente.id WHERE venta.num_pedido = ?";
+
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setInt(1, numPedido);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al buscar venta por Num_pedido: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+    }
+    
 
     
     ///////////////////EDITAR///////////////////////////////////////

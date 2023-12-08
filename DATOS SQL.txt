@@ -140,4 +140,3 @@ INSERT INTO VENTA (Codigo_Fact, Num_pedido, Id_Cliente, Monto_Final) VALUES ('V2
 
 
 
-
