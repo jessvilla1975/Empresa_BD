@@ -397,7 +397,7 @@ public class TablaEliminar extends javax.swing.JFrame {
         DefaultTableModel modelo2 = (DefaultTableModel) tablapedido.getModel();
         modelo2.setRowCount(0);
 
-        setVisible(false);
+        //setVisible(false);
 
     }//GEN-LAST:event_EliminarActionPerformed
 

@@ -503,6 +503,22 @@ public ResultSet buscarPedidoPorNumero(int numPedido) {
         JOptionPane.showMessageDialog(null, "Error al eliminar uniforme y registros asociados: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
     }
 }
+    public void eliminarVenta(String codigoFactura) {
+    try {
+        Connection conexion = conectar();
+        st = conexion.createStatement();
+        String sqlVenta = "DELETE FROM VENTA WHERE Codigo_Fact = '" + codigoFactura + "';";
+        st.execute(sqlVenta);
+
+        st.close();
+        conexion.close();
+
+        JOptionPane.showMessageDialog(null, "Venta y registros asociados eliminados con éxito", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al eliminar venta y registros asociados: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
 
 
         
