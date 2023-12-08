@@ -164,6 +164,21 @@ public class crudsql extends conexionsql {
         return null;
     }
 }
+    
+public ResultSet buscarPedidoPorNumero(int numPedido) {
+    try {
+        Connection conexion = conectar();
+        String sql = "SELECT * FROM pedido WHERE Num_pedido = ?";
+
+        PreparedStatement ps = conexion.prepareStatement(sql);
+        ps.setInt(1, numPedido);
+        ResultSet rs = ps.executeQuery();
+        return rs;
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al buscar pedido por Num_pedido: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+        return null;
+    }
+}
     public ResultSet buscarColegioPorId(int id) {
     try {
         Connection conexion = conectar();
@@ -178,20 +193,39 @@ public class crudsql extends conexionsql {
         return null;
     }
 }
-    public ResultSet buscarVentaPorNumPedido(int numPedido) {
+    public ResultSet buscarUniformePorCodigo(String codigo) {
         try {
             Connection conexion = conectar();
-            String sql = "SELECT * FROM venta INNER JOIN pedido ON venta.num_pedido = pedido.num_pedido INNER JOIN cliente ON venta.id_cliente = cliente.id WHERE venta.num_pedido = ?";
+            String sql = "SELECT * FROM uniforme WHERE Codigo = ?";
 
             PreparedStatement ps = conexion.prepareStatement(sql);
-            ps.setInt(1, numPedido);
+            ps.setString(1, codigo);
+
             ResultSet rs = ps.executeQuery();
             return rs;
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al buscar venta por Num_pedido: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error al buscar uniforme por código: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
             return null;
         }
     }
+    public ResultSet buscarVentaPorNumPedido(int numPedido) {
+    try {
+        Connection conexion = conectar();
+        String sql = "SELECT * FROM PEDIDO " +
+                     "INNER JOIN PRODUCTO_TERMINADO ON PRODUCTO_TERMINADO.Num_pedido = PEDIDO.Num_pedido " +
+                     "WHERE PEDIDO.Num_pedido = ?";
+
+        PreparedStatement ps = conexion.prepareStatement(sql);
+        ps.setInt(1, numPedido);
+        ResultSet rs = ps.executeQuery();
+        return rs;
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al buscar venta por Num_pedido: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+        return null;
+    }
+}
+
+
     
     public ResultSet buscarCodigoFact(String cod) {
     try {
@@ -399,71 +433,85 @@ public class crudsql extends conexionsql {
         JOptionPane.showMessageDialog(null, "Error al editar venta: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
     }
 }
+    //////////////////////ELIMINAR////////////////////////////////////////////////////
+    public void eliminarCliente(int idCliente) {
+    try {
+        Connection conexion = conectar();
+        st = conexion.createStatement();
 
+        // Eliminar registros en cascada (incluyendo PEDIDO, PRODUCTO_TERMINADO, INVENTARIO, VENTA)
+        String sql = "DELETE FROM CLIENTE WHERE ID = " + idCliente + ";";
+        st.execute(sql);
 
-
-
-    
-    
-
-
-
-
-    
-    
-
-    /*public void mostrar(String idempleado) {
-        try {
-            Connection conexion = conectar();
-            st = conexion.createStatement();
-            String sql = "select * from empleados where idempleado='" + idempleado + "';";
-            rs = st.executeQuery(sql);
-            if (rs.next()) {
-                var.setIdempleado(rs.getString("idempleado"));
-                var.setNombre(rs.getString("nombre"));
-                var.setApellido(rs.getString("apellido"));
-                var.setPuesto(rs.getString("puesto"));
-            } else {
-                var.setIdempleado("");
-                var.setNombre("");
-                var.setApellido("");
-                var.setPuesto("");
-                JOptionPane.showMessageDialog(null, "no se encontro registro", "sin registro", JOptionPane.INFORMATION_MESSAGE);
-            }
-            st.close();
-            conexion.close();
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "error en programa " + e, "Erro de sistema", JOptionPane.ERROR_MESSAGE);
-        }
+        st.close();
+        conexion.close();
+        
+        JOptionPane.showMessageDialog(null, "Cliente y registros asociados eliminados con exito", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al eliminar cliente y registros asociados: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
     }
-
-    public void actualizar(String nombre, String apellido, String puesto, String idempleado) {
-        try {
-            Connection conexion = conectar();
-            st = conexion.createStatement();
-            String sql = "update empleados set nombre='" + nombre + "',apellido='" + apellido + "',puesto='" + puesto + "' where idempleado='" + idempleado + "'; ";
-            st.executeUpdate(sql);
-            st.close();
-            conexion.close();
-            JOptionPane.showMessageDialog(null, "El registro se actualizo", "Exito", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al actualizar " + e, "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
+}
     
-    public void eliminar(String idempleado){
-        try {
-            Connection conexion=conectar();
-            st=conexion.createStatement();
-            String sql="delete from empleados where idempleado='"+idempleado+"'; ";
-            st.executeUpdate(sql);
-            st.close();
-            conexion.close();
-            JOptionPane.showMessageDialog(null, "Registro eliminado correctamente","Eliminado",JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al eliminar registro "+ e,"Error",JOptionPane.ERROR_MESSAGE);
-        }
-    }*/
+    public void eliminarPedido(int numPedido) {
+    try {
+        Connection conexion = conectar();
+        st = conexion.createStatement();
+
+        // Eliminar registros en cascada (incluyendo PRODUCTO_TERMINADO, INVENTARIO, VENTA)
+        String sql = "DELETE FROM PEDIDO WHERE Num_pedido = " + numPedido + ";";
+        st.execute(sql);
+
+        st.close();
+        conexion.close();
+        
+        JOptionPane.showMessageDialog(null, "Pedido y registros asociados eliminados con exito", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al eliminar pedido y registros asociados: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+    }
+}
+    public void eliminarColegio(int idColegio) {
+    try {
+        Connection conexion = conectar();
+        st = conexion.createStatement();
+
+        // Eliminar COLEGIO
+        String sqlColegio = "DELETE FROM COLEGIO WHERE Id = " + idColegio + ";";
+        st.execute(sqlColegio);
+
+        st.close();
+        conexion.close();
+
+        JOptionPane.showMessageDialog(null, "Colegio y registros asociados eliminados con éxito", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al eliminar colegio y registros asociados: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+    }
+}
+    public void eliminarUniforme(String codigoUniforme) {
+    try {
+        Connection conexion = conectar();
+        st = conexion.createStatement();
+
+        // Eliminar UNIFORME
+        String sqlUniforme = "DELETE FROM UNIFORME WHERE Codigo = '" + codigoUniforme + "';";
+        st.execute(sqlUniforme);
+
+        st.close();
+        conexion.close();
+
+        JOptionPane.showMessageDialog(null, "Uniforme y registros asociados eliminados con éxito", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al eliminar uniforme y registros asociados: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
+
+        
+    
+
+    
+
+  
+    
+    
     
 }

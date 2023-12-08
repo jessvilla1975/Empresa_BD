@@ -1,17 +1,13 @@
-
 --TABLA CLIENTE
 CREATE TABLE CLIENTE (
-  ID INT PRIMARY KEY,
-  NOMBRE VARCHAR(50),
-  TELEFONO VARCHAR(15)
+    ID INT PRIMARY KEY,
+    NOMBRE VARCHAR(50),
+    TELEFONO VARCHAR(15)
 );
-
 
 --INSERTAR DATOS CLIENTE
 INSERT INTO CLIENTE (ID, NOMBRE, TELEFONO) VALUES (1, 'Juan Pérez', '555-1234');
 INSERT INTO CLIENTE (ID, NOMBRE, TELEFONO) VALUES (2, 'María López', '555-5678');
-
-
 
 --TABLA PEDIDO
 CREATE TABLE PEDIDO (
@@ -21,16 +17,13 @@ CREATE TABLE PEDIDO (
     Abono FLOAT NOT NULL,
     Fecha_Encargo DATE NOT NULL,
     Fecha_Entrega DATE,
-    FOREIGN KEY( Id_Cliente ) REFERENCES CLIENTE(ID)
+    FOREIGN KEY (Id_Cliente) REFERENCES CLIENTE (ID) ON DELETE CASCADE
 );
 
-
 --INSERTAR DATOS PEDIDO
-
 INSERT INTO PEDIDO (Num_pedido, Id_Cliente, Estado, Abono, Fecha_Encargo, Fecha_Entrega) VALUES
     (101, 1, 'En proceso', 50000, '2023-01-01', '2023-01-10'),
     (102, 2, 'Entregado', 30000, '2023-02-15', '2023-02-20');
-
 
 -- Crear la tabla COLEGIO
 CREATE TABLE COLEGIO (
@@ -49,7 +42,7 @@ CREATE TABLE UNIFORME (
     Id_Colegio INT NOT NULL,
     Tipo VARCHAR(255) NOT NULL,
     Caracteristicas VARCHAR(255),
-   FOREIGN KEY( Id_Colegio ) REFERENCES COLEGIO(Id)
+    FOREIGN KEY (Id_Colegio) REFERENCES COLEGIO (Id) ON DELETE CASCADE
 );
 
 -- Insertar dos registros de ejemplo
@@ -57,7 +50,7 @@ INSERT INTO UNIFORME (Codigo, Id_Colegio, Tipo, Caracteristicas) VALUES
     ('U1', 1, 'Diario', 'Azul-Lana-Si'),
     ('U2', 2, 'Deportivo', 'Gris-Algodón-No');
 
-
+-- Crear la tabla PRODUCTO_TERMINADO
 CREATE TABLE PRODUCTO_TERMINADO (
     Codigo VARCHAR(50) PRIMARY KEY,
     Num_pedido INT,
@@ -67,25 +60,21 @@ CREATE TABLE PRODUCTO_TERMINADO (
     Precio_venta FLOAT NOT NULL,
     Talla VARCHAR(10),
     Medidas VARCHAR(255),
-   FOREIGN KEY(Num_pedido ) REFERENCES PEDIDO(Num_pedido)
+    FOREIGN KEY (Num_pedido) REFERENCES PEDIDO (Num_pedido) ON DELETE CASCADE
 );
 
 -- Insertar dos registros de ejemplo en la tabla PRODUCTO_TERMINADO
-INSERT INTO PRODUCTO_TERMINADO (Codigo, Num_pedido, Descripcion, Cantidad_Existente, Sexo, Precio_venta, Talla, Medidas)
-VALUES
+INSERT INTO PRODUCTO_TERMINADO (Codigo, Num_pedido, Descripcion, Cantidad_Existente, Sexo, Precio_venta, Talla, Medidas) VALUES
     ('PT1', 101, 'Uniforme', 2, 'Mujer', 120000, 'M', '34-36'),
     ('PT2', 102, 'Prenda', 3, 'Hombre', 50000, 'L', '32-20');
 
 -- Crear la tabla INVENTARIO
 CREATE TABLE INVENTARIO (
-    Codigo varchar NOT NULL,
+    Codigo VARCHAR(50) PRIMARY KEY,
     Cantidad_Existente INT,
-	Descripcion VARCHAR(255) NOT NULL,
-    FOREIGN KEY (Codigo) REFERENCES PRODUCTO_TERMINADO (Codigo),
-    PRIMARY KEY (Codigo)
+    Descripcion VARCHAR(255) NOT NULL,
+    FOREIGN KEY (Codigo) REFERENCES PRODUCTO_TERMINADO (Codigo) ON DELETE CASCADE
 );
-
-
 
 -- Insertar dos registros de ejemplo en la tabla INVENTARIO
 INSERT INTO INVENTARIO (Codigo, Cantidad_Existente, Descripcion) VALUES
@@ -102,14 +91,12 @@ CREATE TABLE PROVEEDOR (
 );
 
 -- Insertar dos registros en la tabla PROVEEDOR
-INSERT INTO PROVEEDOR (Nit, Nombre, Nom_contacto, Telefono, Direccion)
-VALUES
+INSERT INTO PROVEEDOR (Nit, Nombre, Nom_contacto, Telefono, Direccion) VALUES
     (1, 'Hilos S.A.', 'Contacto1', '123456789', 'Dirección1'),
     (2, 'Telitas Express', 'Contacto2', '987654321', 'Dirección2');
 
-
--- crear tabla MATERIA
-CREATE TABLE materia (
+-- Crear la tabla MATERIA
+CREATE TABLE MATERIA (
     Codigo INT PRIMARY KEY,
     Tipo VARCHAR(50),
     Descripcion VARCHAR(255),
@@ -117,26 +104,20 @@ CREATE TABLE materia (
     Unidad_Medida VARCHAR(50)
 );
 
--- Insertar dos registros en la tabla materia
-INSERT INTO MATERIA (Codigo, Tipo, Descripcion, Cantidad_Exist, Unidad_Medida)
-VALUES
+-- Insertar dos registros en la tabla MATERIA
+INSERT INTO MATERIA (Codigo, Tipo, Descripcion, Cantidad_Exist, Unidad_Medida) VALUES
     (501, 'Hilo', 'Hilos azules', '10', 'Tubos'),
     (502, 'Tela', 'Tela de rallas', '25', 'Metros');
 
--- Crear la tabla VENTA con Codigo_Fact como VARCHAR
+-- Crear la tabla VENTA 
 CREATE TABLE VENTA (
-  Codigo_Fact VARCHAR(20) PRIMARY KEY,
-  Num_pedido INT NOT NULL,
-  Id_Cliente INT,
-  Monto_Final FLOAT,
-  FOREIGN KEY (Num_pedido) REFERENCES PEDIDO(Num_pedido),
-  FOREIGN KEY (Id_Cliente) REFERENCES CLIENTE(ID)
+    Codigo_Fact VARCHAR(20) PRIMARY KEY,
+    Num_pedido INT NOT NULL,
+    Id_Cliente INT,
+    Monto_Final FLOAT,
+    FOREIGN KEY (Num_pedido) REFERENCES PEDIDO (Num_pedido) ON DELETE CASCADE,
+    FOREIGN KEY (Id_Cliente) REFERENCES CLIENTE (ID) ON DELETE CASCADE
 );
-
--- Insertar datos en la tabla VENTA
-INSERT INTO VENTA (Codigo_Fact, Num_pedido, Id_Cliente, Monto_Final) VALUES ('V1', 101, 1, 300000);
-INSERT INTO VENTA (Codigo_Fact, Num_pedido, Id_Cliente, Monto_Final) VALUES ('V2', 102, 2, 400000);
-
 
 
 

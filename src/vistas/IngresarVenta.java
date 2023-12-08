@@ -198,8 +198,8 @@ public class IngresarVenta extends javax.swing.JFrame {
         Text6.setText("Total a pagar");
 
         ventatotal.setForeground(new java.awt.Color(102, 102, 102));
-        ventatotal.setText("Ingresar el total a pagar ");
         ventatotal.setBorder(null);
+        ventatotal.setEnabled(false);
         ventatotal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 ventatotalMousePressed(evt);
@@ -396,6 +396,7 @@ public class IngresarVenta extends javax.swing.JFrame {
     }//GEN-LAST:event_buscarMouseExited
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        System.out.println("Se presio buscar");
         int pedido = Integer.parseInt(numped.getText());
         actualizar(pedido);
     }//GEN-LAST:event_buscarActionPerformed
@@ -422,10 +423,14 @@ public class IngresarVenta extends javax.swing.JFrame {
 
         while (rs.next()) {
             // Obtener los valores de la consulta de la tabla VENTA
-            int idCliente = rs.getInt("Id_Cliente");
-            float abono = rs.getFloat("Abono");
+            int idCliente = rs.getInt("Id_cliente");
+            double abono = rs.getDouble("abono");
+            double precio = rs.getDouble("precio_venta");
             idcli1.setText(String.valueOf(idCliente));
-            pagar.setText(String.valueOf(abono)); 
+            pagar.setText(String.valueOf(abono));
+            double total = precio - abono;
+            ventatotal.setText(String.valueOf(total));
+            
         }
 
     } catch (Exception e) {

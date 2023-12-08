@@ -1,0 +1,63 @@
+
+--delete
+DELETE FROM cliente;
+DELETE FROM colegio;
+DELETE FROM inventario;
+DELETE FROM materia;
+DELETE FROM pedido;
+DELETE FROM producto_terminado;
+DELETE FROM proveedor;
+DELETE FROM uniforme;
+DELETE FROM venta;
+
+-- INSERTAR DATOS CLIENTE
+INSERT INTO CLIENTE (ID, NOMBRE, TELEFONO) VALUES (3, 'Ana García', '555-9876');
+INSERT INTO CLIENTE (ID, NOMBRE, TELEFONO) VALUES (4, 'Pedro Rodríguez', '555-4321');
+INSERT INTO CLIENTE (ID, NOMBRE, TELEFONO) VALUES (5, 'Laura Martínez', '555-5678');
+INSERT INTO CLIENTE (ID, NOMBRE, TELEFONO) VALUES (6, 'Carlos Sánchez', '555-8765');
+INSERT INTO CLIENTE (ID, NOMBRE, TELEFONO) VALUES (7, 'Isabel Gómez', '555-2345');
+
+-- INSERTAR DATOS PEDIDO
+INSERT INTO PEDIDO (Num_pedido, Id_Cliente, Estado, Abono, Fecha_Encargo, Fecha_Entrega) VALUES
+    (103, 3, 'En proceso', 60000, '2023-03-10', '2023-03-18'),
+    (104, 4, 'Entregado', 40000, '2023-04-15', '2023-04-20'),
+    (105, 5, 'En proceso', 75000, '2023-05-02', '2023-05-10'),
+    (106, 6, 'Entregado', 30000, '2023-06-10', '2023-06-15'),
+    (107, 7, 'En proceso', 90000, '2023-07-05', '2023-07-12');
+
+-- INSERTAR DATOS COLEGIO
+INSERT INTO COLEGIO (Id, Nombre) VALUES (3, 'Colegio C');
+INSERT INTO COLEGIO (Id, Nombre) VALUES (4, 'Colegio D');
+INSERT INTO COLEGIO (Id, Nombre) VALUES (5, 'Colegio E');
+INSERT INTO COLEGIO (Id, Nombre) VALUES (6, 'Colegio F');
+INSERT INTO COLEGIO (Id, Nombre) VALUES (7, 'Colegio G');
+
+-- Insertar dos registros de ejemplo
+INSERT INTO UNIFORME (Codigo, Id_Colegio, Tipo, Caracteristicas) VALUES
+    ('U3', 3, 'Deportivo', 'Negro-Poliéster-Sí'),
+    ('U4', 4, 'Diario', 'Blanco-Algodón-No');
+
+-- Insertar dos registros de ejemplo en la tabla PRODUCTO_TERMINADO
+INSERT INTO PRODUCTO_TERMINADO (Codigo, Num_pedido, Descripcion, Cantidad_Existente, Sexo, Precio_venta, Talla, Medidas) VALUES
+    ('PT3', 103, 'Chaqueta', 5, 'Mujer', 150000, 'L', '38-40'),
+    ('PT4', 104, 'Camiseta', 8, 'Hombre', 60000, 'M', '36-38');
+
+-- Insertar dos registros de ejemplo en la tabla INVENTARIO
+INSERT INTO INVENTARIO (Codigo, Cantidad_Existente, Descripcion) VALUES
+    ('PT3', 5, 'Chaqueta'),
+    ('PT4', 8, 'Camiseta');
+
+-- Insertar dos registros en la tabla PROVEEDOR
+INSERT INTO PROVEEDOR (Nit, Nombre, Nom_contacto, Telefono, Direccion) VALUES
+    (3, 'Telas de Calidad', 'Contacto3', '555555555', 'Dirección3'),
+    (4, 'Botones Rápidos', 'Contacto4', '111111111', 'Dirección4');
+
+-- Insertar dos registros en la tabla materia
+INSERT INTO MATERIA (Codigo, Tipo, Descripcion, Cantidad_Exist, Unidad_Medida) VALUES
+    (503, 'Hilo', 'Hilos verdes', 15, 'Tubos'),
+    (504, 'Tela', 'Tela de cuadros', 30, 'Metros');
+
+-- Insertar dos registros en la tabla VENTA
+INSERT INTO VENTA (Codigo_Fact, Num_pedido, Id_Cliente, Monto_Final) VALUES
+    ('VF1', 105, 5, 90000),
+    ('VF2', 106, 6, 40000);

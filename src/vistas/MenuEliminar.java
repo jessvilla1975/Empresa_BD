@@ -17,8 +17,8 @@ public class MenuEliminar extends javax.swing.JFrame {
     public MenuEliminar() {
         initComponents();
     }
-    Tablas at = new Tablas();
-    Tablas2 at1 = new Tablas2();
+    TablaEliminar at = new TablaEliminar();
+    TablaEliminar2 at1 = new TablaEliminar2();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -233,7 +233,7 @@ public class MenuEliminar extends javax.swing.JFrame {
         tabla1.setBackground(new java.awt.Color(21, 101, 192));
         tabla1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tabla1.setForeground(new java.awt.Color(255, 255, 255));
-        tabla1.setText("Colegio - Uniforme - Venta");
+        tabla1.setText("Cliente - Pedido");
         tabla1.setAlignmentY(0.0F);
         tabla1.setBorder(null);
         tabla1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -258,7 +258,7 @@ public class MenuEliminar extends javax.swing.JFrame {
         Actprovedor.setBackground(new java.awt.Color(21, 101, 192));
         Actprovedor.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Actprovedor.setForeground(new java.awt.Color(255, 255, 255));
-        Actprovedor.setText("Product - Provee - Materia");
+        Actprovedor.setText("Colegio - Uniforme");
         Actprovedor.setBorder(null);
         Actprovedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Actprovedor.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -282,9 +282,7 @@ public class MenuEliminar extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 859, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1065, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,6 +308,7 @@ public class MenuEliminar extends javax.swing.JFrame {
         mp.setVisible(true);
         setVisible(false);
         at.setVisible(false);
+        at1.setVisible(false);
         
         
         
@@ -325,12 +324,8 @@ public class MenuEliminar extends javax.swing.JFrame {
 
     private void tabla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tabla1ActionPerformed
         System.out.println("Se presionó el botón eliminar Colegio - Uniforme - Venta");
-        TablasEliminar te = new TablasEliminar();
-        te.setVisible(true);
-        setVisible(false); 
-        
         //at1.setVisible(false);
-        //at.setVisible(true);
+        at.setVisible(true);
         
     }//GEN-LAST:event_tabla1ActionPerformed
 
@@ -360,12 +355,9 @@ public class MenuEliminar extends javax.swing.JFrame {
 
     private void ActprovedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActprovedorActionPerformed
         System.out.println("Se presionó el botón eliminar Producto - Proveedor - Materia");
-        TablasEliminar2 te = new TablasEliminar2();
-        te.setVisible(true);
-        setVisible(false); 
-        
-        //at.setVisible(false);
-        //at1.setVisible(true);
+
+        at.setVisible(false);
+        at1.setVisible(true);
     }//GEN-LAST:event_ActprovedorActionPerformed
 
     /**
