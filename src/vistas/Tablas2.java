@@ -32,46 +32,36 @@ public class Tablas2 extends javax.swing.JFrame {
     private boolean guardar1Presionado = false;
     private boolean buscarPresionado = false;
 
-    private void actualizarTabla(int id) {
+    private void actualizarTabla(String id) {
     try {
-        ResultSet rs = crud.buscarClientePorId(id); 
+        ResultSet rs = crud.buscarProductoTerminadoEnInventario(id);
 
         // Crea el modelo de la tabla
         DefaultTableModel modelo = new DefaultTableModel(); 
-        modelo.addColumn("ID");
-        modelo.addColumn("Nombre");
-        modelo.addColumn("Tel");
-        modelo.addColumn("Num pedido");
-        modelo.addColumn("Estado");
-        modelo.addColumn("Abono");
-        modelo.addColumn("Fecha_Encargo");
-        modelo.addColumn("Fecha_Entrega");
-        
-
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Num Pedido");
+        modelo.addColumn("Descripcion");
+        modelo.addColumn("Cant Existente");
+        modelo.addColumn("Sexo");
+        modelo.addColumn("Precio Venta");
+        modelo.addColumn("Talla");
+        modelo.addColumn("Medidad");
       
         while (rs.next()) {
-            
-            java.sql.Date fechaEncargo = rs.getDate("Fecha_Encargo");
-            String fechaEncargoStr = (fechaEncargo != null) ? fechaEncargo.toString() : ""; 
-            
-            java.sql.Date fechaEntrega = rs.getDate("Fecha_Entrega");
-            String fechaEntregaStr = (fechaEntrega != null) ? fechaEntrega.toString() : ""; // Convierte Date a String
-
             Object[] fila = new Object[8];
-            fila[0] = rs.getInt("id");
-            fila[1] = rs.getString("nombre");
-            fila[2] = rs.getString("telefono");
-            fila[3] = rs.getString("Num_pedido");
-            fila[4] = rs.getString("estado");
-            fila[5] = rs.getString("abono");
-            fila[6] = fechaEncargoStr;
-            fila[7] = fechaEntregaStr;
-            //fila[7] = rs.getString(" Fecha_Entrega");
+            fila[0] = rs.getString("codigo");
+            fila[1] = rs.getInt("num_pedido");
+            fila[2] = rs.getString("descripcion");
+            fila[3] = rs.getInt("cantidad_existente");
+            fila[4] = rs.getString("sexo");
+            fila[5] = rs.getDouble("precio_venta");
+            fila[6] = rs.getString("talla");
+            fila[7] = rs.getString("medidas");
             modelo.addRow(fila);
         }
 
         // Asigna el modelo a la tabla
-        tablita.setModel(modelo);
+        tablaprodu.setModel(modelo);
 
     } catch (Exception e) {
         JOptionPane.showMessageDialog(null, "Error al actualizar tabla: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
@@ -118,7 +108,7 @@ public class Tablas2 extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         bus = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablita = new javax.swing.JTable();
+        tablaprodu = new javax.swing.JTable();
         Text4 = new javax.swing.JLabel();
         Buscaprove = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
@@ -199,7 +189,7 @@ public class Tablas2 extends javax.swing.JFrame {
             }
         });
 
-        tablita.setModel(new javax.swing.table.DefaultTableModel(
+        tablaprodu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null}
             },
@@ -215,21 +205,21 @@ public class Tablas2 extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        tablita.addAncestorListener(new javax.swing.event.AncestorListener() {
+        tablaprodu.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                tablitaAncestorAdded(evt);
+                tablaproduAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        tablita.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablaprodu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablitaMouseClicked(evt);
+                tablaproduMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tablita);
+        jScrollPane1.setViewportView(tablaprodu);
 
         Text4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Text4.setText("Proveedor");
@@ -489,34 +479,20 @@ public class Tablas2 extends javax.swing.JFrame {
     private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
        System.out.println("Se presionó el botón modificar");
         if(guardar1Presionado == true){
-        int filaSeleccionada = tablita.getSelectedRow();
+        int filaSeleccionada = tablaprodu.getSelectedRow();
         if (filaSeleccionada != -1) {
-            try {
+           
                 // Obtener datos de la fila seleccionada
-                int id = Integer.parseInt(tablita.getValueAt(filaSeleccionada, 0).toString());
-                String nombre = (String) tablita.getValueAt(filaSeleccionada, 1);
-                String telefono = (String) tablita.getValueAt(filaSeleccionada, 2);
-                int num = Integer.parseInt(tablita.getValueAt(filaSeleccionada, 3).toString());
-                String es = (String) tablita.getValueAt(filaSeleccionada, 4);
-                double ab = Double.parseDouble(tablita.getValueAt(filaSeleccionada, 5).toString());
+                String cod = (String) tablaprodu.getValueAt(filaSeleccionada, 0);
+                int num_pedido = Integer.parseInt(tablaprodu.getValueAt(filaSeleccionada, 1).toString());
+                String descripcion = (String) tablaprodu.getValueAt(filaSeleccionada, 2);
+                int cantidad_existente = Integer.parseInt(tablaprodu.getValueAt(filaSeleccionada, 3).toString());
+                String sexo = (String) tablaprodu.getValueAt(filaSeleccionada, 4);
+                double precio_venta = Double.parseDouble(tablaprodu.getValueAt(filaSeleccionada, 5).toString());
+                String talla = (String) tablaprodu.getValueAt(filaSeleccionada, 6);
+                String medidas = (String) tablaprodu.getValueAt(filaSeleccionada, 7);
 
-                // Convertir la fecha de encargo y fecha de entrega a String
-                String fechaEncargo = tablita.getValueAt(filaSeleccionada, 6).toString();
-                String fechaEntrega = tablita.getValueAt(filaSeleccionada, 7).toString();
-
-                // Abrir la ventana de edición
-                crud.editarCliente(id, nombre, telefono);
-
-                // Convertir las fechas de String a Date
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                Date parsedFechaEncargo = dateFormat.parse(fechaEncargo);
-                Date parsedFechaEntrega = dateFormat.parse(fechaEntrega);
-
-                crud.editarPedido(num, es, ab, parsedFechaEncargo, parsedFechaEntrega);
-            } catch (ParseException ex) {
-                ex.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Error al convertir las fechas: " + ex.getMessage(), "Mensaje", JOptionPane.ERROR_MESSAGE);
-            }
+                 
         }
            
         }else{
@@ -537,7 +513,7 @@ public class Tablas2 extends javax.swing.JFrame {
             }
         }
         Buscar_id.setText("Ingresar id del cliente");
-        DefaultTableModel modelo = (DefaultTableModel) tablita.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) tablaprodu.getModel();
         modelo.setRowCount(0);
 
         setVisible(false);
@@ -560,19 +536,18 @@ public class Tablas2 extends javax.swing.JFrame {
     private void busActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_busActionPerformed
         guardar1Presionado = true;
         buscarPresionado = false;
-        int idABuscar = Integer.parseInt(Buscar_id.getText());
-        actualizarTabla(idABuscar);
+        actualizarTabla(Buscar_id.getText());
          
          
     }//GEN-LAST:event_busActionPerformed
 
-    private void tablitaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablitaAncestorAdded
+    private void tablaproduAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablaproduAncestorAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_tablitaAncestorAdded
+    }//GEN-LAST:event_tablaproduAncestorAdded
 
-    private void tablitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablitaMouseClicked
+    private void tablaproduMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaproduMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tablitaMouseClicked
+    }//GEN-LAST:event_tablaproduMouseClicked
 
     private void BuscaproveMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscaproveMousePressed
         if(Buscaprove.getText().equals("Ingresar nit del proveedor"));
@@ -695,7 +670,7 @@ public class Tablas2 extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTable tablita;
+    private javax.swing.JTable tablaprodu;
     private javax.swing.JTable tablita1;
     private javax.swing.JTable tablita2;
     // End of variables declaration//GEN-END:variables
