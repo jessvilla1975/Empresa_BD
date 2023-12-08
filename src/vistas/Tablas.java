@@ -34,6 +34,7 @@ public class Tablas extends javax.swing.JFrame {
     crudsql crud = new crudsql();
     private boolean guardar1Presionado = false;
     private boolean buscarPresionado = false;
+    private boolean buscarventa = false;
 
     private void actualizarTabla(int id) {
     try {
@@ -111,6 +112,33 @@ public class Tablas extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Error al actualizar tabla: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
     }
 }
+    private void actualizarTabla3(String cod) {
+    try {
+        ResultSet rs = crud.buscarCodigoFact(cod);
+
+        // Crea el modelo de la tabla
+        DefaultTableModel modelo = new DefaultTableModel(); 
+        modelo.addColumn("Codigo factura");
+        modelo.addColumn("Numero pedido");
+        modelo.addColumn("ID");
+        modelo.addColumn("Monto final");
+
+        while (rs.next()) {
+            Object[] fila = new Object[4];
+            fila[0] = rs.getString("codigo_fact");
+            fila[1] = rs.getString("num_pedido");
+            fila[2] = rs.getString("id_cliente");
+            fila[3] = rs.getString("monto_final");
+            modelo.addRow(fila);
+        }
+
+        // Asigna el modelo a la tabla
+        tablita2.setModel(modelo);
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al actualizar tabla: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+    }
+}
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -129,7 +157,7 @@ public class Tablas extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tablita1 = new javax.swing.JTable();
         Text5 = new javax.swing.JLabel();
-        Buscacafact = new javax.swing.JTextField();
+        Buscafact = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         bus3 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -303,17 +331,17 @@ public class Tablas extends javax.swing.JFrame {
         Text5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Text5.setText("Datos Venta");
 
-        Buscacafact.setForeground(new java.awt.Color(102, 102, 102));
-        Buscacafact.setText("Ingresar codigo de factura ");
-        Buscacafact.setBorder(null);
-        Buscacafact.addMouseListener(new java.awt.event.MouseAdapter() {
+        Buscafact.setForeground(new java.awt.Color(102, 102, 102));
+        Buscafact.setText("Ingresar codigo de factura ");
+        Buscafact.setBorder(null);
+        Buscafact.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                BuscacafactMousePressed(evt);
+                BuscafactMousePressed(evt);
             }
         });
-        Buscacafact.addActionListener(new java.awt.event.ActionListener() {
+        Buscafact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscacafactActionPerformed(evt);
+                BuscafactActionPerformed(evt);
             }
         });
 
@@ -376,31 +404,21 @@ public class Tablas extends javax.swing.JFrame {
         PanelColegioLayout.setHorizontalGroup(
             PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelColegioLayout.createSequentialGroup()
-                .addGap(265, 265, 265)
-                .addComponent(Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(PanelColegioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelColegioLayout.createSequentialGroup()
                         .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(PanelColegioLayout.createSequentialGroup()
-                                .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Buscar_id, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Text3))
-                                .addGap(327, 327, 327)))
+                            .addComponent(Buscar_id, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Text3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bus1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(PanelColegioLayout.createSequentialGroup()
                         .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(PanelColegioLayout.createSequentialGroup()
-                                .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Buscacolegio, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Text4))
-                                .addGap(375, 375, 375)))
+                            .addComponent(Buscacolegio, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Text4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bus2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(125, 125, 125))))
@@ -413,7 +431,7 @@ public class Tablas extends javax.swing.JFrame {
                             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(PanelColegioLayout.createSequentialGroup()
                                 .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Buscacafact, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Buscafact, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Text5))
                                 .addGap(375, 375, 375)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -425,6 +443,10 @@ public class Tablas extends javax.swing.JFrame {
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(PanelColegioLayout.createSequentialGroup()
+                .addGap(332, 332, 332)
+                .addComponent(Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         PanelColegioLayout.setVerticalGroup(
             PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -459,7 +481,7 @@ public class Tablas extends javax.swing.JFrame {
                     .addGroup(PanelColegioLayout.createSequentialGroup()
                         .addComponent(Text5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Buscacafact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Buscafact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(bus3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -542,9 +564,29 @@ public class Tablas extends javax.swing.JFrame {
                     crud.editarColegio(idc, nombrec);
                     crud.editarUniforme(codu, idc, tipo, car);
                 }
+            } else{
+                    if(buscarventa == true){
+                    System.out.println("se presiono buscar v");
+                    int filaSeleccionada3 = tablita2.getSelectedRow();
+                    if (filaSeleccionada3 != -1) {
+                        // Obtener datos de la fila seleccionada
+                       
+                        String cod = (String) tablita2.getValueAt(filaSeleccionada3, 0);
+                        int num = Integer.parseInt(tablita2.getValueAt(filaSeleccionada3, 1).toString());
+                        int id = Integer.parseInt(tablita2.getValueAt(filaSeleccionada3, 2).toString());
+                        double monto = Double.parseDouble(tablita2.getValueAt(filaSeleccionada3, 3).toString());
+                        
+                        // Abrir la ventana de edición
+                        crud.editarVenta(cod, num, id, monto);
+                        
+                    }
+                }
             }
         }
         Buscar_id.setText("Ingresar id del cliente");
+        Buscacolegio.setText("Ingresar id del Colegio");
+        Buscafact.setText("Ingresar codigo de factura");
+        
         DefaultTableModel modelo = (DefaultTableModel) tablita.getModel();
         modelo.setRowCount(0);
 
@@ -568,6 +610,7 @@ public class Tablas extends javax.swing.JFrame {
     private void bus1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bus1ActionPerformed
         guardar1Presionado = true;
         buscarPresionado = false;
+        buscarventa = false;
         int idABuscar = Integer.parseInt(Buscar_id.getText());
          actualizarTabla(idABuscar);
          
@@ -599,6 +642,7 @@ public class Tablas extends javax.swing.JFrame {
         System.out.println("Se presionó el botón BUSCAR C");
         buscarPresionado = true;
         guardar1Presionado = false;
+        buscarventa = false;
         int xd = Integer.parseInt(Buscacolegio.getText());
         actualizarTabla2(xd);
         
@@ -616,10 +660,10 @@ public class Tablas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Buscar_idActionPerformed
 
-    private void BuscacafactMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscacafactMousePressed
-        if(Buscacafact.getText().equals("Ingresar codigo de factura"));
-        Buscacafact.setText("");
-    }//GEN-LAST:event_BuscacafactMousePressed
+    private void BuscafactMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscafactMousePressed
+        if(Buscafact.getText().equals("Ingresar codigo de factura"));
+        Buscafact.setText("");
+    }//GEN-LAST:event_BuscafactMousePressed
 
     private void bus3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bus3MouseEntered
         // TODO add your handling code here:
@@ -630,7 +674,12 @@ public class Tablas extends javax.swing.JFrame {
     }//GEN-LAST:event_bus3MouseExited
 
     private void bus3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bus3ActionPerformed
-        // TODO add your handling code here:
+        System.out.println("Se presionó el botón BUSCAR venta");
+        buscarPresionado = false;
+        guardar1Presionado = false;
+        buscarventa = true;
+        String cod = Buscafact.getText();
+        actualizarTabla3(cod);
     }//GEN-LAST:event_bus3ActionPerformed
 
     private void tablita2AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablita2AncestorAdded
@@ -641,9 +690,9 @@ public class Tablas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tablita2MouseClicked
 
-    private void BuscacafactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscacafactActionPerformed
+    private void BuscafactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscafactActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BuscacafactActionPerformed
+    }//GEN-LAST:event_BuscafactActionPerformed
     
 
     /**
@@ -682,8 +731,8 @@ public class Tablas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Buscacafact;
     private javax.swing.JTextField Buscacolegio;
+    private javax.swing.JTextField Buscafact;
     private javax.swing.JTextField Buscar_id;
     private javax.swing.JButton Modificar;
     private javax.swing.JPanel PanelColegio;

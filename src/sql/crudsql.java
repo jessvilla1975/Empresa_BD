@@ -193,6 +193,23 @@ public class crudsql extends conexionsql {
         }
     }
     
+    public ResultSet buscarCodigoFact(String cod) {
+    try {
+        Connection conexion = conectar();
+        String sql = "SELECT * FROM VENTA WHERE Codigo_Fact = ?";
+
+        PreparedStatement ps = conexion.prepareStatement(sql);
+        ps.setString(1, cod);  
+        ResultSet rs = ps.executeQuery();
+        return rs;
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al buscar Codigo_Fact: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+        return null;
+    }
+}
+
+
+    
 
     
     ///////////////////EDITAR///////////////////////////////////////
@@ -345,6 +362,45 @@ public class crudsql extends conexionsql {
         JOptionPane.showMessageDialog(null, "Error al editar uniforme: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
     }
 }
+    public void editarVenta(String codigoFact, int numPedido, int idCliente, double montoFinal) {
+    try {
+        Connection conexion = conectar();
+
+        // Verificar si la venta con el código dado existe antes de editar
+        String verificarSql = "SELECT * FROM VENTA WHERE Codigo_Fact = ?";
+        PreparedStatement verificarPs = conexion.prepareStatement(verificarSql);
+        verificarPs.setString(1, codigoFact);
+        ResultSet verificarRs = verificarPs.executeQuery();
+
+        if (!verificarRs.next()) {
+            JOptionPane.showMessageDialog(null, "No se encontró una venta con el código proporcionado", "Mensaje", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Si la venta existe, realizar la actualización
+        String editarSql = "UPDATE VENTA SET Num_pedido = ?, Id_Cliente = ?, Monto_Final = ? WHERE Codigo_Fact = ?";
+        PreparedStatement ps = conexion.prepareStatement(editarSql);
+        ps.setInt(1, numPedido);
+        ps.setInt(2, idCliente);
+        ps.setDouble(3, montoFinal);
+        ps.setString(4, codigoFact);
+
+        int filasAfectadas = ps.executeUpdate();
+
+        if (filasAfectadas > 0) {
+            JOptionPane.showMessageDialog(null, "Venta editada correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo editar la venta", "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+
+        ps.close();
+        conexion.close();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al editar venta: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
+
 
 
     
