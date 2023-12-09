@@ -270,14 +270,51 @@ public ResultSet buscarPedidoPorNumero(int numPedido) {
         return null;
     }
 }
+    public ResultSet buscarMateriaPorCodigo(int codigo) {
+    try {
+        Connection conexion = conectar();
+        String sql = "SELECT * FROM materia WHERE codigo = ?";
 
+        PreparedStatement ps = conexion.prepareStatement(sql);
+        ps.setInt(1, codigo);
 
-
-
-    
+        ResultSet rs = ps.executeQuery();
+        return rs;
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al buscar materia por código: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+        return null;
+    }
+}
 
     
     ///////////////////EDITAR///////////////////////////////////////
+    public void editarMateriaPrima(int codigo, String tipo, String descripcion, int cantidadExistente, String unidadMedida) {
+    try {
+        Connection conexion = conectar();
+        String sql = "UPDATE materia SET tipo=?, descripcion=?, cantidad_exist=?, unidad_medida=? WHERE codigo=?";
+
+        PreparedStatement ps = conexion.prepareStatement(sql);
+        ps.setString(1, tipo);
+        ps.setString(2, descripcion);
+        ps.setInt(3, cantidadExistente);
+        ps.setString(4, unidadMedida);
+        ps.setInt(5, codigo);
+
+        int filasAfectadas = ps.executeUpdate();
+
+        if (filasAfectadas > 0) {
+            JOptionPane.showMessageDialog(null, "Materia prima editada correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo editar la materia prima", "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+
+        ps.close();
+        conexion.close();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al editar materia prima: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
     public void editarProveedor(int idProveedor, String nuevoNombre, String nuevoContacto, String nuevoTelefono, String nuevaDireccion) {
     try {
         Connection conexion = conectar();

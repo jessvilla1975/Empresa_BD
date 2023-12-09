@@ -2,7 +2,7 @@
 package vistas;
 
 
-public class arranque {
+public class Start {
 
     
     public static void main(String[] args) {

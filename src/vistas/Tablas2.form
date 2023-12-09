@@ -252,7 +252,7 @@
                     <Column editable="true" title="Codigo" type="java.lang.String"/>
                     <Column editable="true" title="Num pedido" type="java.lang.Integer"/>
                     <Column editable="true" title="Descripcion" type="java.lang.String"/>
-                    <Column editable="true" title="Can existente" type="java.lang.Integer"/>
+                    <Column editable="true" title="Cant existente" type="java.lang.Integer"/>
                     <Column editable="true" title="Sexo" type="java.lang.String"/>
                     <Column editable="true" title="Precio venta" type="java.lang.Float"/>
                     <Column editable="true" title="Talla" type="java.lang.String"/>
@@ -376,14 +376,14 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="tablita1">
+            <Component class="javax.swing.JTable" name="tablamateria">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="5" rowCount="1">
                     <Column editable="true" title="Codigo" type="java.lang.Integer"/>
                     <Column editable="true" title="Tipo" type="java.lang.String"/>
                     <Column editable="true" title="Descripcion" type="java.lang.String"/>
-                    <Column editable="true" title="Can existente" type="java.lang.Integer"/>
+                    <Column editable="true" title="Cant existente" type="java.lang.Integer"/>
                     <Column editable="true" title="Uni medida" type="java.lang.String"/>
                   </Table>
                 </Property>
@@ -421,8 +421,8 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="tablita1AncestorAdded"/>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tablita1MouseClicked"/>
+                <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="tablamateriaAncestorAdded"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tablamateriaMouseClicked"/>
               </Events>
             </Component>
           </SubComponents>

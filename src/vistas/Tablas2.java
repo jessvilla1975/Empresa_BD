@@ -97,6 +97,36 @@ public class Tablas2 extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Error al actualizar tabla: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
     }
 }
+    
+    private void actualizarTabla3(int id) {
+    try {
+        ResultSet rs = crud.buscarMateriaPorCodigo(id);
+
+        // Crea el modelo de la tabla
+        DefaultTableModel modelo = new DefaultTableModel(); 
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Tipo");
+        modelo.addColumn("Descripcion");
+        modelo.addColumn("Cant extistente");
+        modelo.addColumn("Uni medida");
+
+        while (rs.next()) {
+            Object[] fila = new Object[5];
+            fila[0] = rs.getInt("codigo");
+            fila[1] = rs.getString("tipo");
+            fila[2] = rs.getString("descripcion");
+            fila[3] = rs.getString("cantidad_exist");
+            fila[4] = rs.getString("unidad_medida");
+            modelo.addRow(fila);
+        }
+
+        // Asigna el modelo a la tabla
+        tablamateria.setModel(modelo);
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al actualizar tabla: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+    }
+}
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -113,7 +143,7 @@ public class Tablas2 extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         bus1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tablita1 = new javax.swing.JTable();
+        tablamateria = new javax.swing.JTable();
         Text5 = new javax.swing.JLabel();
         Buscamat = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
@@ -193,7 +223,7 @@ public class Tablas2 extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Codigo", "Num pedido", "Descripcion", "Can existente", "Sexo", "Precio venta", "Talla", "Medidas"
+                "Codigo", "Num pedido", "Descripcion", "Cant existente", "Sexo", "Precio venta", "Talla", "Medidas"
             }
         ) {
             Class[] types = new Class [] {
@@ -259,12 +289,12 @@ public class Tablas2 extends javax.swing.JFrame {
             }
         });
 
-        tablita1.setModel(new javax.swing.table.DefaultTableModel(
+        tablamateria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Codigo", "Tipo", "Descripcion", "Can existente", "Uni medida"
+                "Codigo", "Tipo", "Descripcion", "Cant existente", "Uni medida"
             }
         ) {
             Class[] types = new Class [] {
@@ -275,21 +305,21 @@ public class Tablas2 extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        tablita1.addAncestorListener(new javax.swing.event.AncestorListener() {
+        tablamateria.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                tablita1AncestorAdded(evt);
+                tablamateriaAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        tablita1.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablamateria.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablita1MouseClicked(evt);
+                tablamateriaMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(tablita1);
+        jScrollPane2.setViewportView(tablamateria);
 
         Text5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Text5.setText("Materia prima");
@@ -505,13 +535,26 @@ public class Tablas2 extends javax.swing.JFrame {
                     crud.editarProveedor(nit, nombre, nom_contacto, telefono, direccion);
 
                 }
+            }else{
+                    System.out.println("se presiono buscar materia");
+                    int filaSeleccionada2 = tablamateria.getSelectedRow();
+                    if (filaSeleccionada2 != -1) {
+                    // Obtener datos de la fila seleccionada
+                    int cod = Integer.parseInt(tablamateria.getValueAt(filaSeleccionada2, 0).toString());
+                    String tipo = (String) tablamateria.getValueAt(filaSeleccionada2, 1);
+                    String descripcion = (String) tablamateria.getValueAt(filaSeleccionada2, 2);
+                    int cantidadExistente = Integer.parseInt(tablamateria.getValueAt(filaSeleccionada2, 3).toString());
+                    String unidadMedida = (String) tablamateria.getValueAt(filaSeleccionada2, 4);
+                    crud.editarMateriaPrima(cod, tipo, descripcion, cantidadExistente, unidadMedida);
             }
         }
         Buscar_id.setText("Ingrese el codigo del producto");
+        Buscamat.setText("Ingresar el codigo de la materia prima");
+        Buscaprove.setText("Ingresar nit del proveedor");
         DefaultTableModel modelo = (DefaultTableModel) tablaprodu.getModel();
         modelo.setRowCount(0);
 
-        
+        }
 
     }//GEN-LAST:event_ModificarActionPerformed
 
@@ -568,13 +611,13 @@ public class Tablas2 extends javax.swing.JFrame {
         
     }//GEN-LAST:event_bus1ActionPerformed
 
-    private void tablita1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablita1AncestorAdded
+    private void tablamateriaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablamateriaAncestorAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_tablita1AncestorAdded
+    }//GEN-LAST:event_tablamateriaAncestorAdded
 
-    private void tablita1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablita1MouseClicked
+    private void tablamateriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablamateriaMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tablita1MouseClicked
+    }//GEN-LAST:event_tablamateriaMouseClicked
 
     private void Buscar_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar_idActionPerformed
         // TODO add your handling code here:
@@ -606,6 +649,8 @@ public class Tablas2 extends javax.swing.JFrame {
         buscarPresionado = false;
         guardar1Presionado = false;
         buscarmateria = true;
+        int xd = Integer.parseInt(Buscamat.getText());
+        actualizarTabla3(xd);
     }//GEN-LAST:event_bus2ActionPerformed
 
     private void tablaproAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablaproAncestorAdded
@@ -670,8 +715,8 @@ public class Tablas2 extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JTable tablamateria;
     private javax.swing.JTable tablapro;
     private javax.swing.JTable tablaprodu;
-    private javax.swing.JTable tablita1;
     // End of variables declaration//GEN-END:variables
 }
