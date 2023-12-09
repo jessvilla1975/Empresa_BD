@@ -20,6 +20,7 @@ public class MenuEliminar extends javax.swing.JFrame {
     TablaEliminar at = new TablaEliminar();
     TablaEliminar2 at1 = new TablaEliminar2();
     TablaEliminar3 at3 = new TablaEliminar3();
+    TablaEliminar4 at4 = new TablaEliminar4();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,6 +53,7 @@ public class MenuEliminar extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         tabla2 = new javax.swing.JButton();
         tabla3 = new javax.swing.JButton();
+        tabla4 = new javax.swing.JButton();
 
         PanelColegio1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -276,7 +278,7 @@ public class MenuEliminar extends javax.swing.JFrame {
                 tabla2ActionPerformed(evt);
             }
         });
-        Panelmenu.add(tabla2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 230, 30));
+        Panelmenu.add(tabla2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 230, 30));
 
         tabla3.setBackground(new java.awt.Color(21, 101, 192));
         tabla3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -298,6 +300,27 @@ public class MenuEliminar extends javax.swing.JFrame {
             }
         });
         Panelmenu.add(tabla3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 230, 30));
+
+        tabla4.setBackground(new java.awt.Color(21, 101, 192));
+        tabla4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        tabla4.setForeground(new java.awt.Color(255, 255, 255));
+        tabla4.setText("Proveedor - Materia");
+        tabla4.setBorder(null);
+        tabla4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tabla4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                tabla4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                tabla4MouseExited(evt);
+            }
+        });
+        tabla4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tabla4ActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(tabla4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 230, 30));
 
         jPanel1.add(Panelmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 560));
 
@@ -326,15 +349,14 @@ public class MenuEliminar extends javax.swing.JFrame {
     }//GEN-LAST:event_volverMouseExited
 
     private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
-        System.out.println("Se presionó el botón venta");
+        System.out.println("Se presionó el botón volver");
         MenuPrincipal mp = new MenuPrincipal();
         mp.setVisible(true);
         setVisible(false);
         at.setVisible(false);
         at1.setVisible(false);
-        
-        
-        
+        at3.setVisible(false);
+        at4.setVisible(false);  
     }//GEN-LAST:event_volverActionPerformed
 
     private void tabla1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla1MouseEntered
@@ -349,6 +371,7 @@ public class MenuEliminar extends javax.swing.JFrame {
         System.out.println("Se presionó el botón eliminar Colegio - Uniforme - Venta");
         at1.setVisible(false);
         at3.setVisible(false);
+        at4.setVisible(false);
         at.setVisible(true);
         
     }//GEN-LAST:event_tabla1ActionPerformed
@@ -382,6 +405,7 @@ public class MenuEliminar extends javax.swing.JFrame {
         at.setVisible(false);
         at1.setVisible(false);
         at3.setVisible(true);
+        at4.setVisible(false);
     }//GEN-LAST:event_tabla2ActionPerformed
 
     private void tabla3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla3MouseEntered
@@ -396,7 +420,23 @@ public class MenuEliminar extends javax.swing.JFrame {
         at.setVisible(false);
         at1.setVisible(true);
         at3.setVisible(false);
+        at4.setVisible(false);
     }//GEN-LAST:event_tabla3ActionPerformed
+
+    private void tabla4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla4MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tabla4MouseEntered
+
+    private void tabla4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla4MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tabla4MouseExited
+
+    private void tabla4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tabla4ActionPerformed
+        at.setVisible(false);
+        at1.setVisible(false);
+        at3.setVisible(false);
+        at4.setVisible(true);
+    }//GEN-LAST:event_tabla4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -455,6 +495,7 @@ public class MenuEliminar extends javax.swing.JFrame {
     private javax.swing.JButton tabla1;
     private javax.swing.JButton tabla2;
     private javax.swing.JButton tabla3;
+    private javax.swing.JButton tabla4;
     private javax.swing.JLabel titu;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables

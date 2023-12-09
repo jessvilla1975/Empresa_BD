@@ -706,6 +706,43 @@ public ResultSet buscarPedidoPorNumero(int numPedido) {
         JOptionPane.showMessageDialog(null, "Error al eliminar venta y registros asociados: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
     }
 }
+    
+    public void eliminarProveedor(int nitProveedor) {
+    try {
+        Connection conexion = conectar();
+        st = conexion.createStatement();
+
+        // Eliminar registros en cascada (incluyendo PRODUCTO_TERMINADO)
+        String sql = "DELETE FROM PROVEEDOR WHERE Nit = " + nitProveedor + ";";
+        st.execute(sql);
+
+        st.close();
+        conexion.close();
+
+        JOptionPane.showMessageDialog(null, "Proveedor y registros asociados eliminados con éxito", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al eliminar proveedor y registros asociados: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+    }
+}
+    public void eliminarMateria(int codigoMateria) {
+    try {
+        Connection conexion = conectar();
+        st = conexion.createStatement();
+
+        // Eliminar registros en cascada (incluyendo PRODUCTO_TERMINADO)
+        String sql = "DELETE FROM MATERIA WHERE Codigo = " + codigoMateria + ";";
+        st.execute(sql);
+
+        st.close();
+        conexion.close();
+
+        JOptionPane.showMessageDialog(null, "Materia y registros asociados eliminados con éxito", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al eliminar materia y registros asociados: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
+
 
 
 
