@@ -174,7 +174,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonConsularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonConsularActionPerformed
-        // TODO add your handling code here:
+        System.out.println("Se presionó el botón consultar");
+        MenuListados list = new MenuListados();
+        list.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_BotonConsularActionPerformed
 
     private void BotoningresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotoningresarActionPerformed

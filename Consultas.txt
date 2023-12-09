@@ -1,0 +1,42 @@
+
+--Consultas
+--1. Listado de Productos encargados pendientes por entregar (ordenados por fecha)
+SELECT Num_pedido, id_cliente, Estado, Fecha_Encargo
+FROM PEDIDO
+WHERE Estado = 'En proceso'
+ORDER BY Fecha_Encargo;
+
+2) 
+
+SELECT id_cliente,num_pedido,estado FROM PEDIDO 
+WHERE estado = 'No entregado'
+GROUP by id_cliente
+
+3)
+
+SELECT 
+    PT.Codigo, 
+    PT.Descripcion, 
+    (PT.Cantidad_Existente - IFNULL((SELECT SUM(PT2.Cantidad_Existente) FROM PRODUCTO_TERMINADO PT2 WHERE PT2.Num_pedido IN (SELECT Num_pedido FROM PEDIDO WHERE Estado = 'En proceso') AND PT2.Codigo = PT.Codigo), 0)) AS Cantidad_Existente
+FROM 
+    PRODUCTO_TERMINADO PT
+
+4)
+
+SELECT DISTINCT COLEGIO.Nombre
+FROM COLEGIO
+INNER JOIN UNIFORME ON COLEGIO.Id = UNIFORME.Id_Colegio
+
+5)
+SELECT COLEGIO.Nombre, UNIFORME.Tipo, UNIFORME.Caracteristicas
+FROM COLEGIO
+INNER JOIN UNIFORME ON COLEGIO.Id = UNIFORME.Id_Colegio
+WHERE COLEGIO.Nombre = 'Colegio A'
+
+6)
+SELECT COLEGIO.Nombre,COUNT(PRODUCTO_TERMINADO.Codigo) AS Total_Productos_Vendidos
+FROM COLEGIO
+INNER JOIN UNIFORME ON COLEGIO.Id = UNIFORME.Id_Colegio
+INNER JOIN PRODUCTO_TERMINADO ON UNIFORME.Codigo = PRODUCTO_TERMINADO.Codigo
+WHERE PRODUCTO_TERMINADO.Num_pedido IN (SELECT Num_pedido FROM PEDIDO WHERE Estado = 'Entregado')
+GROUP BY COLEGIO.Nombre

@@ -741,6 +741,22 @@ public ResultSet buscarPedidoPorNumero(int numPedido) {
         JOptionPane.showMessageDialog(null, "Error al eliminar materia y registros asociados: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
     }
 }
+    
+    //// CONSULTAS /////////////////////////////////////////////
+    
+    public ResultSet listarPedidosEnProceso() {
+        try {
+            Connection conexion = conectar(); 
+            String sql = "SELECT Num_pedido, id_cliente, Fecha_Encargo, Estado FROM PEDIDO "
+                    + "WHERE Estado = 'En proceso' ORDER BY Fecha_Encargo;";
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al listar pedidos en proceso: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+    }
 
 
 
