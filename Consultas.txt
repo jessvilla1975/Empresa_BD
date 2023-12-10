@@ -33,3 +33,7 @@ JOIN Pedido p ON u.codigo = p.articulo
 JOIN producto_terminado pt ON p.num_pedido = pt.num_pedido
 JOIN Venta v ON pt.num_pedido = v.num_pedido
 GROUP BY c.nombre;
+
+--6 total ventas
+SELECT SUM(Monto_Final) AS Total_Ventas
+FROM VENTA;

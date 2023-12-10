@@ -13,6 +13,7 @@ public class MenuListados extends javax.swing.JFrame {
     Listado3 L3 = new Listado3();
     Listado4 L4 = new Listado4();
     Listado5 L5 = new Listado5();
+    Listado6 L6 = new Listado6();
    
     /**
      * Creates new form IngresarDatos
@@ -55,6 +56,7 @@ public class MenuListados extends javax.swing.JFrame {
         listado3 = new javax.swing.JButton();
         listado4 = new javax.swing.JButton();
         listado5 = new javax.swing.JButton();
+        listado6 = new javax.swing.JButton();
 
         PanelColegio1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -348,6 +350,28 @@ public class MenuListados extends javax.swing.JFrame {
         });
         Panelmenu.add(listado5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 230, 30));
 
+        listado6.setBackground(new java.awt.Color(21, 101, 192));
+        listado6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        listado6.setForeground(new java.awt.Color(255, 255, 255));
+        listado6.setText("Total ventas");
+        listado6.setAlignmentY(0.0F);
+        listado6.setBorder(null);
+        listado6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        listado6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                listado6MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                listado6MouseExited(evt);
+            }
+        });
+        listado6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listado6ActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(listado6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 230, 30));
+
         jPanel1.add(Panelmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 560));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -383,6 +407,8 @@ public class MenuListados extends javax.swing.JFrame {
         L2.setVisible(false);
         L3.setVisible(false);
         L4.setVisible(false);
+        L5.setVisible(false);
+        L6.setVisible(false);
    
     }//GEN-LAST:event_volverActionPerformed
 
@@ -400,6 +426,8 @@ public class MenuListados extends javax.swing.JFrame {
         L2.setVisible(false);
         L3.setVisible(false);
         L4.setVisible(false);
+        L5.setVisible(false);
+        L6.setVisible(false);
         
     }//GEN-LAST:event_listado1ActionPerformed
 
@@ -433,6 +461,8 @@ public class MenuListados extends javax.swing.JFrame {
         L1.setVisible(false);
         L3.setVisible(false);
         L4.setVisible(false);
+        L5.setVisible(false);
+        L6.setVisible(false);
     }//GEN-LAST:event_listado2ActionPerformed
 
     private void listado3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listado3MouseEntered
@@ -449,6 +479,8 @@ public class MenuListados extends javax.swing.JFrame {
         L1.setVisible(false);
         L2.setVisible(false);
         L4.setVisible(false);
+        L5.setVisible(false);
+        L6.setVisible(false);
     }//GEN-LAST:event_listado3ActionPerformed
 
     private void listado4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listado4MouseEntered
@@ -465,6 +497,8 @@ public class MenuListados extends javax.swing.JFrame {
         L1.setVisible(false);
         L2.setVisible(false);
         L4.setVisible(true);
+        L5.setVisible(false);
+        L6.setVisible(false);
     }//GEN-LAST:event_listado4ActionPerformed
 
     private void listado5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listado5MouseEntered
@@ -482,7 +516,26 @@ public class MenuListados extends javax.swing.JFrame {
         L2.setVisible(false);
         L4.setVisible(false);
         L5.setVisible(true);
+        L6.setVisible(false);
     }//GEN-LAST:event_listado5ActionPerformed
+
+    private void listado6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listado6MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listado6MouseEntered
+
+    private void listado6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listado6MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listado6MouseExited
+
+    private void listado6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listado6ActionPerformed
+        System.out.println("listado 6");
+        L3.setVisible(false);
+        L1.setVisible(false);
+        L2.setVisible(false);
+        L4.setVisible(false);
+        L5.setVisible(false);
+        L6.setVisible(true);
+    }//GEN-LAST:event_listado6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -543,6 +596,7 @@ public class MenuListados extends javax.swing.JFrame {
     private javax.swing.JButton listado3;
     private javax.swing.JButton listado4;
     private javax.swing.JButton listado5;
+    private javax.swing.JButton listado6;
     private javax.swing.JTextField nombreColegio1;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables

@@ -888,6 +888,20 @@ public ResultSet buscarPedidoPorNumero(int numPedido) {
         }
     }
     
+    public ResultSet totalProductosVendidos() {
+        try {
+            Connection conexion = conectar(); 
+            String sql = "SELECT SUM(Monto_Final) AS Total_Ventas\n" +
+                            "FROM VENTA;";
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al listar colegios en proceso: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+    }
+    
     
 ///////////////////////////extras/////////////////////////////////////////////////
     

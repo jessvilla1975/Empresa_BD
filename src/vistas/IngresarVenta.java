@@ -106,6 +106,7 @@ public class IngresarVenta extends javax.swing.JFrame {
 
         pagar.setForeground(new java.awt.Color(102, 102, 102));
         pagar.setBorder(null);
+        pagar.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         pagar.setEnabled(false);
         pagar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -182,6 +183,7 @@ public class IngresarVenta extends javax.swing.JFrame {
 
         idcli1.setForeground(new java.awt.Color(102, 102, 102));
         idcli1.setBorder(null);
+        idcli1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         idcli1.setEnabled(false);
         idcli1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -199,6 +201,7 @@ public class IngresarVenta extends javax.swing.JFrame {
 
         ventatotal.setForeground(new java.awt.Color(102, 102, 102));
         ventatotal.setBorder(null);
+        ventatotal.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         ventatotal.setEnabled(false);
         ventatotal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
