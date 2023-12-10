@@ -9,6 +9,7 @@ package vistas;
  */
 public class MenuListados extends javax.swing.JFrame {
     Listado1 L1 = new Listado1();
+    Listado2 L2 = new Listado2();
    
     /**
      * Creates new form IngresarDatos
@@ -47,6 +48,7 @@ public class MenuListados extends javax.swing.JFrame {
         volver = new javax.swing.JButton();
         listado1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        listado2 = new javax.swing.JButton();
 
         PanelColegio1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -247,10 +249,32 @@ public class MenuListados extends javax.swing.JFrame {
                 listado1ActionPerformed(evt);
             }
         });
-        Panelmenu.add(listado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 230, 30));
+        Panelmenu.add(listado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 230, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon_listados.png"))); // NOI18N
         Panelmenu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 120, 120));
+
+        listado2.setBackground(new java.awt.Color(21, 101, 192));
+        listado2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        listado2.setForeground(new java.awt.Color(255, 255, 255));
+        listado2.setText("Listado 2");
+        listado2.setAlignmentY(0.0F);
+        listado2.setBorder(null);
+        listado2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        listado2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                listado2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                listado2MouseExited(evt);
+            }
+        });
+        listado2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listado2ActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(listado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 230, 30));
 
         jPanel1.add(Panelmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 560));
 
@@ -317,6 +341,19 @@ public class MenuListados extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_idColegio3MousePressed
 
+    private void listado2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listado2MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listado2MouseEntered
+
+    private void listado2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listado2MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listado2MouseExited
+
+    private void listado2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listado2ActionPerformed
+        System.out.println("listado 2");
+        L2.setVisible(true);
+    }//GEN-LAST:event_listado2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -372,6 +409,7 @@ public class MenuListados extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JButton listado1;
+    private javax.swing.JButton listado2;
     private javax.swing.JTextField nombreColegio1;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables

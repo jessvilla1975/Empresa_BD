@@ -757,6 +757,25 @@ public ResultSet buscarPedidoPorNumero(int numPedido) {
             return null;
         }
     }
+    
+    public ResultSet listarProductosNoEntregados() {
+        try {
+            Connection conexion = conectar(); 
+            String sql = "SELECT c.ID, c.NOMBRE, p.Num_pedido, pt.Codigo, pt.Descripcion\n" +
+                            "FROM CLIENTE c\n" +
+                            "JOIN PEDIDO p ON c.ID = p.Id_Cliente\n" +
+                            "JOIN PRODUCTO_TERMINADO pt ON p.Num_pedido = pt.Num_pedido\n" +
+                            "WHERE p.Estado <> 'Entregado';";
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al listar pedidos en proceso: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+    }
+    
+    
 
 
 

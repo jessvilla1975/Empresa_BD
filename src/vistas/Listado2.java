@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package vistas;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import sql.crudsql;
 import java.sql.ResultSet;
@@ -13,12 +12,12 @@ import java.sql.ResultSet;
  *
  * @author Jess
  */
-public class Listado1 extends javax.swing.JFrame {
+public class Listado2 extends javax.swing.JFrame {
 
     /**
      * Creates new form IngresarColegio
      */
-    public Listado1() {
+    public Listado2() {
         initComponents();
         
     }
@@ -31,32 +30,33 @@ public class Listado1 extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     crudsql crud = new crudsql();
     
-    private void actualizarTabla() {
+    private void actualizar() {
     try {
-        ResultSet rs = crud.listarPedidosEnProceso();
+        ResultSet rs = crud.listarProductosNoEntregados();
 
         // Crea el modelo de la tabla
         DefaultTableModel modelo = new DefaultTableModel(); 
-        modelo.addColumn("N° Pedido");
         modelo.addColumn("ID Cliente");
-        modelo.addColumn("Estado");
-        modelo.addColumn("Fecha Encargo");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("N° Pedido");
+        modelo.addColumn("Codigo Producto");
+        modelo.addColumn("Descripcion");
 
         while (rs.next()) {
             
-            java.sql.Date fechaEncargo = rs.getDate("Fecha_Encargo");
-            String fechaEncargoStr = (fechaEncargo != null) ? fechaEncargo.toString() : ""; 
             
-            Object[] fila = new Object[4];
-            fila[0] = rs.getString("num_pedido");
-            fila[1] = rs.getString("id_cliente");
-            fila[2] = rs.getString("estado");
-            fila[3] = fechaEncargoStr;
+            
+            Object[] fila = new Object[5];
+            fila[0] = rs.getString("ID");
+            fila[1] = rs.getString("NOMBRE");
+            fila[2] = rs.getString("Num_pedido");
+            fila[3] = rs.getString("Codigo");
+            fila[4] = rs.getString("Descripcion");
             modelo.addRow(fila);
         }
 
         // Asigna el modelo a la tabla
-        tabla.setModel(modelo);
+        tablalist.setModel(modelo);
 
     } catch (Exception e) {
         
@@ -71,10 +71,10 @@ public class Listado1 extends javax.swing.JFrame {
         PanelColegio = new javax.swing.JPanel();
         Text3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        bus1 = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tabla = new javax.swing.JTable();
+        Buscar = new javax.swing.JButton();
         Text4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablalist = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(430, 180));
@@ -89,79 +89,54 @@ public class Listado1 extends javax.swing.JFrame {
 
         jSeparator1.setForeground(new java.awt.Color(0, 51, 204));
 
-        bus1.setBackground(new java.awt.Color(18, 90, 173));
-        bus1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        bus1.setForeground(new java.awt.Color(255, 255, 255));
-        bus1.setText("BUSCAR");
-        bus1.setBorder(null);
-        bus1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bus1.addMouseListener(new java.awt.event.MouseAdapter() {
+        Buscar.setBackground(new java.awt.Color(18, 90, 173));
+        Buscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Buscar.setForeground(new java.awt.Color(255, 255, 255));
+        Buscar.setText("BUSCAR");
+        Buscar.setBorder(null);
+        Buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Buscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                bus1MouseEntered(evt);
+                BuscarMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                bus1MouseExited(evt);
+                BuscarMouseExited(evt);
             }
         });
-        bus1.addActionListener(new java.awt.event.ActionListener() {
+        Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bus1ActionPerformed(evt);
+                BuscarActionPerformed(evt);
             }
         });
 
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
+        Text4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Text4.setText("LISTADO");
+
+        tablalist.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "N° Pedido", "ID Cliente", "Estado", "Fecha Encargo"
+                "ID Cliente", "Nombre", "N° Pedido", "Cod Producto", "Descripcion"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        tabla.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                tablaAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-        tabla.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaMouseClicked(evt);
-            }
-        });
-        jScrollPane3.setViewportView(tabla);
-
-        Text4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Text4.setText("LISTADO");
+        ));
+        jScrollPane1.setViewportView(tablalist);
 
         javax.swing.GroupLayout PanelColegioLayout = new javax.swing.GroupLayout(PanelColegio);
         PanelColegio.setLayout(PanelColegioLayout);
         PanelColegioLayout.setHorizontalGroup(
             PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
                 .addContainerGap(23, Short.MAX_VALUE)
-                .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Text4)
                     .addGroup(PanelColegioLayout.createSequentialGroup()
                         .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Text3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bus1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1))
                 .addGap(80, 80, 80))
         );
         PanelColegioLayout.setVerticalGroup(
@@ -175,10 +150,10 @@ public class Listado1 extends javax.swing.JFrame {
                         .addComponent(Text3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(bus1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -197,26 +172,18 @@ public class Listado1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bus1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bus1MouseEntered
+    private void BuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscarMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_bus1MouseEntered
+    }//GEN-LAST:event_BuscarMouseEntered
 
-    private void bus1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bus1MouseExited
+    private void BuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscarMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_bus1MouseExited
+    }//GEN-LAST:event_BuscarMouseExited
 
-    private void bus1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bus1ActionPerformed
-
-        actualizarTabla();  
-    }//GEN-LAST:event_bus1ActionPerformed
-
-    private void tablaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablaAncestorAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tablaAncestorAdded
-
-    private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tablaMouseClicked
+    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
+        System.out.println("boton buscar");
+        actualizar();  
+    }//GEN-LAST:event_BuscarActionPerformed
     
 
     /**
@@ -255,12 +222,12 @@ public class Listado1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Buscar;
     private javax.swing.JPanel PanelColegio;
     private javax.swing.JLabel Text3;
     private javax.swing.JLabel Text4;
-    private javax.swing.JButton bus1;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable tabla;
+    private javax.swing.JTable tablalist;
     // End of variables declaration//GEN-END:variables
 }
