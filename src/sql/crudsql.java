@@ -791,7 +791,29 @@ public ResultSet buscarPedidoPorNumero(int numPedido) {
     }
     
     
+///////////////////////////extras/////////////////////////////////////////////////
+    
+    public void cambiarEstadoEntregado(int numPedido) {
+        try {
+            Connection conexion = conectar();
+            String sql = "UPDATE PEDIDO SET Estado = 'Entregado' WHERE Num_pedido = ?";
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setInt(1, numPedido);
 
+            int filasActualizadas = ps.executeUpdate();
+
+            if (filasActualizadas > 0) {
+                JOptionPane.showMessageDialog(null, "Estado del pedido actualizado a 'Entregado' con éxito", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontró el pedido con el número especificado", "Mensaje", JOptionPane.WARNING_MESSAGE);
+            }
+
+            ps.close();
+            conexion.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al cambiar el estado del pedido: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
 
 
