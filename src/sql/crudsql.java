@@ -851,6 +851,24 @@ public ResultSet buscarPedidoPorNumero(int numPedido) {
         }
     }
     
+    public ResultSet buscarcolegioCarateristicas(String nombreColegio) {
+        try {
+            Connection conexion = conectar();
+            String sql = "SELECT c.Nombre, u.Tipo, u.Caracteristicas\n" +
+                        "FROM COLEGIO c\n" +
+                        "JOIN UNIFORME u ON c.ID = u.ID_Colegio\n" +
+                        "WHERE c.Nombre = ?;";
+            
+            PreparedStatement preparedStatement = conexion.prepareStatement(sql);
+            preparedStatement.setString(1, nombreColegio);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al buscar uniforme por colegio: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+    }
     
 ///////////////////////////extras/////////////////////////////////////////////////
     

@@ -25,10 +25,12 @@ SELECT
 FROM 
     PRODUCTO_TERMINADO PT
 
---4
-SELECT c.ID, c.Nombre, u.Codigo, u.Tipo, u.Caracteristicas
+--4 Dado un colegio las características de su uniforme
+SELECT c.Nombre, u.Tipo, u.Caracteristicas
 FROM COLEGIO c
-JOIN UNIFORME u ON c.ID = u.Id_Colegio;
+JOIN UNIFORME u ON c.ID = u.ID_Colegio
+WHERE c.Nombre = 'Colegio C';
+
 
 5)
 SELECT COLEGIO.Nombre, UNIFORME.Tipo, UNIFORME.Caracteristicas
