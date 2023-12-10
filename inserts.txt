@@ -1,4 +1,3 @@
-
 --delete
 DELETE FROM cliente;
 DELETE FROM colegio;
@@ -9,6 +8,10 @@ DELETE FROM producto_terminado;
 DELETE FROM proveedor;
 DELETE FROM uniforme;
 DELETE FROM venta;
+DELETE FROM descuenta;
+DELETE FROM utiliza;
+DELETE FROM suministra;
+
 
 -- INSERTAR DATOS CLIENTE
 INSERT INTO CLIENTE (ID, NOMBRE, TELEFONO) VALUES (3, 'Ana García', '555-9876');
@@ -77,3 +80,5 @@ INSERT INTO UTILIZA (Cod_prod, Cod_Materia)
 VALUES
     ('PT3', 503),
     ('PT4', 504);
+
+
