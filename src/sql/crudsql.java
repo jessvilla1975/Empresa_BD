@@ -775,6 +775,21 @@ public ResultSet buscarPedidoPorNumero(int numPedido) {
         }
     }
     
+    public ResultSet colegiosFabricanUniformes() {
+        try {
+            Connection conexion = conectar(); 
+            String sql = "SELECT c.ID, c.Nombre, u.Codigo, u.Tipo, u.Caracteristicas\n" +
+                        "FROM COLEGIO c\n" +
+                        "JOIN UNIFORME u ON c.ID = u.Id_Colegio;";
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al listar pedidos en proceso: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+    }
+    
     
 
 

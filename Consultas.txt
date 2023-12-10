@@ -6,13 +6,15 @@ FROM PEDIDO
 WHERE Estado = 'En proceso'
 ORDER BY Fecha_Encargo;
 
-2) 
+--2
 
-SELECT id_cliente,num_pedido,estado FROM PEDIDO 
-WHERE estado = 'No entregado'
-GROUP by id_cliente
+SELECT c.ID, c.NOMBRE, p.Num_pedido, pt.Codigo, pt.Descripcion
+FROM CLIENTE c
+JOIN PEDIDO p ON c.ID = p.Id_Cliente
+JOIN PRODUCTO_TERMINADO pt ON p.Num_pedido = pt.Num_pedido
+WHERE p.Estado <> 'Entregado';
 
-3)
+--3 //revisar
 
 SELECT 
     PT.Codigo, 
@@ -21,11 +23,10 @@ SELECT
 FROM 
     PRODUCTO_TERMINADO PT
 
-4)
-
-SELECT DISTINCT COLEGIO.Nombre
-FROM COLEGIO
-INNER JOIN UNIFORME ON COLEGIO.Id = UNIFORME.Id_Colegio
+--4
+SELECT c.ID, c.Nombre, u.Codigo, u.Tipo, u.Caracteristicas
+FROM COLEGIO c
+JOIN UNIFORME u ON c.ID = u.Id_Colegio;
 
 5)
 SELECT COLEGIO.Nombre, UNIFORME.Tipo, UNIFORME.Caracteristicas

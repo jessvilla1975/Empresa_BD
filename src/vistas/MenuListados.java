@@ -10,6 +10,7 @@ package vistas;
 public class MenuListados extends javax.swing.JFrame {
     Listado1 L1 = new Listado1();
     Listado2 L2 = new Listado2();
+    Listado3 L3 = new Listado3();
    
     /**
      * Creates new form IngresarDatos
@@ -49,6 +50,7 @@ public class MenuListados extends javax.swing.JFrame {
         listado1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         listado2 = new javax.swing.JButton();
+        listado3 = new javax.swing.JButton();
 
         PanelColegio1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -276,6 +278,28 @@ public class MenuListados extends javax.swing.JFrame {
         });
         Panelmenu.add(listado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 230, 30));
 
+        listado3.setBackground(new java.awt.Color(21, 101, 192));
+        listado3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        listado3.setForeground(new java.awt.Color(255, 255, 255));
+        listado3.setText("Listado 3");
+        listado3.setAlignmentY(0.0F);
+        listado3.setBorder(null);
+        listado3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        listado3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                listado3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                listado3MouseExited(evt);
+            }
+        });
+        listado3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listado3ActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(listado3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 230, 30));
+
         jPanel1.add(Panelmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 560));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -322,6 +346,8 @@ public class MenuListados extends javax.swing.JFrame {
     private void listado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listado1ActionPerformed
         System.out.println("Se presionó el botón listado1");
         L1.setVisible(true);
+        L2.setVisible(false);
+        L3.setVisible(false);
         
     }//GEN-LAST:event_listado1ActionPerformed
 
@@ -342,17 +368,34 @@ public class MenuListados extends javax.swing.JFrame {
     }//GEN-LAST:event_idColegio3MousePressed
 
     private void listado2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listado2MouseEntered
-        // TODO add your handling code here:
+        listado2.setBackground(new java.awt.Color(153, 153, 255));
     }//GEN-LAST:event_listado2MouseEntered
 
     private void listado2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listado2MouseExited
-        // TODO add your handling code here:
+        listado2.setBackground(new java.awt.Color(21, 101, 192));
     }//GEN-LAST:event_listado2MouseExited
 
     private void listado2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listado2ActionPerformed
         System.out.println("listado 2");
         L2.setVisible(true);
+        L1.setVisible(false);
+        L3.setVisible(false);
     }//GEN-LAST:event_listado2ActionPerformed
+
+    private void listado3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listado3MouseEntered
+        listado3.setBackground(new java.awt.Color(153, 153, 255));
+    }//GEN-LAST:event_listado3MouseEntered
+
+    private void listado3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listado3MouseExited
+        listado3.setBackground(new java.awt.Color(21, 101, 192));
+    }//GEN-LAST:event_listado3MouseExited
+
+    private void listado3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listado3ActionPerformed
+        System.out.println("listado 3");
+        L3.setVisible(true);
+        L1.setVisible(false);
+        L2.setVisible(false);
+    }//GEN-LAST:event_listado3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -410,6 +453,7 @@ public class MenuListados extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JButton listado1;
     private javax.swing.JButton listado2;
+    private javax.swing.JButton listado3;
     private javax.swing.JTextField nombreColegio1;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
