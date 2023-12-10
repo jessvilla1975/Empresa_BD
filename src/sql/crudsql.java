@@ -1,10 +1,12 @@
 package sql;
 
 import getset.variables;
+import java.awt.List;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class crudsql extends conexionsql {
@@ -82,7 +84,7 @@ public class crudsql extends conexionsql {
             st.execute(sql);
             st.close();
             conexion.close();
-            JOptionPane.showMessageDialog(null, "El registro se guardo correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Se guardo datos producto correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "El registro no se guardo " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
         }
@@ -96,7 +98,7 @@ public class crudsql extends conexionsql {
             st.execute(sql);
             st.close();
             conexion.close();
-            JOptionPane.showMessageDialog(null, "El registro se guardó correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Se guardo datos inventario correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "El registro no se guardó " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
         }
@@ -146,6 +148,43 @@ public class crudsql extends conexionsql {
         JOptionPane.showMessageDialog(null, "La venta no se guardó: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
     }
 }
+    
+    public void insertarDescuenta(String codigoFact, int numPedido) {
+    try {
+        Connection conexion = conectar();
+        String sql = "INSERT INTO DESCUENTA (Codigo_Fact, CODIGO) " +
+                     "SELECT '" + codigoFact + "', PT.Codigo " +
+                     "FROM VENTA V " +
+                     "JOIN PRODUCTO_TERMINADO PT ON V.Num_pedido = PT.Num_pedido " +
+                     "WHERE V.Num_pedido = " + numPedido + ";";
+
+        st = conexion.createStatement();
+        st.execute(sql);
+        st.close();
+        conexion.close();
+        
+        //JOptionPane.showMessageDialog(null, "El registro se guardó correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "El registro no se guardó: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+    }
+}
+    
+    public void insertarSuministra(int nitProveedor, int codigoMateria) {
+    try {
+        Connection conexion = conectar();
+        st = conexion.createStatement();
+        String sql = "INSERT INTO SUMINISTRA (Nit_Proveedor, Codigo_Materia) VALUES ('" + nitProveedor + "','" + codigoMateria + "');";
+        st.execute(sql);
+        st.close();
+        conexion.close();
+        //JOptionPane.showMessageDialog(null, "El registro se guardó correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "El registro no se guardó " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
+
+
 
 
 
@@ -285,6 +324,24 @@ public ResultSet buscarPedidoPorNumero(int numPedido) {
         return null;
     }
 }
+    
+    public void insertarUtiliza(String codProd, int codMateria) {
+        try {
+            Connection conexion = conectar();
+            String sql = "INSERT INTO UTILIZA (Cod_prod, Cod_Materia) VALUES (?, ?)";
+            PreparedStatement preparedStatement = conexion.prepareStatement(sql);
+            preparedStatement.setString(1, codProd);
+            preparedStatement.setInt(2, codMateria);
+            preparedStatement.executeUpdate();
+
+            preparedStatement.close();
+            conexion.close();
+
+            //JOptionPane.showMessageDialog(null, "El registro se guardó correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "El registro no se guardó: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
     
     ///////////////////EDITAR///////////////////////////////////////
@@ -747,8 +804,11 @@ public ResultSet buscarPedidoPorNumero(int numPedido) {
     public ResultSet listarPedidosEnProceso() {
         try {
             Connection conexion = conectar(); 
-            String sql = "SELECT Num_pedido, id_cliente, Fecha_Encargo, Estado FROM PEDIDO "
-                    + "WHERE Estado = 'En proceso' ORDER BY Fecha_Encargo;";
+            String sql = "SELECT c.ID, c.Nombre, c.telefono, p.Num_pedido, pt.Codigo, pt.Descripcion\n" +
+                        "FROM CLIENTE c\n" +
+                        "JOIN PEDIDO p ON c.ID = p.Id_Cliente\n" +
+                        "JOIN PRODUCTO_TERMINADO pt ON p.Num_pedido = pt.Num_pedido\n" +
+                        "WHERE p.Estado <> 'Entregado'";
             PreparedStatement ps = conexion.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             return rs;
@@ -761,11 +821,12 @@ public ResultSet buscarPedidoPorNumero(int numPedido) {
     public ResultSet listarProductosNoEntregados() {
         try {
             Connection conexion = conectar(); 
-            String sql = "SELECT c.ID, c.NOMBRE, p.Num_pedido, pt.Codigo, pt.Descripcion\n" +
-                            "FROM CLIENTE c\n" +
-                            "JOIN PEDIDO p ON c.ID = p.Id_Cliente\n" +
-                            "JOIN PRODUCTO_TERMINADO pt ON p.Num_pedido = pt.Num_pedido\n" +
-                            "WHERE p.Estado <> 'Entregado';";
+            String sql = "SELECT c.ID, p.fecha_encargo, p.Num_pedido, pt.Codigo, pt.Descripcion\n" +
+                        "FROM CLIENTE c\n" +
+                        "JOIN PEDIDO p ON c.ID = p.Id_Cliente\n" +
+                        "JOIN PRODUCTO_TERMINADO pt ON p.Num_pedido = pt.Num_pedido\n" +
+                        "WHERE p.Estado <> 'Entregado'\n" +
+                        "ORDER BY p.fecha_encargo ASC;";
             PreparedStatement ps = conexion.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             return rs;
@@ -837,19 +898,5 @@ public ResultSet buscarPedidoPorNumero(int numPedido) {
 
         }
     }
-    
-    
-
-
-
-
-        
-    
-
-    
-
-  
-    
-    
     
 }

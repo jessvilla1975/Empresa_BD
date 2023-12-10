@@ -37,21 +37,23 @@ public class Listado1 extends javax.swing.JFrame {
 
         // Crea el modelo de la tabla
         DefaultTableModel modelo = new DefaultTableModel(); 
-        modelo.addColumn("N° Pedido");
         modelo.addColumn("ID Cliente");
-        modelo.addColumn("Estado");
-        modelo.addColumn("Fecha Encargo");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Telefono");
+        modelo.addColumn("N° Pedido");
+        modelo.addColumn("Cod Producto");
+        modelo.addColumn("Descripcion");
 
         while (rs.next()) {
-            
-            java.sql.Date fechaEncargo = rs.getDate("Fecha_Encargo");
-            String fechaEncargoStr = (fechaEncargo != null) ? fechaEncargo.toString() : ""; 
-            
-            Object[] fila = new Object[4];
-            fila[0] = rs.getString("num_pedido");
-            fila[1] = rs.getString("id_cliente");
-            fila[2] = rs.getString("estado");
-            fila[3] = fechaEncargoStr;
+        
+            Object[] fila = new Object[6];
+            fila[0] = rs.getString("ID");
+            fila[1] = rs.getString("Nombre");
+            fila[2] = rs.getString("telefono");
+            fila[3] = rs.getString("Num_pedido");
+            fila[4] = rs.getString("Codigo");
+            fila[5] = rs.getString("Descripcion");
+          
             modelo.addRow(fila);
         }
 
@@ -85,7 +87,7 @@ public class Listado1 extends javax.swing.JFrame {
         PanelColegio.setPreferredSize(new java.awt.Dimension(620, 550));
 
         Text3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Text3.setText("Listado de Productos encargados pendientes por entregar (ordenados por fecha)");
+        Text3.setText("Por cada cliente, listar los productos encargados que no han sido entregados");
 
         jSeparator1.setForeground(new java.awt.Color(0, 51, 204));
 
@@ -114,11 +116,11 @@ public class Listado1 extends javax.swing.JFrame {
 
             },
             new String [] {
-                "N° Pedido", "ID Cliente", "Estado", "Fecha Encargo"
+                "ID Cliente", "Nombre", "Telefono", "N° Pedido", "Cod Producto", "Descripcion"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {

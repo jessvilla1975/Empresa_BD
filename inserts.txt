@@ -20,8 +20,8 @@ INSERT INTO CLIENTE (ID, NOMBRE, TELEFONO) VALUES (7, 'Isabel Gómez', '555-2345
 -- INSERTAR DATOS PEDIDO
 INSERT INTO PEDIDO (Num_pedido, Id_Cliente, Estado, Abono, Fecha_Encargo, Fecha_Entrega) VALUES
     (103, 3, 'En proceso', 60000, '2023-03-10', '2023-03-18'),
-    (104, 4, 'Entregado', 40000, '2023-04-15', '2023-04-20'),
-    (105, 5, 'En proceso', 75000, '2023-05-02', '2023-05-10'),
+    (104, 4, 'En proceso', 40000, '2023-04-15', '2023-04-20'),
+    (105, 5, 'Entregado', 5000, '2023-05-02', '2023-05-10'),
     (106, 6, 'Entregado', 30000, '2023-06-10', '2023-06-15'),
     (107, 7, 'En proceso', 90000, '2023-07-05', '2023-07-12');
 
@@ -40,12 +40,16 @@ INSERT INTO UNIFORME (Codigo, Id_Colegio, Tipo, Caracteristicas) VALUES
 -- Insertar dos registros de ejemplo en la tabla PRODUCTO_TERMINADO
 INSERT INTO PRODUCTO_TERMINADO (Codigo, Num_pedido, Descripcion, Cantidad_Existente, Sexo, Precio_venta, Talla, Medidas) VALUES
     ('PT3', 103, 'Chaqueta', 5, 'Mujer', 150000, 'L', '38-40'),
-    ('PT4', 104, 'Camiseta', 8, 'Hombre', 60000, 'M', '36-38');
+    ('PT4', 104, 'Camiseta', 8, 'Hombre', 120000, 'M', '36-38'),
+    ('PT5', 105, 'Corbata', 8, 'Hombre', 20000, 'M', '36-38'),
+    ('PT6', 106, 'Jeans', 8, 'Hombre', 40000, 'M', '36-38');
 
 -- Insertar dos registros de ejemplo en la tabla INVENTARIO
 INSERT INTO INVENTARIO (Codigo, Cantidad_Existente, Descripcion) VALUES
     ('PT3', 5, 'Chaqueta'),
-    ('PT4', 8, 'Camiseta');
+    ('PT4', 8, 'Camiseta'),
+    ('PT5', 8, 'Corbata'),
+    ('PT6', 8, 'Jeans');
 
 -- Insertar dos registros en la tabla PROVEEDOR
 INSERT INTO PROVEEDOR (Nit, Nombre, Nom_contacto, Telefono, Direccion) VALUES
@@ -59,5 +63,17 @@ INSERT INTO MATERIA (Codigo, Tipo, Descripcion, Cantidad_Exist, Unidad_Medida) V
 
 -- Insertar dos registros en la tabla VENTA
 INSERT INTO VENTA (Codigo_Fact, Num_pedido, Id_Cliente, Monto_Final) VALUES
-    ('VF1', 105, 5, 90000),
-    ('VF2', 106, 6, 40000);
+    ('VF1', 106, 6, 40000);
+
+-- Insertar dos registros de ejemplo en la tabla DESCUENTA
+INSERT INTO DESCUENTA (Codigo_Fact, CODIGO) VALUES
+    ('VF1', 'PT6');
+-- insertar dos registros a suministra
+INSERT INTO SUMINISTRA (Nit_Proveedor, Codigo_Materia) VALUES
+    (3, 503),
+    (4, 504);
+-- insertar dos registros a utiliza
+INSERT INTO UTILIZA (Cod_prod, Cod_Materia)
+VALUES
+    ('PT3', 503),
+    ('PT4', 504);

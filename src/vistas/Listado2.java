@@ -37,18 +37,19 @@ public class Listado2 extends javax.swing.JFrame {
         // Crea el modelo de la tabla
         DefaultTableModel modelo = new DefaultTableModel(); 
         modelo.addColumn("ID Cliente");
-        modelo.addColumn("Nombre");
+        modelo.addColumn("Fecha Encargo");
         modelo.addColumn("N° Pedido");
         modelo.addColumn("Codigo Producto");
         modelo.addColumn("Descripcion");
 
         while (rs.next()) {
             
-            
+            java.sql.Date fechaEncargo = rs.getDate("fecha_encargo");
+            String fechaEncargoStr = (fechaEncargo != null) ? fechaEncargo.toString() : ""; 
             
             Object[] fila = new Object[5];
             fila[0] = rs.getString("ID");
-            fila[1] = rs.getString("NOMBRE");
+            fila[1] = fechaEncargoStr;
             fila[2] = rs.getString("Num_pedido");
             fila[3] = rs.getString("Codigo");
             fila[4] = rs.getString("Descripcion");
@@ -117,7 +118,7 @@ public class Listado2 extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID Cliente", "Nombre", "N° Pedido", "Cod Producto", "Descripcion"
+                "ID Cliente", "Fecha Encargo", "N° Pedido", "Cod Producto", "Descripcion"
             }
         ));
         jScrollPane1.setViewportView(tablalist);

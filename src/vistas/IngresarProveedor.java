@@ -476,6 +476,7 @@ public class IngresarProveedor extends javax.swing.JFrame {
         crud.insertarMateria(codm, item, des.getText(),cant, item2);
         crud.insertarProveedor(nump, nombre.getText(), nomcontacto.getText(), 
             telefono.getText(), direccion.getText());
+        crud.insertarSuministra(nump, codm);
         
         
         nit.setText("Ingresar nit del proveedor");

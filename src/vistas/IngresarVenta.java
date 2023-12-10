@@ -370,10 +370,12 @@ public class IngresarVenta extends javax.swing.JFrame {
         int nump = Integer.parseInt(numped.getText());
         int id = Integer.parseInt(idcli1.getText());
         double monto = Double.parseDouble(ventatotal.getText());
+ 
 
         crud.insertarVenta(cod,nump, id, monto);
         crud.cambiarEstadoEntregado(nump);
         crud.descontarInventario(nump);
+        crud.insertarDescuenta(cod, nump);
         vent.setText("Ingresar el codigo de la venta");
         ventatotal.setText("Ingresar el total a pagar");
      

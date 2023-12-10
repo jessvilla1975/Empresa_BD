@@ -1,18 +1,20 @@
 
 --Consultas
 --1. Listado de Productos encargados pendientes por entregar (ordenados por fecha)
-SELECT Num_pedido, id_cliente, Estado, Fecha_Encargo
-FROM PEDIDO
-WHERE Estado = 'En proceso'
-ORDER BY Fecha_Encargo;
-
---2
-
-SELECT c.ID, c.NOMBRE, p.Num_pedido, pt.Codigo, pt.Descripcion
+SELECT c.ID, p.fecha_encargo, p.Num_pedido, pt.Codigo, pt.Descripcion
 FROM CLIENTE c
 JOIN PEDIDO p ON c.ID = p.Id_Cliente
 JOIN PRODUCTO_TERMINADO pt ON p.Num_pedido = pt.Num_pedido
-WHERE p.Estado <> 'Entregado';
+WHERE p.Estado <> 'Entregado'
+ORDER BY p.fecha_encargo ASC;
+
+--2 Por cada cliente, listar los productos encargados que no han sido entregados
+
+SELECT c.ID, c.Nombre, c.telefono, p.Num_pedido, pt.Codigo, pt.Descripcion
+FROM CLIENTE c
+JOIN PEDIDO p ON c.ID = p.Id_Cliente
+JOIN PRODUCTO_TERMINADO pt ON p.Num_pedido = pt.Num_pedido
+WHERE p.Estado <> 'Entregado'
 
 --3 //revisar
 
