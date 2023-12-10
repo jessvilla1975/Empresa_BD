@@ -814,6 +814,31 @@ public ResultSet buscarPedidoPorNumero(int numPedido) {
             JOptionPane.showMessageDialog(null, "Error al cambiar el estado del pedido: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+    public void descontarInventario(int numPedido) {
+        try {
+            Connection conexion = conectar();
+            String sql = "UPDATE INVENTARIO " +
+                         "SET Cantidad_Existente = Cantidad_Existente - (SELECT COALESCE(SUM(pt.Cantidad_Existente), 0) " +
+                         "FROM PRODUCTO_TERMINADO pt " +
+                         "WHERE pt.Num_pedido = ?) " +
+                         "WHERE Codigo IN (SELECT pt.Codigo FROM PRODUCTO_TERMINADO pt WHERE pt.Num_pedido = ?)";
+
+            try (PreparedStatement ps = conexion.prepareStatement(sql)) {
+                ps.setInt(1, numPedido);
+                ps.setInt(2, numPedido);
+                ps.executeUpdate();
+            }
+
+            JOptionPane.showMessageDialog(null, "Inventario actualizado exitosamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al descontar inventario: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+
+        }
+    }
+    
+    
 
 
 

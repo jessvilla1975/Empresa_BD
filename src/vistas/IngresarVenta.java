@@ -373,6 +373,7 @@ public class IngresarVenta extends javax.swing.JFrame {
 
         crud.insertarVenta(cod,nump, id, monto);
         crud.cambiarEstadoEntregado(nump);
+        crud.descontarInventario(nump);
         vent.setText("Ingresar el codigo de la venta");
         ventatotal.setText("Ingresar el total a pagar");
      
