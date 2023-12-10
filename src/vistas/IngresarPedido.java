@@ -54,9 +54,12 @@ public class IngresarPedido extends javax.swing.JFrame {
         Text16 = new javax.swing.JLabel();
         jSeparator20 = new javax.swing.JSeparator();
         Text17 = new javax.swing.JLabel();
-        jSeparator21 = new javax.swing.JSeparator();
         estado = new javax.swing.JComboBox<>();
         fet = new javax.swing.JTextField();
+        art = new javax.swing.JTextField();
+        Text18 = new javax.swing.JLabel();
+        jSeparator22 = new javax.swing.JSeparator();
+        jSeparator21 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(400, 180));
@@ -209,9 +212,6 @@ public class IngresarPedido extends javax.swing.JFrame {
         Text17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         Text17.setText("Fecha Entrega");
 
-        jSeparator21.setForeground(new java.awt.Color(0, 153, 255));
-        jSeparator21.setPreferredSize(new java.awt.Dimension(200, 10));
-
         estado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pendiente", "Entregado" }));
 
         fet.setForeground(new java.awt.Color(102, 102, 102));
@@ -222,6 +222,24 @@ public class IngresarPedido extends javax.swing.JFrame {
                 fetMousePressed(evt);
             }
         });
+
+        art.setForeground(new java.awt.Color(102, 102, 102));
+        art.setText("Ingresar codigo uniforme o prenda");
+        art.setBorder(null);
+        art.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                artMousePressed(evt);
+            }
+        });
+
+        Text18.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Text18.setText("Articulo encargado");
+
+        jSeparator22.setForeground(new java.awt.Color(0, 153, 255));
+        jSeparator22.setPreferredSize(new java.awt.Dimension(200, 10));
+
+        jSeparator21.setForeground(new java.awt.Color(0, 153, 255));
+        jSeparator21.setPreferredSize(new java.awt.Dimension(200, 10));
 
         javax.swing.GroupLayout PanelColegioLayout = new javax.swing.GroupLayout(PanelColegio);
         PanelColegio.setLayout(PanelColegioLayout);
@@ -250,7 +268,10 @@ public class IngresarPedido extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
                                 .addComponent(Title)
-                                .addGap(77, 77, 77)))))
+                                .addGap(77, 77, 77))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
+                                .addComponent(Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(85, 85, 85)))))
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelColegioLayout.createSequentialGroup()
@@ -279,19 +300,18 @@ public class IngresarPedido extends javax.swing.JFrame {
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(Text16)
                                             .addComponent(fen, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(jSeparator21, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jSeparator22, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Text18)
+                                    .addComponent(art, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Text17)
-                                    .addComponent(fet, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(fet, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jSeparator21, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(1233, 1233, 1233))
                     .addGroup(PanelColegioLayout.createSequentialGroup()
                         .addGap(73, 73, 73)
                         .addComponent(Title1)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(PanelColegioLayout.createSequentialGroup()
-                .addGap(257, 257, 257)
-                .addComponent(Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(PanelColegioLayout.createSequentialGroup()
                     .addGap(52, 52, 52)
@@ -302,8 +322,7 @@ public class IngresarPedido extends javax.swing.JFrame {
             PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelColegioLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(PanelColegioLayout.createSequentialGroup()
                         .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanelColegioLayout.createSequentialGroup()
@@ -339,11 +358,12 @@ public class IngresarPedido extends javax.swing.JFrame {
                         .addComponent(jSeparator20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Text17)
-                        .addGap(12, 12, 12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(fet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelColegioLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(jSeparator21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
                         .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanelColegioLayout.createSequentialGroup()
                                 .addGap(50, 50, 50)
@@ -362,10 +382,19 @@ public class IngresarPedido extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(119, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Text18)
+                .addGap(12, 12, 12)
+                .addComponent(art, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73))
             .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(PanelColegioLayout.createSequentialGroup()
                     .addGap(134, 134, 134)
@@ -386,7 +415,7 @@ public class IngresarPedido extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 551, Short.MAX_VALUE)
+            .addGap(0, 554, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -420,7 +449,9 @@ public class IngresarPedido extends javax.swing.JFrame {
 
 
         crud.insertarCliente(idEntero, nombreCliente.getText(), telefono.getText());
-        crud.insertarPedido(nump, idEntero, item, ab , fen.getText(), fet.getText() );
+        crud.insertarPedido(nump, idEntero, item, ab , fen.getText(), fet.getText(), art.getText() );
+        //resetear text field
+        
         ID.setText("Ingresar ID del cliente");
         nombreCliente.setText("Ingresar nombre del cliente");
         telefono.setText("Ingresar teléfono del cliente");
@@ -428,6 +459,7 @@ public class IngresarPedido extends javax.swing.JFrame {
         abono.setText("Ingresar abono de pedido");
         fen.setText("Ingresar fecha de encargo");
         fet.setText("Ingresar fecha de entrega");
+        art.setText("Ingresar codigo uniforme o prenda");
         setVisible(false);
 
         
@@ -468,6 +500,11 @@ public class IngresarPedido extends javax.swing.JFrame {
         if(fet.getText().equals("Ingresar fecha de entrega"))
         fet.setText("");
     }//GEN-LAST:event_fetMousePressed
+
+    private void artMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_artMousePressed
+        if(art.getText().equals("Ingresar codigo uniforme o prenda"))
+        art.setText("");
+    }//GEN-LAST:event_artMousePressed
 
     /**
      * @param args the command line arguments
@@ -515,10 +552,12 @@ public class IngresarPedido extends javax.swing.JFrame {
     private javax.swing.JLabel Text15;
     private javax.swing.JLabel Text16;
     private javax.swing.JLabel Text17;
+    private javax.swing.JLabel Text18;
     private javax.swing.JLabel Title;
     private javax.swing.JLabel Title1;
     private javax.swing.JLabel X;
     private javax.swing.JTextField abono;
+    private javax.swing.JTextField art;
     private javax.swing.JComboBox<String> estado;
     private javax.swing.JTextField fen;
     private javax.swing.JTextField fet;
@@ -528,6 +567,7 @@ public class IngresarPedido extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator19;
     private javax.swing.JSeparator jSeparator20;
     private javax.swing.JSeparator jSeparator21;
+    private javax.swing.JSeparator jSeparator22;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;

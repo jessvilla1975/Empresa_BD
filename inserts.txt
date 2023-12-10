@@ -18,12 +18,12 @@ INSERT INTO CLIENTE (ID, NOMBRE, TELEFONO) VALUES (6, 'Carlos Sánchez', '555-87
 INSERT INTO CLIENTE (ID, NOMBRE, TELEFONO) VALUES (7, 'Isabel Gómez', '555-2345');
 
 -- INSERTAR DATOS PEDIDO
-INSERT INTO PEDIDO (Num_pedido, Id_Cliente, Estado, Abono, Fecha_Encargo, Fecha_Entrega) VALUES
-    (103, 3, 'En proceso', 60000, '2023-03-10', '2023-03-18'),
-    (104, 4, 'En proceso', 40000, '2023-04-15', '2023-04-20'),
-    (105, 5, 'Entregado', 5000, '2023-05-02', '2023-05-10'),
-    (106, 6, 'Entregado', 30000, '2023-06-10', '2023-06-15'),
-    (107, 7, 'En proceso', 90000, '2023-07-05', '2023-07-12');
+INSERT INTO PEDIDO (Num_pedido, Id_Cliente, Estado, Abono, Fecha_Encargo, Fecha_Entrega, articulo) VALUES
+    (103, 3, 'En proceso', 60000, '2023-03-10', '2023-03-18', 'Prenda1'),
+    (104, 4, 'En proceso', 40000, '2023-04-15', '2023-04-20', 'Prenda2'),
+    (105, 5, 'Entregado', 5000, '2023-05-02', '2023-05-10', 'U3'),
+    (106, 6, 'Entregado', 30000, '2023-06-10', '2023-06-15', 'U4'),
+    (107, 7, 'En proceso', 90000, '2023-07-05', '2023-07-12', 'Prenda3');
 
 -- INSERTAR DATOS COLEGIO
 INSERT INTO COLEGIO (Id, Nombre) VALUES (3, 'Colegio C');

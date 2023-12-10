@@ -14,6 +14,7 @@ CREATE TABLE PEDIDO (
     Abono FLOAT NOT NULL,
     Fecha_Encargo DATE NOT NULL,
     Fecha_Entrega DATE,
+    articulo VARCHAR(50) NOT NULL,
     FOREIGN KEY (Id_Cliente) REFERENCES CLIENTE (ID) ON DELETE CASCADE
 );
 

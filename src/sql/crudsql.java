@@ -1,12 +1,10 @@
 package sql;
 
 import getset.variables;
-import java.awt.List;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
-import java.util.ArrayList;
 import java.util.Date;
 
 public class crudsql extends conexionsql {
@@ -23,22 +21,23 @@ public class crudsql extends conexionsql {
             st.execute(sql);
             st.close();
             conexion.close();
-            JOptionPane.showMessageDialog(null, "El registro se guardo correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El cliente se guardo correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "El registro no se guardo " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+            //JOptionPane.showMessageDialog(null, "El registro no se guardo " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
         }
     }
     
-    public void insertarPedido(int numPedido, int idCliente, String estado, double abono, String fechaEncargo, String fechaEntrega) {
+    public void insertarPedido(int numPedido, int idCliente, String estado, double abono, String fechaEncargo, String fechaEntrega, String articulo) {
         try {
             Connection conexion = conectar();
             st = conexion.createStatement();
-            String sql = "INSERT INTO pedido (Num_pedido, Id_Cliente, Estado, Abono, Fecha_Encargo, Fecha_Entrega) VALUES " +
-                 "('" + numPedido + "','" + idCliente + "','" + estado + "','" + abono + "','" + fechaEncargo + "','" + fechaEntrega + "');";
+            String sql = "INSERT INTO pedido (Num_pedido, Id_Cliente, Estado, Abono, Fecha_Encargo, Fecha_Entrega, articulo) VALUES " +
+                 "('" + numPedido + "','" + idCliente + "','" + estado + "','" + abono + "','" + fechaEncargo + "','" + fechaEntrega + "','" + articulo + "');";
+
             st.execute(sql);
             st.close();
             conexion.close();
-            //JOptionPane.showMessageDialog(null, "El registro se guardo correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Se guardo pedido correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
             //JOptionPane.showMessageDialog(null, "El registro no se guardo " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
         }
@@ -869,6 +868,26 @@ public ResultSet buscarPedidoPorNumero(int numPedido) {
             return null;
         }
     }
+    
+    public ResultSet totalProductosVendidosxColegio() {
+        try {
+            Connection conexion = conectar(); 
+            String sql = "SELECT c.nombre, SUM(pt.cantidad_existente ) AS Total_Productos_Vendidos\n" +
+                            "FROM Colegio c\n" +
+                            "JOIN Uniforme u ON c.id = u.Id_colegio\n" +
+                            "JOIN Pedido p ON u.codigo = p.articulo\n" +
+                            "JOIN producto_terminado pt ON p.num_pedido = pt.num_pedido\n" +
+                            "JOIN Venta v ON pt.num_pedido = v.num_pedido\n" +
+                            "GROUP BY c.nombre;";
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al listar colegios en proceso: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+            return null;
+        }
+    }
+    
     
 ///////////////////////////extras/////////////////////////////////////////////////
     
