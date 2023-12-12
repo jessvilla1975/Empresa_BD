@@ -119,7 +119,7 @@ public class TablaEliminar4 extends javax.swing.JFrame {
         Eliminar.setBackground(new java.awt.Color(255, 0, 51));
         Eliminar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Eliminar.setForeground(new java.awt.Color(255, 255, 255));
-        Eliminar.setText("Eliminar");
+        Eliminar.setText("ELIMINAR");
         Eliminar.setBorder(null);
         Eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Eliminar.addMouseListener(new java.awt.event.MouseAdapter() {

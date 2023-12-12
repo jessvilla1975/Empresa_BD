@@ -1,6 +1,6 @@
 package sql;
 
-import getset.variables;
+
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
@@ -11,7 +11,6 @@ public class crudsql extends conexionsql {
 
     java.sql.Statement st;
     ResultSet rs;
-    variables var = new variables();
 
     public void insertarCliente(int id, String nombre, String telefono) {
         try {

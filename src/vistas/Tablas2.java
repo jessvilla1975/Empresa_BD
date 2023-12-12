@@ -204,6 +204,7 @@ public class Tablas2 extends javax.swing.JFrame {
         bus.setText("BUSCAR");
         bus.setBorder(null);
         bus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bus.setFocusPainted(false);
         bus.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 busMouseEntered(evt);

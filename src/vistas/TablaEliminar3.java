@@ -104,7 +104,7 @@ public class TablaEliminar3 extends javax.swing.JFrame {
         Eliminar.setBackground(new java.awt.Color(255, 0, 51));
         Eliminar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Eliminar.setForeground(new java.awt.Color(255, 255, 255));
-        Eliminar.setText("Eliminar");
+        Eliminar.setText("ELIMINAR");
         Eliminar.setBorder(null);
         Eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -208,7 +208,6 @@ public class TablaEliminar3 extends javax.swing.JFrame {
                         .addComponent(Buscar_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(3, 3, 3))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bus1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
