@@ -2,7 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Menus;
+package vistas.menus;
+import vistas.menus.MenuEliminar;
+import vistas.menus.MenuActualizar;
 import AppPackage.AnimationClass;
 /**
  *

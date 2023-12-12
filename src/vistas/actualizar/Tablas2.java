@@ -1,5 +1,6 @@
 
-package vistas;
+package vistas.actualizar;
+import vistas.ingresar.IngresarColegio;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import sql.crudsql;

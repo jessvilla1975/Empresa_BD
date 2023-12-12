@@ -2,21 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package vistas;
+package vistas.consultas;
+
+import vistas.ingresar.IngresarColegio;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import sql.crudsql;
 import java.sql.ResultSet;
-
 /**
  *
  * @author Jess
  */
-public class Listado3 extends javax.swing.JFrame {
+public class Listado5 extends javax.swing.JFrame {
 
     /**
-     * Creates new form Listado3
+     * Creates new form Listado5
      */
-    public Listado3() {
+    public Listado5() {
         initComponents();
     }
 
@@ -28,33 +30,24 @@ public class Listado3 extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     crudsql crud = new crudsql();
     
-    private void actualizar() {
+    private void actualizarTabla() {
     try {
-        ResultSet rs = crud.colegiosFabricanUniformes();
+        ResultSet rs = crud.totalProductosVendidosxColegio();
 
         // Crea el modelo de la tabla
         DefaultTableModel modelo = new DefaultTableModel(); 
-        modelo.addColumn("ID Colegio");
-        modelo.addColumn("Nombre");
-        modelo.addColumn("Codigo Uniforme");
-        modelo.addColumn("Tipo");
-        modelo.addColumn("Caracteristicas");
-
-        while (rs.next()) {
-            
-            
-            
-            Object[] fila = new Object[5];
-            fila[0] = rs.getString("ID");
-            fila[1] = rs.getString("Nombre");
-            fila[2] = rs.getString("Codigo");
-            fila[3] = rs.getString("Tipo");
-            fila[4] = rs.getString("Caracteristicas");
+        modelo.addColumn("Nombre colegio");
+        modelo.addColumn("Cantidad de productos vendidos");
+        
+        while (rs.next()) {     
+            Object[] fila = new Object[2];
+            fila[0] = rs.getString("nombre");
+            fila[1] = rs.getString("Total_Productos_Vendidos");
             modelo.addRow(fila);
         }
 
         // Asigna el modelo a la tabla
-        tablalist.setModel(modelo);
+        tabla.setModel(modelo);
 
     } catch (Exception e) {
         
@@ -69,10 +62,10 @@ public class Listado3 extends javax.swing.JFrame {
         PanelColegio = new javax.swing.JPanel();
         Text3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        Buscar = new javax.swing.JButton();
+        bus1 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabla = new javax.swing.JTable();
         Text4 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablalist = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(430, 180));
@@ -83,47 +76,65 @@ public class Listado3 extends javax.swing.JFrame {
         PanelColegio.setPreferredSize(new java.awt.Dimension(620, 550));
 
         Text3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Text3.setText("Listado de colegios de los que se fabrican uniformes.");
+        Text3.setText("Calcular el total de productos vendidos por colegio");
 
         jSeparator1.setForeground(new java.awt.Color(0, 51, 204));
 
-        Buscar.setBackground(new java.awt.Color(18, 90, 173));
-        Buscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        Buscar.setForeground(new java.awt.Color(255, 255, 255));
-        Buscar.setText("BUSCAR");
-        Buscar.setBorder(null);
-        Buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Buscar.addMouseListener(new java.awt.event.MouseAdapter() {
+        bus1.setBackground(new java.awt.Color(18, 90, 173));
+        bus1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bus1.setForeground(new java.awt.Color(255, 255, 255));
+        bus1.setText("BUSCAR");
+        bus1.setBorder(null);
+        bus1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bus1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                BuscarMouseEntered(evt);
+                bus1MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                BuscarMouseExited(evt);
+                bus1MouseExited(evt);
             }
         });
-        Buscar.addActionListener(new java.awt.event.ActionListener() {
+        bus1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscarActionPerformed(evt);
+                bus1ActionPerformed(evt);
             }
         });
 
-        Text4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Text4.setText("LISTADO");
-
-        tablalist.setModel(new javax.swing.table.DefaultTableModel(
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID Colegio", "Nombre", "Codigo Uniforme", "Tipo", "Caracteristicas"
+                "Nombre colegio", "Cantidad de productos vendidos"
             }
         ));
-        jScrollPane1.setViewportView(tablalist);
+        tabla.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                tablaAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        tabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tabla);
+
+        Text4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Text4.setText("LISTADO");
 
         javax.swing.GroupLayout PanelColegioLayout = new javax.swing.GroupLayout(PanelColegio);
         PanelColegio.setLayout(PanelColegioLayout);
         PanelColegioLayout.setHorizontalGroup(
             PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3)
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
                 .addContainerGap(23, Short.MAX_VALUE)
                 .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,9 +144,8 @@ public class Listado3 extends javax.swing.JFrame {
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Text3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22))
+                        .addComponent(bus1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(80, 80, 80))
         );
         PanelColegioLayout.setVerticalGroup(
             PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,10 +158,10 @@ public class Listado3 extends javax.swing.JFrame {
                         .addComponent(Text3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                    .addComponent(bus1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -170,18 +180,26 @@ public class Listado3 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscarMouseEntered
+    private void bus1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bus1MouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_BuscarMouseEntered
+    }//GEN-LAST:event_bus1MouseEntered
 
-    private void BuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscarMouseExited
+    private void bus1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bus1MouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_BuscarMouseExited
+    }//GEN-LAST:event_bus1MouseExited
 
-    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
-        System.out.println("boton buscar");
-        actualizar();  
-    }//GEN-LAST:event_BuscarActionPerformed
+    private void bus1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bus1ActionPerformed
+
+        actualizarTabla();  
+    }//GEN-LAST:event_bus1ActionPerformed
+
+    private void tablaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablaAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tablaAncestorAdded
+
+    private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tablaMouseClicked
     
 
     /**
@@ -220,12 +238,12 @@ public class Listado3 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Buscar;
     private javax.swing.JPanel PanelColegio;
     private javax.swing.JLabel Text3;
     private javax.swing.JLabel Text4;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton bus1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable tablalist;
+    private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }

@@ -2,8 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package vistas;
-
+package vistas.consultas;
+import vistas.ingresar.IngresarColegio;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import sql.crudsql;
@@ -12,12 +12,12 @@ import java.sql.ResultSet;
  *
  * @author Jess
  */
-public class Listado5 extends javax.swing.JFrame {
+public class Listado6 extends javax.swing.JFrame {
 
     /**
-     * Creates new form Listado5
+     * Creates new form Listado6
      */
-    public Listado5() {
+    public Listado6() {
         initComponents();
     }
 
@@ -29,29 +29,7 @@ public class Listado5 extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     crudsql crud = new crudsql();
     
-    private void actualizarTabla() {
-    try {
-        ResultSet rs = crud.totalProductosVendidosxColegio();
-
-        // Crea el modelo de la tabla
-        DefaultTableModel modelo = new DefaultTableModel(); 
-        modelo.addColumn("Nombre colegio");
-        modelo.addColumn("Cantidad de productos vendidos");
-        
-        while (rs.next()) {     
-            Object[] fila = new Object[2];
-            fila[0] = rs.getString("nombre");
-            fila[1] = rs.getString("Total_Productos_Vendidos");
-            modelo.addRow(fila);
-        }
-
-        // Asigna el modelo a la tabla
-        tabla.setModel(modelo);
-
-    } catch (Exception e) {
-        
-    }
-}
+  
     
   
     
@@ -59,12 +37,10 @@ public class Listado5 extends javax.swing.JFrame {
     private void initComponents() {
 
         PanelColegio = new javax.swing.JPanel();
-        Text3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        bus1 = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tabla = new javax.swing.JTable();
+        calcular = new javax.swing.JButton();
         Text4 = new javax.swing.JLabel();
+        total = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(430, 180));
@@ -74,93 +50,72 @@ public class Listado5 extends javax.swing.JFrame {
         PanelColegio.setBackground(new java.awt.Color(255, 255, 255));
         PanelColegio.setPreferredSize(new java.awt.Dimension(620, 550));
 
-        Text3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Text3.setText("Calcular el total de productos vendidos por colegio");
-
         jSeparator1.setForeground(new java.awt.Color(0, 51, 204));
 
-        bus1.setBackground(new java.awt.Color(18, 90, 173));
-        bus1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        bus1.setForeground(new java.awt.Color(255, 255, 255));
-        bus1.setText("BUSCAR");
-        bus1.setBorder(null);
-        bus1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bus1.addMouseListener(new java.awt.event.MouseAdapter() {
+        calcular.setBackground(new java.awt.Color(18, 90, 173));
+        calcular.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        calcular.setForeground(new java.awt.Color(255, 255, 255));
+        calcular.setText("CALCULAR");
+        calcular.setBorder(null);
+        calcular.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        calcular.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                bus1MouseEntered(evt);
+                calcularMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                bus1MouseExited(evt);
+                calcularMouseExited(evt);
             }
         });
-        bus1.addActionListener(new java.awt.event.ActionListener() {
+        calcular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bus1ActionPerformed(evt);
+                calcularActionPerformed(evt);
             }
         });
-
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nombre colegio", "Cantidad de productos vendidos"
-            }
-        ));
-        tabla.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                tablaAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-        tabla.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaMouseClicked(evt);
-            }
-        });
-        jScrollPane3.setViewportView(tabla);
 
         Text4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Text4.setText("LISTADO");
+        Text4.setText("LISTADO TOTAL DE VENTAS DE LA EMPRESA");
+
+        total.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        total.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        total.setEnabled(false);
+        total.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                totalActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelColegioLayout = new javax.swing.GroupLayout(PanelColegio);
         PanelColegio.setLayout(PanelColegioLayout);
         PanelColegioLayout.setHorizontalGroup(
             PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
+                .addContainerGap(190, Short.MAX_VALUE)
+                .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jSeparator1)
+                    .addComponent(Text4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(205, 205, 205))
+            .addGroup(PanelColegioLayout.createSequentialGroup()
                 .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Text4)
                     .addGroup(PanelColegioLayout.createSequentialGroup()
-                        .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Text3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bus1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(80, 80, 80))
+                        .addGap(335, 335, 335)
+                        .addComponent(calcular, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelColegioLayout.createSequentialGroup()
+                        .addGap(269, 269, 269)
+                        .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelColegioLayout.setVerticalGroup(
             PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(50, 50, 50)
                 .addComponent(Text4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelColegioLayout.createSequentialGroup()
-                        .addComponent(Text3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(bus1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(calcular, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(307, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -179,26 +134,42 @@ public class Listado5 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bus1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bus1MouseEntered
+    private void calcularMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calcularMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_bus1MouseEntered
+    }//GEN-LAST:event_calcularMouseEntered
 
-    private void bus1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bus1MouseExited
+    private void calcularMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calcularMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_bus1MouseExited
+    }//GEN-LAST:event_calcularMouseExited
 
-    private void bus1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bus1ActionPerformed
+    private void calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularActionPerformed
+        System.out.println("se presiono boton calcular");
+        try {
+        // Llama a la función totalProductosVendidos() para obtener el resultado
+        ResultSet rs = crud.totalProductosVendidos();
+        // Verifica si hay algún resultado en el conjunto de resultados
+        if (rs.next()) {
+            double totalVentas = rs.getDouble("Total_Ventas");
+            // Convierte el double a String
+            String totalVentasString = String.valueOf(totalVentas);
+            // Establece el texto en el JTextField
+            total.setText("$"+totalVentasString);
+        } else {
+            // No hay resultados
+            total.setText("No hay datos");
+        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al obtener total de ventas: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+    }
+        
 
-        actualizarTabla();  
-    }//GEN-LAST:event_bus1ActionPerformed
 
-    private void tablaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablaAncestorAdded
+       
+    }//GEN-LAST:event_calcularActionPerformed
+
+    private void totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tablaAncestorAdded
-
-    private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tablaMouseClicked
+    }//GEN-LAST:event_totalActionPerformed
     
 
     /**
@@ -238,11 +209,9 @@ public class Listado5 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelColegio;
-    private javax.swing.JLabel Text3;
     private javax.swing.JLabel Text4;
-    private javax.swing.JButton bus1;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JButton calcular;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable tabla;
+    private javax.swing.JTextField total;
     // End of variables declaration//GEN-END:variables
 }

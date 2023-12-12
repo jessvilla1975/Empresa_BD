@@ -2,7 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package vistas;
+package vistas.eliminar;
+import vistas.ingresar.IngresarColegio;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import sql.crudsql;
@@ -15,12 +16,12 @@ import java.util.Date;
  *
  * @author Jess
  */
-public class TablaEliminar extends javax.swing.JFrame {
+public class TablaEliminar2 extends javax.swing.JFrame {
 
     /**
      * Creates new form IngresarColegio
      */
-    public TablaEliminar() {
+    public TablaEliminar2() {
         initComponents();
         
     }
@@ -34,65 +35,59 @@ public class TablaEliminar extends javax.swing.JFrame {
     crudsql crud = new crudsql();
     private boolean boton1 = false;
     private boolean boton2 = false;
-    private boolean buscarventa = false;
 
+
+    
     private void actualizarTabla(int id) {
     try {
-        ResultSet rs = crud.buscarClientePorId(id); 
+        ResultSet rs = crud.buscarColegioPorId(id);
 
         // Crea el modelo de la tabla
         DefaultTableModel modelo = new DefaultTableModel(); 
         modelo.addColumn("ID");
         modelo.addColumn("Nombre");
-        modelo.addColumn("Tel");
+      
         while (rs.next()) {
-            Object[] fila = new Object[3];
+            Object[] fila = new Object[2];
             fila[0] = rs.getInt("id");
             fila[1] = rs.getString("nombre");
-            fila[2] = rs.getString("telefono");
             modelo.addRow(fila);
         }
+
         // Asigna el modelo a la tabla
-        tablacliente.setModel(modelo);
+        tablacolegio.setModel(modelo);
+
     } catch (Exception e) {
         JOptionPane.showMessageDialog(null, "Error al actualizar tabla: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
     }
 }
-    private void actualizarTabla2(int num) {
+    private void actualizarTabla2(String id) {
     try {
-        ResultSet rs = crud.buscarPedidoPorNumero(num);
+        ResultSet rs = crud.buscarUniformePorCodigo(id);
 
         // Crea el modelo de la tabla
         DefaultTableModel modelo = new DefaultTableModel(); 
-        modelo.addColumn("Num pedido");
-        modelo.addColumn("Estado");
-        modelo.addColumn("Abono");
-        modelo.addColumn("Fecha_Encargo");
-        modelo.addColumn("Fecha_Entrega");
-    
+        modelo.addColumn("Codigo");
+        modelo.addColumn("ID Colegio");
+        modelo.addColumn("Tipo");
+        modelo.addColumn("Caracteristica");
         while (rs.next()) {
-            java.sql.Date fechaEncargo = rs.getDate("Fecha_Encargo");
-            String fechaEncargoStr = (fechaEncargo != null) ? fechaEncargo.toString() : ""; 
-            java.sql.Date fechaEntrega = rs.getDate("Fecha_Entrega");
-            String fechaEntregaStr = (fechaEntrega != null) ? fechaEntrega.toString() : ""; 
-            
-            Object[] fila = new Object[5];
-            fila[0] = rs.getString("Num_pedido");
-            fila[1] = rs.getString("estado");
-            fila[2] = rs.getString("abono");
-            fila[3] = fechaEncargoStr;
-            fila[4] = fechaEntregaStr;
+            Object[] fila = new Object[4];
+            fila[0] = rs.getString("codigo");
+            fila[1] = rs.getString("id_colegio");
+            fila[2] = rs.getString("tipo");
+            fila[3] = rs.getString("caracteristicas");
             modelo.addRow(fila);
         }
 
         // Asigna el modelo a la tabla
-        tablapedido.setModel(modelo);
+        tablauniforme.setModel(modelo);
 
     } catch (Exception e) {
         JOptionPane.showMessageDialog(null, "Error al actualizar tabla: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
     }
 }
-    
+   
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -103,13 +98,13 @@ public class TablaEliminar extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         bus1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablacliente = new javax.swing.JTable();
+        tablacolegio = new javax.swing.JTable();
         Text4 = new javax.swing.JLabel();
         BuscarPedido = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         bus2 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tablapedido = new javax.swing.JTable();
+        tablauniforme = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(430, 180));
@@ -120,10 +115,10 @@ public class TablaEliminar extends javax.swing.JFrame {
         PanelColegio.setPreferredSize(new java.awt.Dimension(620, 550));
 
         Text3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Text3.setText("Datos Cliente ");
+        Text3.setText("Datos Colegio");
 
         Buscar_id.setForeground(new java.awt.Color(102, 102, 102));
-        Buscar_id.setText("Ingresar id del cliente");
+        Buscar_id.setText("Ingresar id del Colegio");
         Buscar_id.setBorder(null);
         Buscar_id.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -178,43 +173,43 @@ public class TablaEliminar extends javax.swing.JFrame {
             }
         });
 
-        tablacliente.setModel(new javax.swing.table.DefaultTableModel(
+        tablacolegio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null}
+                {null, null}
             },
             new String [] {
-                "ID", "Nombre", "Telefono"
+                "ID", "Nombre"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        tablacliente.addAncestorListener(new javax.swing.event.AncestorListener() {
+        tablacolegio.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                tablaclienteAncestorAdded(evt);
+                tablacolegioAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        tablacliente.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablacolegio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaclienteMouseClicked(evt);
+                tablacolegioMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tablacliente);
+        jScrollPane1.setViewportView(tablacolegio);
 
         Text4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Text4.setText("Datos Pedido");
+        Text4.setText("Datos Uniforme");
 
         BuscarPedido.setForeground(new java.awt.Color(102, 102, 102));
-        BuscarPedido.setText("Ingresar numero del pedido");
+        BuscarPedido.setText("Ingresar codigo uniforme");
         BuscarPedido.setBorder(null);
         BuscarPedido.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -244,37 +239,37 @@ public class TablaEliminar extends javax.swing.JFrame {
             }
         });
 
-        tablapedido.setModel(new javax.swing.table.DefaultTableModel(
+        tablauniforme.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null}
+                {null, null, null, null}
             },
             new String [] {
-                "Num Pedido", "Estado", "Abono", "Fecha 1", "Fecha 2"
+                "Codigo", "ID Colegio", "Tipo", "Carateristica"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        tablapedido.addAncestorListener(new javax.swing.event.AncestorListener() {
+        tablauniforme.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                tablapedidoAncestorAdded(evt);
+                tablauniformeAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        tablapedido.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablauniforme.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablapedidoMouseClicked(evt);
+                tablauniformeMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(tablapedido);
+        jScrollPane3.setViewportView(tablauniforme);
 
         javax.swing.GroupLayout PanelColegioLayout = new javax.swing.GroupLayout(PanelColegio);
         PanelColegio.setLayout(PanelColegioLayout);
@@ -347,7 +342,7 @@ public class TablaEliminar extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelColegio, javax.swing.GroupLayout.PREFERRED_SIZE, 780, Short.MAX_VALUE)
+            .addComponent(PanelColegio, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -370,31 +365,31 @@ public class TablaEliminar extends javax.swing.JFrame {
     private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
        System.out.println("Se presionó el botón1 ");
         if(boton1 == true){
-        int filaSeleccionada = tablacliente.getSelectedRow();
+        int filaSeleccionada = tablacolegio.getSelectedRow();
         if (filaSeleccionada != -1) {  
                 // Obtener datos de la fila seleccionada
-                int id = Integer.parseInt(tablacliente.getValueAt(filaSeleccionada, 0).toString());
-                crud.eliminarCliente(id); 
+                int id = Integer.parseInt(tablacolegio.getValueAt(filaSeleccionada, 0).toString());
+                crud.eliminarColegio(id);
         }
            
         }else{
             if(boton2 == true){
                 System.out.println("se presiono boton2");
-                int filaSeleccionada2 = tablapedido.getSelectedRow();
+                int filaSeleccionada2 = tablauniforme.getSelectedRow();
                 if (filaSeleccionada2 != -1) {
                     // Obtener datos de la fila seleccionada
-                    int num = Integer.parseInt(tablapedido.getValueAt(filaSeleccionada2, 0).toString());
-                    crud.eliminarPedido(num);
+                    String cod = tablauniforme.getValueAt(filaSeleccionada2, 0).toString();
+                    crud.eliminarUniforme(cod);
                 }
             } 
         }
-        Buscar_id.setText("Ingresar id del cliente");
-        BuscarPedido.setText("Ingresar numero del pedido");
+        Buscar_id.setText("Ingresar id del Colegio");
+        BuscarPedido.setText("Ingresar codigo uniforme");
         
-        DefaultTableModel modelo = (DefaultTableModel) tablacliente.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) tablacolegio.getModel();
         modelo.setRowCount(0);
         
-        DefaultTableModel modelo2 = (DefaultTableModel) tablapedido.getModel();
+        DefaultTableModel modelo2 = (DefaultTableModel) tablauniforme.getModel();
         modelo2.setRowCount(0);
 
         //setVisible(false);
@@ -402,7 +397,7 @@ public class TablaEliminar extends javax.swing.JFrame {
     }//GEN-LAST:event_EliminarActionPerformed
 
     private void Buscar_idMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buscar_idMousePressed
-        if(Buscar_id.getText().equals("Ingresar id del cliente"))
+        if(Buscar_id.getText().equals("Ingresar id del Colegio"))
         Buscar_id.setText("");
     }//GEN-LAST:event_Buscar_idMousePressed
 
@@ -417,23 +412,14 @@ public class TablaEliminar extends javax.swing.JFrame {
     private void bus1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bus1ActionPerformed
         boton1 = true;
         boton2 = false;
-        buscarventa = false;
         int idABuscar = Integer.parseInt(Buscar_id.getText());
          actualizarTabla(idABuscar);
          
          
     }//GEN-LAST:event_bus1ActionPerformed
 
-    private void tablaclienteAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablaclienteAncestorAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tablaclienteAncestorAdded
-
-    private void tablaclienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaclienteMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tablaclienteMouseClicked
-
     private void BuscarPedidoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscarPedidoMousePressed
-        if(BuscarPedido.getText().equals("Ingresar numero del pedido"))
+        if(BuscarPedido.getText().equals("Ingresar codigo uniforme"))
         BuscarPedido.setText("");
     }//GEN-LAST:event_BuscarPedidoMousePressed
 
@@ -446,12 +432,10 @@ public class TablaEliminar extends javax.swing.JFrame {
     }//GEN-LAST:event_bus2MouseExited
 
     private void bus2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bus2ActionPerformed
-        System.out.println("Se presionó el botón buscar pedido");
+        System.out.println("Se presionó el botón buscar uniforme");
         boton2 = true;
         boton1 = false;
-        buscarventa = false;
-        int num = Integer.parseInt(BuscarPedido.getText());
-        actualizarTabla2(num);
+        actualizarTabla2(BuscarPedido.getText());
         
     }//GEN-LAST:event_bus2ActionPerformed
 
@@ -459,13 +443,21 @@ public class TablaEliminar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Buscar_idActionPerformed
 
-    private void tablapedidoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablapedidoAncestorAdded
+    private void tablacolegioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablacolegioMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tablapedidoAncestorAdded
+    }//GEN-LAST:event_tablacolegioMouseClicked
 
-    private void tablapedidoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablapedidoMouseClicked
+    private void tablacolegioAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablacolegioAncestorAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_tablapedidoMouseClicked
+    }//GEN-LAST:event_tablacolegioAncestorAdded
+
+    private void tablauniformeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablauniformeMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tablauniformeMouseClicked
+
+    private void tablauniformeAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablauniformeAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tablauniformeAncestorAdded
     
 
     /**
@@ -516,7 +508,7 @@ public class TablaEliminar extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable tablacliente;
-    private javax.swing.JTable tablapedido;
+    private javax.swing.JTable tablacolegio;
+    private javax.swing.JTable tablauniforme;
     // End of variables declaration//GEN-END:variables
 }

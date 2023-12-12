@@ -2,25 +2,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Menus;
-import vistas.*;
+package vistas.menus;
+
+import vistas.actualizar.Tablas;
+import vistas.actualizar.Tablas2;
+
 
 /**
  *
  * @author Jess
  */
-public class MenuEliminar extends javax.swing.JFrame {
+public class MenuActualizar extends javax.swing.JFrame {
 
     /**
      * Creates new form IngresarDatos
      */
-    public MenuEliminar() {
+    public MenuActualizar() {
         initComponents();
     }
-    TablaEliminar at = new TablaEliminar();
-    TablaEliminar2 at1 = new TablaEliminar2();
-    TablaEliminar3 at3 = new TablaEliminar3();
-    TablaEliminar4 at4 = new TablaEliminar4();
+    Tablas at = new Tablas();
+    Tablas2 at1 = new Tablas2();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,11 +50,9 @@ public class MenuEliminar extends javax.swing.JFrame {
         titu = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         volver = new javax.swing.JButton();
-        tabla1 = new javax.swing.JButton();
+        Actprovedor = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        tabla2 = new javax.swing.JButton();
-        tabla3 = new javax.swing.JButton();
-        tabla4 = new javax.swing.JButton();
+        Actcolegio = new javax.swing.JButton();
 
         PanelColegio1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -209,10 +208,10 @@ public class MenuEliminar extends javax.swing.JFrame {
 
         titu.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         titu.setForeground(new java.awt.Color(255, 255, 255));
-        titu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/eliminar.png"))); // NOI18N
-        titu.setText("    Menú Eliminar");
-        Panelmenu.add(titu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 220, 46));
-        Panelmenu.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 220, 10));
+        titu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/actualizar.png"))); // NOI18N
+        titu.setText("     Menú Actualizar");
+        Panelmenu.add(titu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 230, 46));
+        Panelmenu.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 230, 10));
 
         volver.setBackground(new java.awt.Color(21, 101, 192));
         volver.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -233,104 +232,63 @@ public class MenuEliminar extends javax.swing.JFrame {
                 volverActionPerformed(evt);
             }
         });
-        Panelmenu.add(volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 140, 30));
+        Panelmenu.add(volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 460, 140, 30));
 
-        tabla1.setBackground(new java.awt.Color(51, 51, 51));
-        tabla1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        tabla1.setForeground(new java.awt.Color(255, 255, 255));
-        tabla1.setText("Cliente - Pedido");
-        tabla1.setAlignmentY(0.0F);
-        tabla1.setBorder(null);
-        tabla1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        tabla1.setFocusPainted(false);
-        tabla1.addMouseListener(new java.awt.event.MouseAdapter() {
+        Actprovedor.setBackground(new java.awt.Color(51, 51, 51));
+        Actprovedor.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Actprovedor.setForeground(new java.awt.Color(255, 255, 255));
+        Actprovedor.setText("Product - Provee - Materia");
+        Actprovedor.setAlignmentY(0.0F);
+        Actprovedor.setBorder(null);
+        Actprovedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Actprovedor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                tabla1MouseEntered(evt);
+                ActprovedorMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                tabla1MouseExited(evt);
+                ActprovedorMouseExited(evt);
             }
         });
-        tabla1.addActionListener(new java.awt.event.ActionListener() {
+        Actprovedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tabla1ActionPerformed(evt);
+                ActprovedorActionPerformed(evt);
             }
         });
-        Panelmenu.add(tabla1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 230, 30));
+        Panelmenu.add(Actprovedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 250, 50));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eliminar.png"))); // NOI18N
-        Panelmenu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 150, 140));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/actualizar.png"))); // NOI18N
+        Panelmenu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 140, 120));
 
-        tabla2.setBackground(new java.awt.Color(51, 51, 51));
-        tabla2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        tabla2.setForeground(new java.awt.Color(255, 255, 255));
-        tabla2.setText("Venta");
-        tabla2.setBorder(null);
-        tabla2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        tabla2.addMouseListener(new java.awt.event.MouseAdapter() {
+        Actcolegio.setBackground(new java.awt.Color(51, 51, 51));
+        Actcolegio.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Actcolegio.setForeground(new java.awt.Color(255, 255, 255));
+        Actcolegio.setText("Colegio - Uniforme - Venta");
+        Actcolegio.setAlignmentY(0.0F);
+        Actcolegio.setBorder(null);
+        Actcolegio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Actcolegio.setFocusPainted(false);
+        Actcolegio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                tabla2MouseEntered(evt);
+                ActcolegioMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                tabla2MouseExited(evt);
+                ActcolegioMouseExited(evt);
             }
         });
-        tabla2.addActionListener(new java.awt.event.ActionListener() {
+        Actcolegio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tabla2ActionPerformed(evt);
+                ActcolegioActionPerformed(evt);
             }
         });
-        Panelmenu.add(tabla2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 230, 30));
+        Panelmenu.add(Actcolegio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 250, 50));
 
-        tabla3.setBackground(new java.awt.Color(51, 51, 51));
-        tabla3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        tabla3.setForeground(new java.awt.Color(255, 255, 255));
-        tabla3.setText("Colegio - Uniforme");
-        tabla3.setBorder(null);
-        tabla3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        tabla3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                tabla3MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                tabla3MouseExited(evt);
-            }
-        });
-        tabla3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tabla3ActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(tabla3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 230, 30));
-
-        tabla4.setBackground(new java.awt.Color(51, 51, 51));
-        tabla4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        tabla4.setForeground(new java.awt.Color(255, 255, 255));
-        tabla4.setText("Proveedor - Materia");
-        tabla4.setBorder(null);
-        tabla4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        tabla4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                tabla4MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                tabla4MouseExited(evt);
-            }
-        });
-        tabla4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tabla4ActionPerformed(evt);
-            }
-        });
-        Panelmenu.add(tabla4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 230, 30));
-
-        jPanel1.add(Panelmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 560));
+        jPanel1.add(Panelmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 250, 560));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1065, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1068, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -351,32 +309,30 @@ public class MenuEliminar extends javax.swing.JFrame {
     }//GEN-LAST:event_volverMouseExited
 
     private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
-        System.out.println("Se presionó el botón volver");
+        System.out.println("Se presionó el botón venta");
         MenuPrincipal mp = new MenuPrincipal();
         mp.setVisible(true);
         setVisible(false);
         at.setVisible(false);
-        at1.setVisible(false);
-        at3.setVisible(false);
-        at4.setVisible(false);  
+        
+        
+        
     }//GEN-LAST:event_volverActionPerformed
 
-    private void tabla1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla1MouseEntered
-        tabla1.setBackground(new java.awt.Color(0,0,0));
-    }//GEN-LAST:event_tabla1MouseEntered
+    private void ActprovedorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActprovedorMouseEntered
+        Actprovedor.setBackground(new java.awt.Color(0,0,0));
+    }//GEN-LAST:event_ActprovedorMouseEntered
 
-    private void tabla1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla1MouseExited
-        tabla1.setBackground(new java.awt.Color(51,51,51));
-    }//GEN-LAST:event_tabla1MouseExited
+    private void ActprovedorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActprovedorMouseExited
+        Actprovedor.setBackground(new java.awt.Color(51,51,51));
+    }//GEN-LAST:event_ActprovedorMouseExited
 
-    private void tabla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tabla1ActionPerformed
-        System.out.println("Se presionó el botón eliminar Colegio - Uniforme - Venta");
-        at1.setVisible(false);
-        at3.setVisible(false);
-        at4.setVisible(false);
-        at.setVisible(true);
+    private void ActprovedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActprovedorActionPerformed
+        System.out.println("Se presionó el botón materia");
+        at.setVisible(false);
+        at1.setVisible(true);
         
-    }//GEN-LAST:event_tabla1ActionPerformed
+    }//GEN-LAST:event_ActprovedorActionPerformed
 
     private void idColegio2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_idColegio2MousePressed
         // TODO add your handling code here:
@@ -394,51 +350,19 @@ public class MenuEliminar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_idColegio3MousePressed
 
-    private void tabla2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla2MouseEntered
-        tabla2.setBackground(new java.awt.Color(0,0,0));
-    }//GEN-LAST:event_tabla2MouseEntered
+    private void ActcolegioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActcolegioMouseEntered
+        Actcolegio.setBackground(new java.awt.Color(0,0,0));
+    }//GEN-LAST:event_ActcolegioMouseEntered
 
-    private void tabla2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla2MouseExited
-        tabla2.setBackground(new java.awt.Color(51,51,51));
-    }//GEN-LAST:event_tabla2MouseExited
+    private void ActcolegioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActcolegioMouseExited
+        Actcolegio.setBackground(new java.awt.Color(51,51,51));
+    }//GEN-LAST:event_ActcolegioMouseExited
 
-    private void tabla2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tabla2ActionPerformed
-        System.out.println("Se presionó el botón eliminar Producto - Proveedor - Materia");
-        at.setVisible(false);
+    private void ActcolegioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActcolegioActionPerformed
+        System.out.println("Se presionó el botón colegio");
         at1.setVisible(false);
-        at3.setVisible(true);
-        at4.setVisible(false);
-    }//GEN-LAST:event_tabla2ActionPerformed
-
-    private void tabla3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla3MouseEntered
-        tabla3.setBackground(new java.awt.Color(0,0,0));
-    }//GEN-LAST:event_tabla3MouseEntered
-
-    private void tabla3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla3MouseExited
-        tabla3.setBackground(new java.awt.Color(51,51,51));
-    }//GEN-LAST:event_tabla3MouseExited
-
-    private void tabla3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tabla3ActionPerformed
-        at.setVisible(false);
-        at1.setVisible(true);
-        at3.setVisible(false);
-        at4.setVisible(false);
-    }//GEN-LAST:event_tabla3ActionPerformed
-
-    private void tabla4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla4MouseEntered
-        tabla4.setBackground(new java.awt.Color(0,0,0));
-    }//GEN-LAST:event_tabla4MouseEntered
-
-    private void tabla4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabla4MouseExited
-        tabla4.setBackground(new java.awt.Color(51,51,51));
-    }//GEN-LAST:event_tabla4MouseExited
-
-    private void tabla4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tabla4ActionPerformed
-        at.setVisible(false);
-        at1.setVisible(false);
-        at3.setVisible(false);
-        at4.setVisible(true);
-    }//GEN-LAST:event_tabla4ActionPerformed
+        at.setVisible(true);
+    }//GEN-LAST:event_ActcolegioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -477,6 +401,8 @@ public class MenuEliminar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Actcolegio;
+    private javax.swing.JButton Actprovedor;
     private javax.swing.JPanel PanelColegio1;
     private javax.swing.JPanel Panelmenu;
     private javax.swing.JLabel Text6;
@@ -494,10 +420,6 @@ public class MenuEliminar extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTextField nombreColegio1;
-    private javax.swing.JButton tabla1;
-    private javax.swing.JButton tabla2;
-    private javax.swing.JButton tabla3;
-    private javax.swing.JButton tabla4;
     private javax.swing.JLabel titu;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables

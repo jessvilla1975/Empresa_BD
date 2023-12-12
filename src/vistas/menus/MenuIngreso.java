@@ -2,8 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Menus;
+package vistas.menus;
 
+import vistas.ingresar.IngresarPedido;
+import vistas.ingresar.IngresarProveedor;
+import vistas.ingresar.IngresarProducto;
+import vistas.ingresar.IngresarVenta;
+import vistas.ingresar.IngresarColegio;
 import vistas.*;
 
 /**

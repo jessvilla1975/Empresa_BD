@@ -2,25 +2,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package vistas;
+package vistas.consultas;
+import vistas.ingresar.IngresarColegio;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import sql.crudsql;
 import java.sql.ResultSet;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 
 /**
  *
  * @author Jess
  */
-public class TablaEliminar3 extends javax.swing.JFrame {
+public class Listado1 extends javax.swing.JFrame {
 
     /**
      * Creates new form IngresarColegio
      */
-    public TablaEliminar3() {
+    public Listado1() {
         initComponents();
         
     }
@@ -32,33 +31,38 @@ public class TablaEliminar3 extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     crudsql crud = new crudsql();
-    private boolean boton1 = false;
-
-    private void actualizarTabla(String cod) {
+    
+    private void actualizarTabla() {
     try {
-        ResultSet rs = crud.buscarCodigoFact(cod);
+        ResultSet rs = crud.listarPedidosEnProceso();
 
         // Crea el modelo de la tabla
         DefaultTableModel modelo = new DefaultTableModel(); 
-        modelo.addColumn("Codigo factura");
-        modelo.addColumn("Numero pedido");
-        modelo.addColumn("ID");
-        modelo.addColumn("Monto final");
+        modelo.addColumn("ID Cliente");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Telefono");
+        modelo.addColumn("N° Pedido");
+        modelo.addColumn("Cod Producto");
+        modelo.addColumn("Descripcion");
 
         while (rs.next()) {
-            Object[] fila = new Object[4];
-            fila[0] = rs.getString("codigo_fact");
-            fila[1] = rs.getString("num_pedido");
-            fila[2] = rs.getString("id_cliente");
-            fila[3] = rs.getString("monto_final");
+        
+            Object[] fila = new Object[6];
+            fila[0] = rs.getString("ID");
+            fila[1] = rs.getString("Nombre");
+            fila[2] = rs.getString("telefono");
+            fila[3] = rs.getString("Num_pedido");
+            fila[4] = rs.getString("Codigo");
+            fila[5] = rs.getString("Descripcion");
+          
             modelo.addRow(fila);
         }
 
         // Asigna el modelo a la tabla
-        tablaventa.setModel(modelo);
+        tabla.setModel(modelo);
 
     } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Error al actualizar tabla: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+        
     }
 }
     
@@ -69,12 +73,11 @@ public class TablaEliminar3 extends javax.swing.JFrame {
 
         PanelColegio = new javax.swing.JPanel();
         Text3 = new javax.swing.JLabel();
-        Buscar_id = new javax.swing.JTextField();
-        Eliminar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         bus1 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tablaventa = new javax.swing.JTable();
+        tabla = new javax.swing.JTable();
+        Text4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(430, 180));
@@ -85,41 +88,7 @@ public class TablaEliminar3 extends javax.swing.JFrame {
         PanelColegio.setPreferredSize(new java.awt.Dimension(620, 550));
 
         Text3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        Text3.setText("Datos Venta");
-
-        Buscar_id.setForeground(new java.awt.Color(102, 102, 102));
-        Buscar_id.setText("Ingresar el codigo de factura");
-        Buscar_id.setBorder(null);
-        Buscar_id.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                Buscar_idMousePressed(evt);
-            }
-        });
-        Buscar_id.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Buscar_idActionPerformed(evt);
-            }
-        });
-
-        Eliminar.setBackground(new java.awt.Color(255, 0, 51));
-        Eliminar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        Eliminar.setForeground(new java.awt.Color(255, 255, 255));
-        Eliminar.setText("ELIMINAR");
-        Eliminar.setBorder(null);
-        Eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Eliminar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                EliminarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                EliminarMouseExited(evt);
-            }
-        });
-        Eliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EliminarActionPerformed(evt);
-            }
-        });
+        Text3.setText("Por cada cliente, listar los productos encargados que no han sido entregados");
 
         jSeparator1.setForeground(new java.awt.Color(0, 51, 204));
 
@@ -143,79 +112,76 @@ public class TablaEliminar3 extends javax.swing.JFrame {
             }
         });
 
-        tablaventa.setModel(new javax.swing.table.DefaultTableModel(
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null}
+
             },
             new String [] {
-                "Codigo factura", "Numero pedido", "ID", "Monto final"
+                "ID Cliente", "Nombre", "Telefono", "N° Pedido", "Cod Producto", "Descripcion"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Float.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        tablaventa.addAncestorListener(new javax.swing.event.AncestorListener() {
+        tabla.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                tablaventaAncestorAdded(evt);
+                tablaAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        tablaventa.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabla.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tablaventaMouseClicked(evt);
+                tablaMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(tablaventa);
+        jScrollPane3.setViewportView(tabla);
+
+        Text4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Text4.setText("LISTADO");
 
         javax.swing.GroupLayout PanelColegioLayout = new javax.swing.GroupLayout(PanelColegio);
         PanelColegio.setLayout(PanelColegioLayout);
         PanelColegioLayout.setHorizontalGroup(
             PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelColegioLayout.createSequentialGroup()
-                .addGap(332, 332, 332)
-                .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 332, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Buscar_id, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Text3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bus1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane3)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Text4)
+                    .addGroup(PanelColegioLayout.createSequentialGroup()
+                        .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Text3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bus1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(80, 80, 80))
         );
         PanelColegioLayout.setVerticalGroup(
             PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addGap(18, 18, 18)
+                .addComponent(Text4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelColegioLayout.createSequentialGroup()
                         .addComponent(Text3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Buscar_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
-                        .addComponent(bus1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 304, Short.MAX_VALUE)
-                .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bus1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -234,34 +200,6 @@ public class TablaEliminar3 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void EliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarMouseEntered
-        Eliminar.setBackground(new java.awt.Color(255, 102, 102));
-    }//GEN-LAST:event_EliminarMouseEntered
-
-    private void EliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminarMouseExited
-        Eliminar.setBackground(new java.awt.Color(255,0,51));
-    }//GEN-LAST:event_EliminarMouseExited
-
-    private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
-      System.out.println("Se presionó el botón eliminar");
-        if(boton1 == true){
-        int filaSeleccionada = tablaventa.getSelectedRow();
-        if (filaSeleccionada != -1) {
-                // Obtener datos de la fila seleccionada
-                String cod = tablaventa.getValueAt(filaSeleccionada, 0).toString();
-                crud.eliminarVenta(cod);
-            }  
-        }
-        Buscar_id.setText("Ingresar el codigo de factura");
-        DefaultTableModel modelo = (DefaultTableModel) tablaventa.getModel();
-        modelo.setRowCount(0);
-    }//GEN-LAST:event_EliminarActionPerformed
-
-    private void Buscar_idMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buscar_idMousePressed
-        if(Buscar_id.getText().equals("Ingresar el codigo de factura"))
-        Buscar_id.setText("");
-    }//GEN-LAST:event_Buscar_idMousePressed
-
     private void bus1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bus1MouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_bus1MouseEntered
@@ -271,23 +209,17 @@ public class TablaEliminar3 extends javax.swing.JFrame {
     }//GEN-LAST:event_bus1MouseExited
 
     private void bus1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bus1ActionPerformed
-        boton1 = true;
-        actualizarTabla(Buscar_id.getText());
-         
-         
+
+        actualizarTabla();  
     }//GEN-LAST:event_bus1ActionPerformed
 
-    private void Buscar_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar_idActionPerformed
+    private void tablaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablaAncestorAdded
         // TODO add your handling code here:
-    }//GEN-LAST:event_Buscar_idActionPerformed
+    }//GEN-LAST:event_tablaAncestorAdded
 
-    private void tablaventaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablaventaAncestorAdded
+    private void tablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tablaventaAncestorAdded
-
-    private void tablaventaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaventaMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tablaventaMouseClicked
+    }//GEN-LAST:event_tablaMouseClicked
     
 
     /**
@@ -326,13 +258,12 @@ public class TablaEliminar3 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Buscar_id;
-    private javax.swing.JButton Eliminar;
     private javax.swing.JPanel PanelColegio;
     private javax.swing.JLabel Text3;
+    private javax.swing.JLabel Text4;
     private javax.swing.JButton bus1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable tablaventa;
+    private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }

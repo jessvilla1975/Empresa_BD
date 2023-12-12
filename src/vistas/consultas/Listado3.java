@@ -2,21 +2,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package vistas;
-import javax.swing.JOptionPane;
+package vistas.consultas;
+import vistas.ingresar.IngresarColegio;
 import javax.swing.table.DefaultTableModel;
 import sql.crudsql;
 import java.sql.ResultSet;
+
 /**
  *
  * @author Jess
  */
-public class Listado6 extends javax.swing.JFrame {
+public class Listado3 extends javax.swing.JFrame {
 
     /**
-     * Creates new form Listado6
+     * Creates new form Listado3
      */
-    public Listado6() {
+    public Listado3() {
         initComponents();
     }
 
@@ -28,7 +29,38 @@ public class Listado6 extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     crudsql crud = new crudsql();
     
-  
+    private void actualizar() {
+    try {
+        ResultSet rs = crud.colegiosFabricanUniformes();
+
+        // Crea el modelo de la tabla
+        DefaultTableModel modelo = new DefaultTableModel(); 
+        modelo.addColumn("ID Colegio");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Codigo Uniforme");
+        modelo.addColumn("Tipo");
+        modelo.addColumn("Caracteristicas");
+
+        while (rs.next()) {
+            
+            
+            
+            Object[] fila = new Object[5];
+            fila[0] = rs.getString("ID");
+            fila[1] = rs.getString("Nombre");
+            fila[2] = rs.getString("Codigo");
+            fila[3] = rs.getString("Tipo");
+            fila[4] = rs.getString("Caracteristicas");
+            modelo.addRow(fila);
+        }
+
+        // Asigna el modelo a la tabla
+        tablalist.setModel(modelo);
+
+    } catch (Exception e) {
+        
+    }
+}
     
   
     
@@ -36,10 +68,12 @@ public class Listado6 extends javax.swing.JFrame {
     private void initComponents() {
 
         PanelColegio = new javax.swing.JPanel();
+        Text3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        calcular = new javax.swing.JButton();
+        Buscar = new javax.swing.JButton();
         Text4 = new javax.swing.JLabel();
-        total = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablalist = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(430, 180));
@@ -49,72 +83,76 @@ public class Listado6 extends javax.swing.JFrame {
         PanelColegio.setBackground(new java.awt.Color(255, 255, 255));
         PanelColegio.setPreferredSize(new java.awt.Dimension(620, 550));
 
+        Text3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        Text3.setText("Listado de colegios de los que se fabrican uniformes.");
+
         jSeparator1.setForeground(new java.awt.Color(0, 51, 204));
 
-        calcular.setBackground(new java.awt.Color(18, 90, 173));
-        calcular.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        calcular.setForeground(new java.awt.Color(255, 255, 255));
-        calcular.setText("CALCULAR");
-        calcular.setBorder(null);
-        calcular.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        calcular.addMouseListener(new java.awt.event.MouseAdapter() {
+        Buscar.setBackground(new java.awt.Color(18, 90, 173));
+        Buscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Buscar.setForeground(new java.awt.Color(255, 255, 255));
+        Buscar.setText("BUSCAR");
+        Buscar.setBorder(null);
+        Buscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Buscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                calcularMouseEntered(evt);
+                BuscarMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                calcularMouseExited(evt);
+                BuscarMouseExited(evt);
             }
         });
-        calcular.addActionListener(new java.awt.event.ActionListener() {
+        Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                calcularActionPerformed(evt);
+                BuscarActionPerformed(evt);
             }
         });
 
         Text4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Text4.setText("LISTADO TOTAL DE VENTAS DE LA EMPRESA");
+        Text4.setText("LISTADO");
 
-        total.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        total.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        total.setEnabled(false);
-        total.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                totalActionPerformed(evt);
+        tablalist.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID Colegio", "Nombre", "Codigo Uniforme", "Tipo", "Caracteristicas"
             }
-        });
+        ));
+        jScrollPane1.setViewportView(tablalist);
 
         javax.swing.GroupLayout PanelColegioLayout = new javax.swing.GroupLayout(PanelColegio);
         PanelColegio.setLayout(PanelColegioLayout);
         PanelColegioLayout.setHorizontalGroup(
             PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
-                .addContainerGap(190, Short.MAX_VALUE)
-                .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jSeparator1)
-                    .addComponent(Text4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(205, 205, 205))
-            .addGroup(PanelColegioLayout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
                 .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Text4)
                     .addGroup(PanelColegioLayout.createSequentialGroup()
-                        .addGap(335, 335, 335)
-                        .addComponent(calcular, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelColegioLayout.createSequentialGroup()
-                        .addGap(269, 269, 269)
-                        .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Text3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22))
         );
         PanelColegioLayout.setVerticalGroup(
             PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addGap(18, 18, 18)
                 .addComponent(Text4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(total, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(calcular, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(307, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelColegioLayout.createSequentialGroup()
+                        .addComponent(Text3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -133,42 +171,18 @@ public class Listado6 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void calcularMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calcularMouseEntered
+    private void BuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscarMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_calcularMouseEntered
+    }//GEN-LAST:event_BuscarMouseEntered
 
-    private void calcularMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_calcularMouseExited
+    private void BuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscarMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_calcularMouseExited
+    }//GEN-LAST:event_BuscarMouseExited
 
-    private void calcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularActionPerformed
-        System.out.println("se presiono boton calcular");
-        try {
-        // Llama a la función totalProductosVendidos() para obtener el resultado
-        ResultSet rs = crud.totalProductosVendidos();
-        // Verifica si hay algún resultado en el conjunto de resultados
-        if (rs.next()) {
-            double totalVentas = rs.getDouble("Total_Ventas");
-            // Convierte el double a String
-            String totalVentasString = String.valueOf(totalVentas);
-            // Establece el texto en el JTextField
-            total.setText("$"+totalVentasString);
-        } else {
-            // No hay resultados
-            total.setText("No hay datos");
-        }
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, "Error al obtener total de ventas: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
-    }
-        
-
-
-       
-    }//GEN-LAST:event_calcularActionPerformed
-
-    private void totalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_totalActionPerformed
+    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
+        System.out.println("boton buscar");
+        actualizar();  
+    }//GEN-LAST:event_BuscarActionPerformed
     
 
     /**
@@ -207,10 +221,12 @@ public class Listado6 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Buscar;
     private javax.swing.JPanel PanelColegio;
+    private javax.swing.JLabel Text3;
     private javax.swing.JLabel Text4;
-    private javax.swing.JButton calcular;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField total;
+    private javax.swing.JTable tablalist;
     // End of variables declaration//GEN-END:variables
 }
