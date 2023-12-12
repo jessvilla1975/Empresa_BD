@@ -40,7 +40,7 @@ public class TablaEliminar2 extends javax.swing.JFrame {
     
     private void actualizarTabla(int id) {
     try {
-        ResultSet rs = crud.buscarColegioPorId(id);
+        ResultSet rs = crud.buscarColegio(id);
 
         // Crea el modelo de la tabla
         DefaultTableModel modelo = new DefaultTableModel(); 

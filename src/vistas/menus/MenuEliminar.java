@@ -3,8 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package vistas.menus;
-import Menus.MenuIngreso;
-import Menus.MenuPrincipal;
+
 import vistas.eliminar.TablaEliminar2;
 import vistas.eliminar.TablaEliminar4;
 import vistas.eliminar.TablaEliminar3;

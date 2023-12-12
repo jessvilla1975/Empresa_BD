@@ -230,6 +230,20 @@ public ResultSet buscarPedidoPorNumero(int numPedido) {
         return null;
     }
 }
+    public ResultSet buscarColegio(int id) {
+    try {
+        Connection conexion = conectar();
+        String sql = "SELECT * FROM colegio WHERE colegio.id = ?";
+
+        PreparedStatement ps = conexion.prepareStatement(sql);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+        return rs;
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al buscar colegio por ID: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+        return null;
+    }
+}
     public ResultSet buscarUniformePorCodigo(String codigo) {
         try {
             Connection conexion = conectar();
