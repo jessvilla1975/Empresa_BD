@@ -7,6 +7,7 @@ import vistas.ingresar.IngresarColegio;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import sql.crudsql;
+import vistas.tablasVistas.tablas;
 
 /**
  *
@@ -51,6 +52,7 @@ public class IngresarVenta extends javax.swing.JFrame {
         Text6 = new javax.swing.JLabel();
         ventatotal = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
+        ta = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(400, 140));
@@ -214,6 +216,15 @@ public class IngresarVenta extends javax.swing.JFrame {
         jSeparator7.setForeground(new java.awt.Color(0, 153, 255));
         jSeparator7.setPreferredSize(new java.awt.Dimension(200, 10));
 
+        ta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/tabla.png"))); // NOI18N
+        ta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ta.setFocusable(false);
+        ta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                taMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelColegioLayout = new javax.swing.GroupLayout(PanelColegio);
         PanelColegio.setLayout(PanelColegioLayout);
         PanelColegioLayout.setHorizontalGroup(
@@ -227,7 +238,9 @@ public class IngresarVenta extends javax.swing.JFrame {
                         .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanelColegioLayout.createSequentialGroup()
                                 .addGap(238, 238, 238)
-                                .addComponent(Title))
+                                .addComponent(Title)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ta))
                             .addGroup(PanelColegioLayout.createSequentialGroup()
                                 .addGap(188, 188, 188)
                                 .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,7 +286,9 @@ public class IngresarVenta extends javax.swing.JFrame {
             PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelColegioLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(Title)
+                .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Title)
+                    .addComponent(ta))
                 .addGap(18, 18, 18)
                 .addComponent(Text4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -383,8 +398,7 @@ public class IngresarVenta extends javax.swing.JFrame {
         crud.insertarDescuenta(cod, nump);
         vent.setText("Ingresar el codigo de la venta");
         ventatotal.setText("Ingresar el total a pagar");
-     
-        setVisible(false);
+
     }//GEN-LAST:event_GuardarActionPerformed
 
     private void pagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagarActionPerformed
@@ -426,6 +440,22 @@ public class IngresarVenta extends javax.swing.JFrame {
     private void numpedMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_numpedMouseReleased
         // TODO add your handling code here:
     }//GEN-LAST:event_numpedMouseReleased
+
+    private void taMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_taMouseClicked
+        System.out.println("generar tabla");
+        tablas ventana = new tablas();
+        ResultSet resultados = crud.buscar("Venta");
+        String[] nombresColumnas = {
+            "Codigo_Fact",
+            "Num_pedido",
+            "Id_Cliente",
+            "Monto_Final"
+        };
+
+        // Llamar al método actualizarTabla con los resultados y nombres de columnas
+        ventana.actualizarTabla(resultados, nombresColumnas);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_taMouseClicked
     private void actualizar(int numPedido) {
     try {
         ResultSet rs = crud.buscarVentaPorNumPedido(numPedido);
@@ -478,7 +508,7 @@ public class IngresarVenta extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new IngresarColegio().setVisible(true);
+                new IngresarVenta().setVisible(true);
             }
         });
     }
@@ -501,6 +531,7 @@ public class IngresarVenta extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JTextField numped;
     private javax.swing.JTextField pagar;
+    public javax.swing.JLabel ta;
     private javax.swing.JTextField total;
     private javax.swing.JTextField vent;
     private javax.swing.JTextField ventatotal;

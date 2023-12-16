@@ -3,8 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Jess/Desktop/Empresa_BD/src/vistas/menus/MenuPrincipal.java</file>
-            <file>file:/C:/Users/Jess/Desktop/Empresa_BD/src/login/Login.java</file>
+            <file>file:/C:/Users/Jess/Desktop/Empresa_BD/src/vistas/ingresar/IngresarVenta.java</file>
+            <file>file:/C:/Users/Jess/Desktop/Empresa_BD/src/vistas/ingresar/IngresarProveedor.java</file>
+            <file>file:/C:/Users/Jess/Desktop/Empresa_BD/src/vistas/ingresar/IngresarPedido.java</file>
+            <file>file:/C:/Users/Jess/Desktop/Empresa_BD/src/vistas/ingresar/IngresarProducto.java</file>
+            <file>file:/C:/Users/Jess/Desktop/Empresa_BD/src/vistas/tablasVistas/tablas.java</file>
         </group>
     </open-files>
 </project-private>

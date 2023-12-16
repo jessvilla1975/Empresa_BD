@@ -510,92 +510,6 @@ public class Tablas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ModificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModificarMouseEntered
-        Modificar.setBackground(new java.awt.Color(21, 101, 192));
-    }//GEN-LAST:event_ModificarMouseEntered
-
-    private void ModificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModificarMouseExited
-        Modificar.setBackground(new java.awt.Color(18,90,173));
-    }//GEN-LAST:event_ModificarMouseExited
-
-    private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
-       System.out.println("Se presionó el botón modificar");
-        if(guardar1Presionado == true){
-        int filaSeleccionada = tablita.getSelectedRow();
-        if (filaSeleccionada != -1) {
-            try {
-                // Obtener datos de la fila seleccionada
-                int id = Integer.parseInt(tablita.getValueAt(filaSeleccionada, 0).toString());
-                String nombre = (String) tablita.getValueAt(filaSeleccionada, 1);
-                String telefono = (String) tablita.getValueAt(filaSeleccionada, 2);
-                int num = Integer.parseInt(tablita.getValueAt(filaSeleccionada, 3).toString());
-                String es = (String) tablita.getValueAt(filaSeleccionada, 4);
-                double ab = Double.parseDouble(tablita.getValueAt(filaSeleccionada, 5).toString());
-
-                // Convertir la fecha de encargo y fecha de entrega a String
-                String fechaEncargo = tablita.getValueAt(filaSeleccionada, 6).toString();
-                String fechaEntrega = tablita.getValueAt(filaSeleccionada, 7).toString();
-
-                // Abrir la ventana de edición
-                crud.editarCliente(id, nombre, telefono);
-
-                // Convertir las fechas de String a Date
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                Date parsedFechaEncargo = dateFormat.parse(fechaEncargo);
-                Date parsedFechaEntrega = dateFormat.parse(fechaEntrega);
-
-                crud.editarPedido(num, es, ab, parsedFechaEncargo, parsedFechaEntrega);
-            } catch (ParseException ex) {
-                ex.printStackTrace();
-                JOptionPane.showMessageDialog(null, "Error al convertir las fechas: " + ex.getMessage(), "Mensaje", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-           
-        }else{
-            if(buscarPresionado == true){
-                System.out.println("se presiono buscar true");
-                int filaSeleccionada2 = tablita1.getSelectedRow();
-                if (filaSeleccionada2 != -1) {
-                    // Obtener datos de la fila seleccionada
-                    int idc = Integer.parseInt(tablita1.getValueAt(filaSeleccionada2, 0).toString());
-                    String nombrec = (String) tablita1.getValueAt(filaSeleccionada2, 1);
-                    String codu = (String) tablita1.getValueAt(filaSeleccionada2, 2);
-                    String tipo = (String) tablita1.getValueAt(filaSeleccionada2, 3);
-                    String car = (String) tablita1.getValueAt(filaSeleccionada2, 4);
-                    // Abrir la ventana de edición
-                    crud.editarColegio(idc, nombrec);
-                    crud.editarUniforme(codu, idc, tipo, car);
-                }
-            } else{
-                    if(buscarventa == true){
-                    System.out.println("se presiono buscar v");
-                    int filaSeleccionada3 = tablita2.getSelectedRow();
-                    if (filaSeleccionada3 != -1) {
-                        // Obtener datos de la fila seleccionada
-                       
-                        String cod = (String) tablita2.getValueAt(filaSeleccionada3, 0);
-                        int num = Integer.parseInt(tablita2.getValueAt(filaSeleccionada3, 1).toString());
-                        int id = Integer.parseInt(tablita2.getValueAt(filaSeleccionada3, 2).toString());
-                        double monto = Double.parseDouble(tablita2.getValueAt(filaSeleccionada3, 3).toString());
-                        
-                        // Abrir la ventana de edición
-                        crud.editarVenta(cod, num, id, monto);
-                        
-                    }
-                }
-            }
-        }
-        Buscar_id.setText("Ingresar id del cliente");
-        Buscacolegio.setText("Ingresar id del Colegio");
-        Buscafact.setText("Ingresar codigo de factura");
-        
-        DefaultTableModel modelo = (DefaultTableModel) tablita.getModel();
-        modelo.setRowCount(0);
-
-        setVisible(false);
-
-    }//GEN-LAST:event_ModificarActionPerformed
-
     private void Buscar_idMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Buscar_idMousePressed
         if(Buscar_id.getText().equals("Ingresar id del cliente"))
         Buscar_id.setText("");
@@ -695,6 +609,91 @@ public class Tablas extends javax.swing.JFrame {
     private void BuscafactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscafactActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BuscafactActionPerformed
+
+    private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
+        System.out.println("Se presionó el botón modificar");
+        if(guardar1Presionado == true){
+            int filaSeleccionada = tablita.getSelectedRow();
+            if (filaSeleccionada != -1) {
+                try {
+                    // Obtener datos de la fila seleccionada
+                    int id = Integer.parseInt(tablita.getValueAt(filaSeleccionada, 0).toString());
+                    String nombre = (String) tablita.getValueAt(filaSeleccionada, 1);
+                    String telefono = (String) tablita.getValueAt(filaSeleccionada, 2);
+                    int num = Integer.parseInt(tablita.getValueAt(filaSeleccionada, 3).toString());
+                    String es = (String) tablita.getValueAt(filaSeleccionada, 4);
+                    double ab = Double.parseDouble(tablita.getValueAt(filaSeleccionada, 5).toString());
+
+                    // Convertir la fecha de encargo y fecha de entrega a String
+                    String fechaEncargo = tablita.getValueAt(filaSeleccionada, 6).toString();
+                    String fechaEntrega = tablita.getValueAt(filaSeleccionada, 7).toString();
+
+                    // Abrir la ventana de edición
+                    crud.editarCliente(id, nombre, telefono);
+
+                    // Convertir las fechas de String a Date
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                    Date parsedFechaEncargo = dateFormat.parse(fechaEncargo);
+                    Date parsedFechaEntrega = dateFormat.parse(fechaEntrega);
+
+                    crud.editarPedido(num, es, ab, parsedFechaEncargo, parsedFechaEntrega);
+                } catch (ParseException ex) {
+                    ex.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Error al convertir las fechas: " + ex.getMessage(), "Mensaje", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+
+        }else{
+            if(buscarPresionado == true){
+                System.out.println("se presiono buscar true");
+                int filaSeleccionada2 = tablita1.getSelectedRow();
+                if (filaSeleccionada2 != -1) {
+                    // Obtener datos de la fila seleccionada
+                    int idc = Integer.parseInt(tablita1.getValueAt(filaSeleccionada2, 0).toString());
+                    String nombrec = (String) tablita1.getValueAt(filaSeleccionada2, 1);
+                    String codu = (String) tablita1.getValueAt(filaSeleccionada2, 2);
+                    String tipo = (String) tablita1.getValueAt(filaSeleccionada2, 3);
+                    String car = (String) tablita1.getValueAt(filaSeleccionada2, 4);
+                    // Abrir la ventana de edición
+                    crud.editarColegio(idc, nombrec);
+                    crud.editarUniforme(codu, idc, tipo, car);
+                }
+            } else{
+                if(buscarventa == true){
+                    System.out.println("se presiono buscar v");
+                    int filaSeleccionada3 = tablita2.getSelectedRow();
+                    if (filaSeleccionada3 != -1) {
+                        // Obtener datos de la fila seleccionada
+
+                        String cod = (String) tablita2.getValueAt(filaSeleccionada3, 0);
+                        int num = Integer.parseInt(tablita2.getValueAt(filaSeleccionada3, 1).toString());
+                        int id = Integer.parseInt(tablita2.getValueAt(filaSeleccionada3, 2).toString());
+                        double monto = Double.parseDouble(tablita2.getValueAt(filaSeleccionada3, 3).toString());
+
+                        // Abrir la ventana de edición
+                        crud.editarVenta(cod, num, id, monto);
+
+                    }
+                }
+            }
+        }
+        Buscar_id.setText("Ingresar id del cliente");
+        Buscacolegio.setText("Ingresar id del Colegio");
+        Buscafact.setText("Ingresar codigo de factura");
+
+        DefaultTableModel modelo = (DefaultTableModel) tablita.getModel();
+        modelo.setRowCount(0);
+
+        setVisible(false);
+    }//GEN-LAST:event_ModificarActionPerformed
+
+    private void ModificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModificarMouseExited
+        Modificar.setBackground(new java.awt.Color(18,90,173));
+    }//GEN-LAST:event_ModificarMouseExited
+
+    private void ModificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModificarMouseEntered
+        Modificar.setBackground(new java.awt.Color(21, 101, 192));
+    }//GEN-LAST:event_ModificarMouseEntered
     
 
     /**

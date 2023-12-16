@@ -5,7 +5,8 @@
 package vistas.ingresar;
 
 import sql.crudsql;
-
+import vistas.tablasVistas.tablas;
+import java.sql.ResultSet;
 
 /**
  *
@@ -66,6 +67,8 @@ public class IngresarProveedor extends javax.swing.JFrame {
         jSeparator21 = new javax.swing.JSeparator();
         tipo = new javax.swing.JComboBox<>();
         uni = new javax.swing.JComboBox<>();
+        ta = new javax.swing.JLabel();
+        ta1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(400, 140));
@@ -255,6 +258,24 @@ public class IngresarProveedor extends javax.swing.JFrame {
 
         uni.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metros", "Piezas", "Tubos" }));
 
+        ta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/tabla.png"))); // NOI18N
+        ta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ta.setFocusable(false);
+        ta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                taMouseClicked(evt);
+            }
+        });
+
+        ta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/tabla.png"))); // NOI18N
+        ta1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ta1.setFocusable(false);
+        ta1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ta1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelColegioLayout = new javax.swing.GroupLayout(PanelColegio);
         PanelColegio.setLayout(PanelColegioLayout);
         PanelColegioLayout.setHorizontalGroup(
@@ -286,20 +307,18 @@ public class IngresarProveedor extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
-                                .addComponent(Title)
-                                .addGap(60, 60, 60))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
                                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
                                 .addComponent(Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(94, 94, 94)))))
+                                .addGap(94, 94, 94))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
+                                .addComponent(Title)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ta)
+                                .addGap(31, 31, 31)))))
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelColegioLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(Title1)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(PanelColegioLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,8 +351,14 @@ public class IngresarProveedor extends javax.swing.JFrame {
                                             .addComponent(Text17)
                                             .addGap(147, 147, 147)))
                                     .addComponent(uni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(1233, 1233, 1233))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(1233, 1233, 1233))
+                    .addGroup(PanelColegioLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(Title1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ta1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(PanelColegioLayout.createSequentialGroup()
                     .addGap(52, 52, 52)
@@ -349,12 +374,14 @@ public class IngresarProveedor extends javax.swing.JFrame {
                     .addGroup(PanelColegioLayout.createSequentialGroup()
                         .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanelColegioLayout.createSequentialGroup()
-                                .addComponent(Title1)
                                 .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(PanelColegioLayout.createSequentialGroup()
-                                        .addGap(215, 215, 215)
+                                        .addGap(247, 247, 247)
                                         .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(PanelColegioLayout.createSequentialGroup()
+                                        .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(Title1)
+                                            .addComponent(ta1))
                                         .addGap(27, 27, 27)
                                         .addComponent(Text13)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -386,7 +413,9 @@ public class IngresarProveedor extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jSeparator21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(PanelColegioLayout.createSequentialGroup()
-                                .addComponent(Title)
+                                .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Title)
+                                    .addComponent(ta))
                                 .addGap(18, 18, 18)
                                 .addComponent(Text3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -532,6 +561,39 @@ public class IngresarProveedor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nitActionPerformed
 
+    private void taMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_taMouseClicked
+        System.out.println("generar tabla");
+        tablas ventana = new tablas();
+        ResultSet resultados = crud.buscar("Proveedor");
+        String[] nombresColumnas = {
+            "Nit",
+            "Nombre",
+            "Nom_contacto",
+            "Telefono",
+            "Direccion"
+        };
+        // Llamar al método actualizarTabla con los resultados y nombres de columnas
+        ventana.actualizarTabla(resultados, nombresColumnas);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_taMouseClicked
+
+    private void ta1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ta1MouseClicked
+         System.out.println("generar tabla");
+        tablas ventana = new tablas();
+        ResultSet resultados = crud.buscar("materia");
+        String[] nombresColumnas = {
+            "Codigo",
+            "Tipo",
+            "Descripcion",
+            "Cantidad_Exist",
+            "Unidad_Medida"
+        };
+
+        // Llamar al método actualizarTabla con los resultados y nombres de columnas
+        ventana.actualizarTabla(resultados, nombresColumnas);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_ta1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -601,6 +663,8 @@ public class IngresarProveedor extends javax.swing.JFrame {
     private javax.swing.JTextField nit;
     private javax.swing.JTextField nombre;
     private javax.swing.JTextField nomcontacto;
+    public javax.swing.JLabel ta;
+    public javax.swing.JLabel ta1;
     private javax.swing.JTextField telefono;
     private javax.swing.JComboBox<String> tipo;
     private javax.swing.JComboBox<String> uni;

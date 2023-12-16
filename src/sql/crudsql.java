@@ -335,6 +335,20 @@ public ResultSet buscarPedidoPorNumero(int numPedido) {
         return null;
     }
 }
+    public ResultSet buscar(String tabla) {
+    try {
+        Connection conexion = conectar();
+        String sql = "SELECT * FROM " + tabla;
+        PreparedStatement ps = conexion.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        return rs;
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
+    }
+}
+
+
     
     public void insertarUtiliza(String codProd, int codMateria) {
         try {
