@@ -35,10 +35,7 @@ INSERT INTO COLEGIO (Id, Nombre) VALUES (5, 'Colegio E');
 INSERT INTO COLEGIO (Id, Nombre) VALUES (6, 'Colegio F');
 INSERT INTO COLEGIO (Id, Nombre) VALUES (7, 'Colegio G');
 
--- Insertar dos registros de ejemplo
-INSERT INTO UNIFORME (Codigo, Id_Colegio, Tipo, Caracteristicas) VALUES
-    ('U3', 3, 'Deportivo', 'Negro-Poliéster-Sí'),
-    ('U4', 4, 'Diario', 'Blanco-Algodón-No');
+
 
 -- Insertar dos registros de ejemplo en la tabla PRODUCTO_TERMINADO
 INSERT INTO PRODUCTO_TERMINADO (Codigo, Num_pedido, Descripcion, Cantidad_Existente, Sexo, Precio_venta, Talla, Medidas) VALUES
@@ -46,6 +43,11 @@ INSERT INTO PRODUCTO_TERMINADO (Codigo, Num_pedido, Descripcion, Cantidad_Existe
     ('PT4', 104, 'Camiseta', 8, 'Hombre', 120000, 'M', '36-38'),
     ('PT5', 105, 'Corbata', 8, 'Hombre', 20000, 'M', '36-38'),
     ('PT6', 106, 'Jeans', 8, 'Hombre', 40000, 'M', '36-38');
+
+-- Insertar dos registros de ejemplo
+INSERT INTO UNIFORME (Codigo, Id_Colegio, Tipo, Caracteristicas) VALUES
+    ('U3', 3, 'Deportivo', 'Negro-Poliéster-Sí'),
+    ('U4', 4, 'Diario', 'Blanco-Algodón-No');
 
 -- Insertar dos registros de ejemplo en la tabla INVENTARIO
 INSERT INTO INVENTARIO (Codigo, Cantidad_Existente, Descripcion) VALUES

@@ -180,8 +180,7 @@ public class crudsql extends conexionsql {
         JOptionPane.showMessageDialog(null, "El registro no se guardó " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
     }
 }
-
-
+   
 
 
 
@@ -688,6 +687,31 @@ public ResultSet buscarPedidoPorNumero(int numPedido) {
         JOptionPane.showMessageDialog(null, "Error al editar registro en inventario: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
     }
 }
+    
+    public void editarCodigoProductoEnUniforme(int numPedido, String nuevoCodigoProducto) {
+        try (Connection conexion = conectar()) {
+            String sqlUpdate = "UPDATE UNIFORME "
+                             + "SET Codigo_Prod = ? "
+                             + "FROM PEDIDO P "
+                             + "JOIN PRODUCTO_TERMINADO PT ON P.Num_pedido = PT.Num_pedido "
+                             + "WHERE P.Num_pedido = ? AND P.Articulo = UNIFORME.Codigo";
+
+            try (PreparedStatement ps = conexion.prepareStatement(sqlUpdate)) {
+                ps.setString(1, nuevoCodigoProducto);
+                ps.setInt(2, numPedido);
+
+                int filasAfectadas = ps.executeUpdate();
+
+                if (filasAfectadas > 0) {
+                    JOptionPane.showMessageDialog(null, "Código de producto en UNIFORME actualizado correctamente", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se pudo actualizar el código de producto en UNIFORME", "Mensaje", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al actualizar el código de producto en UNIFORME: " + e.getMessage(), "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
 
     //////////////////////ELIMINAR////////////////////////////////////////////////////

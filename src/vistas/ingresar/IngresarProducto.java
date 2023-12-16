@@ -399,6 +399,7 @@ public class IngresarProducto extends javax.swing.JFrame {
            crud.insertarProducto(codpro.getText(), nump, desc.getText(), spiner, item, ab, item2, med.getText() );
            crud.insertarInventario(codpro.getText(), spiner, desc.getText());
            crud.insertarUtiliza(codpro.getText(), materia);
+           crud.editarCodigoProductoEnUniforme(nump, codpro.getText());
            
            codpro.setText("Ingresar codigo del producto");
            numped.setText("Ingresar numero de pedido");
