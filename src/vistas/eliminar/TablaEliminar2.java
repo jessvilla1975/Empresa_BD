@@ -107,7 +107,7 @@ public class TablaEliminar2 extends javax.swing.JFrame {
         tablauniforme = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(430, 180));
+        setLocation(new java.awt.Point(430, 140));
         setUndecorated(true);
         setResizable(false);
 
@@ -342,7 +342,7 @@ public class TablaEliminar2 extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelColegio, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+            .addComponent(PanelColegio, javax.swing.GroupLayout.PREFERRED_SIZE, 780, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

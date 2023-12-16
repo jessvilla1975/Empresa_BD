@@ -62,7 +62,7 @@ public class IngresarProducto extends javax.swing.JFrame {
         codmateria = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(400, 180));
+        setLocation(new java.awt.Point(400, 140));
         setUndecorated(true);
         setResizable(false);
 
@@ -294,7 +294,7 @@ public class IngresarProducto extends javax.swing.JFrame {
                             .addComponent(jSeparator21, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(codmateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(195, 195, 195)))
-                .addComponent(jSeparator12, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
         PanelColegioLayout.setVerticalGroup(

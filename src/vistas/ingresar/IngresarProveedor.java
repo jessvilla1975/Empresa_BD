@@ -68,7 +68,7 @@ public class IngresarProveedor extends javax.swing.JFrame {
         uni = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(400, 180));
+        setLocation(new java.awt.Point(400, 140));
         setUndecorated(true);
         setResizable(false);
 
@@ -318,7 +318,7 @@ public class IngresarProveedor extends javax.swing.JFrame {
                                         .addComponent(tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jSeparator18, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(14, 14, 14)
-                                .addComponent(jSeparator12, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
+                                .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                             .addGroup(PanelColegioLayout.createSequentialGroup()
                                 .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

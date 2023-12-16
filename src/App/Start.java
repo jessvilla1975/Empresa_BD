@@ -2,15 +2,16 @@
 package App;
 
 
-import vistas.menus.MenuPrincipal;
-import sql.crudsql;
+import login.Login;
+
+
 
  
 public class Start {
 
     
     public static void main(String[] args) {
-      MenuPrincipal abrir=new MenuPrincipal();
+      Login abrir=new Login();
       abrir.setVisible(true);
      
       

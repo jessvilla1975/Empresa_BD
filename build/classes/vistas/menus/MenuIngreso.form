@@ -241,7 +241,7 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="location" type="java.awt.Point" editor="org.netbeans.beaninfo.editors.PointEditor">
-      <Point value="[163, 150]"/>
+      <Point value="[163, 110]"/>
     </Property>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>

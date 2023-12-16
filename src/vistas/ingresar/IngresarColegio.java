@@ -55,7 +55,7 @@ public class IngresarColegio extends javax.swing.JFrame {
         jSeparator7 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(400, 180));
+        setLocation(new java.awt.Point(400, 140));
         setUndecorated(true);
         setResizable(false);
 

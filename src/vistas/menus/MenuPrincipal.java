@@ -6,17 +6,24 @@ package vistas.menus;
 import vistas.menus.MenuEliminar;
 import vistas.menus.MenuActualizar;
 import AppPackage.AnimationClass;
+import login.Login;
+import login.usersLogin;
 /**
  *
  * @author Jess
  */
 public class MenuPrincipal extends javax.swing.JFrame {
+    
+    usersLogin user = new usersLogin();
+  
+    
 
     /**
      * Creates new form MenuPrincipal
      */
     public MenuPrincipal() {
         initComponents();
+        
     }
 
     /**
@@ -38,11 +45,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         BotonEliminar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         icon_menuprincipal = new javax.swing.JLabel();
+        volver = new javax.swing.JButton();
         IconTextil = new javax.swing.JLabel();
         LabelBienvenido = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        welcome = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(163, 150));
+        setLocation(new java.awt.Point(163, 110));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -163,6 +173,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         Panelmenu.add(icon_menuprincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 170, -1));
 
+        volver.setBackground(new java.awt.Color(21, 101, 192));
+        volver.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        volver.setForeground(new java.awt.Color(255, 255, 255));
+        volver.setText("Volver");
+        volver.setBorder(null);
+        volver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        volver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                volverMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                volverMouseExited(evt);
+            }
+        });
+        volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volverActionPerformed(evt);
+            }
+        });
+        Panelmenu.add(volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, 140, 30));
+
         jPanel1.add(Panelmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 230, 500));
 
         IconTextil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/textil.png"))); // NOI18N
@@ -172,7 +203,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
         LabelBienvenido.setBackground(new java.awt.Color(255, 153, 153));
         LabelBienvenido.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         LabelBienvenido.setText("BIENVENIDOS A NUESTRA APP");
-        jPanel1.add(LabelBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, -1, -1));
+        jPanel1.add(LabelBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/usuario.png"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, -1, -1));
+
+        welcome.setEditable(false);
+        welcome.setBackground(new java.awt.Color(255, 255, 255));
+        welcome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        welcome.setBorder(null);
+        welcome.setDisabledTextColor(new java.awt.Color(102, 102, 102));
+        welcome.setEnabled(false);
+        welcome.setFocusable(false);
+        welcome.setRequestFocusEnabled(false);
+        welcome.setSelectionColor(new java.awt.Color(0, 0, 0));
+        jPanel1.add(welcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 10, 130, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -262,6 +307,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
         menus.jButtonXRight(-250, 0, 10, 5, BotonConsular );
     }//GEN-LAST:event_icon_menuprincipalMouseClicked
 
+    private void volverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseEntered
+        volver.setBackground(new java.awt.Color(153, 153, 255));
+    }//GEN-LAST:event_volverMouseEntered
+
+    private void volverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_volverMouseExited
+        volver.setBackground(new java.awt.Color(21, 101, 192));
+    }//GEN-LAST:event_volverMouseExited
+
+    private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
+        System.out.println("Se presionó el botón volver");
+        Login lo = new Login();
+        lo.setVisible(true);
+        setVisible(false);
+        
+
+    }//GEN-LAST:event_volverActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -308,7 +370,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel icon_menuprincipal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton volver;
+    public javax.swing.JTextField welcome;
     // End of variables declaration//GEN-END:variables
 }

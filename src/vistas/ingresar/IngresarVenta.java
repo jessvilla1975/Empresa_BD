@@ -53,7 +53,7 @@ public class IngresarVenta extends javax.swing.JFrame {
         jSeparator7 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(400, 180));
+        setLocation(new java.awt.Point(400, 140));
         setUndecorated(true);
         setResizable(false);
 
@@ -145,7 +145,8 @@ public class IngresarVenta extends javax.swing.JFrame {
         Guardar.setBackground(new java.awt.Color(153, 153, 255));
         Guardar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Guardar.setForeground(new java.awt.Color(255, 255, 255));
-        Guardar.setText("GUARDAR");
+        Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/carro.png"))); // NOI18N
+        Guardar.setText("FACTURAR");
         Guardar.setBorder(null);
         Guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Guardar.addMouseListener(new java.awt.event.MouseAdapter() {

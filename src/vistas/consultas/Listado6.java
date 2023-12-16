@@ -43,7 +43,7 @@ public class Listado6 extends javax.swing.JFrame {
         total = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(430, 180));
+        setLocation(new java.awt.Point(430, 140));
         setUndecorated(true);
         setResizable(false);
 
@@ -73,7 +73,7 @@ public class Listado6 extends javax.swing.JFrame {
         });
 
         Text4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Text4.setText("LISTADO TOTAL DE VENTAS DE LA EMPRESA");
+        Text4.setText("          TOTAL DE VENTAS DE LA EMPRESA");
 
         total.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         total.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -89,7 +89,7 @@ public class Listado6 extends javax.swing.JFrame {
         PanelColegioLayout.setHorizontalGroup(
             PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
-                .addContainerGap(190, Short.MAX_VALUE)
+                .addContainerGap(221, Short.MAX_VALUE)
                 .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jSeparator1)
                     .addComponent(Text4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))

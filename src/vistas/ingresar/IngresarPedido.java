@@ -64,7 +64,7 @@ public class IngresarPedido extends javax.swing.JFrame {
         jSeparator22 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(400, 180));
+        setLocation(new java.awt.Point(400, 140));
         setUndecorated(true);
         setResizable(false);
 
@@ -276,7 +276,7 @@ public class IngresarPedido extends javax.swing.JFrame {
                                         .addComponent(estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jSeparator18, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(14, 14, 14)
-                                .addComponent(jSeparator12, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                 .addGap(1233, 1233, 1233))
                             .addGroup(PanelColegioLayout.createSequentialGroup()
                                 .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

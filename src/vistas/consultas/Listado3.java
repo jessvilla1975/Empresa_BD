@@ -76,7 +76,7 @@ public class Listado3 extends javax.swing.JFrame {
         tablalist = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(430, 180));
+        setLocation(new java.awt.Point(430, 140));
         setUndecorated(true);
         setResizable(false);
 

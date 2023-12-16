@@ -202,7 +202,7 @@ public class MenuEliminar extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(163, 150));
+        setLocation(new java.awt.Point(163, 110));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -243,6 +243,7 @@ public class MenuEliminar extends javax.swing.JFrame {
         tabla1.setBackground(new java.awt.Color(51, 51, 51));
         tabla1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tabla1.setForeground(new java.awt.Color(255, 255, 255));
+        tabla1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/cliente.png"))); // NOI18N
         tabla1.setText("Cliente - Pedido");
         tabla1.setAlignmentY(0.0F);
         tabla1.setBorder(null);
@@ -269,6 +270,7 @@ public class MenuEliminar extends javax.swing.JFrame {
         tabla2.setBackground(new java.awt.Color(51, 51, 51));
         tabla2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tabla2.setForeground(new java.awt.Color(255, 255, 255));
+        tabla2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/carro.png"))); // NOI18N
         tabla2.setText("Venta");
         tabla2.setBorder(null);
         tabla2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -290,6 +292,7 @@ public class MenuEliminar extends javax.swing.JFrame {
         tabla3.setBackground(new java.awt.Color(51, 51, 51));
         tabla3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tabla3.setForeground(new java.awt.Color(255, 255, 255));
+        tabla3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/uniforme.png"))); // NOI18N
         tabla3.setText("Colegio - Uniforme");
         tabla3.setBorder(null);
         tabla3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -311,6 +314,7 @@ public class MenuEliminar extends javax.swing.JFrame {
         tabla4.setBackground(new java.awt.Color(51, 51, 51));
         tabla4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         tabla4.setForeground(new java.awt.Color(255, 255, 255));
+        tabla4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/materia.png"))); // NOI18N
         tabla4.setText("Proveedor - Materia");
         tabla4.setBorder(null);
         tabla4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
