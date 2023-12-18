@@ -16,8 +16,6 @@ JOIN PEDIDO p ON c.ID = p.Id_Cliente
 JOIN PRODUCTO_TERMINADO pt ON p.Num_pedido = pt.Num_pedido
 WHERE p.Estado <> 'Entregado'
 
---3 //revisar
-
 
 --4 Dado un colegio las características de su uniforme
 SELECT c.Nombre, u.Tipo, u.Caracteristicas
