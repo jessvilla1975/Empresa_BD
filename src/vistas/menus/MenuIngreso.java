@@ -9,7 +9,7 @@ import vistas.ingresar.IngresarProveedor;
 import vistas.ingresar.IngresarProducto;
 import vistas.ingresar.IngresarVenta;
 import vistas.ingresar.IngresarColegio;
-import vistas.*;
+
 
 /**
  *

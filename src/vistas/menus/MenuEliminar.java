@@ -8,7 +8,7 @@ import vistas.eliminar.ColegioUniforme;
 import vistas.eliminar.ProveedorMateria;
 import vistas.eliminar.Venta;
 import vistas.eliminar.ClientePedido;
-import vistas.*;
+
 
 /**
  *
