@@ -8,7 +8,7 @@ public class conexionsql {
     Connection conn=null;
     String url="jdbc:postgresql://localhost/empresa";
     String usuario="postgres";
-    String clave="1111";
+    String clave="Manuel3312";
     
     public Connection conectar(){
         try {
