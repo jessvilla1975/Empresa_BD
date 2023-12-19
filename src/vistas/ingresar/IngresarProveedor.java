@@ -498,7 +498,7 @@ public class IngresarProveedor extends javax.swing.JFrame {
         System.out.println("Se presionó el botón guardar");
         int nump = Integer.parseInt(nit.getText());
         int codm = Integer.parseInt(codigo.getText());
-        int cant = Integer.parseInt(codigo.getText());
+        int cant = Integer.parseInt(cantidad.getText());
         String item = (String) tipo.getSelectedItem();
         String item2 = (String) uni.getSelectedItem();
       

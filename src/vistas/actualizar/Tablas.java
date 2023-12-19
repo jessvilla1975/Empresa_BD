@@ -732,7 +732,15 @@ public class Tablas extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) tablita.getModel();
         modelo.setRowCount(0);
 
-        setVisible(false);
+        DefaultTableModel modelo2 = (DefaultTableModel) tablita1.getModel();
+        modelo2.setRowCount(0);
+
+        DefaultTableModel modelo3 = (DefaultTableModel) tablita2.getModel();
+        modelo3.setRowCount(0);
+
+
+
+        //setVisible(false);
     }//GEN-LAST:event_ModificarActionPerformed
 
     private void ModificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModificarMouseExited

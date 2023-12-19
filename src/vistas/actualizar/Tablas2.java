@@ -601,6 +601,9 @@ public class Tablas2 extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) tablaprodu.getModel();
         modelo.setRowCount(0);
 
+        DefaultTableModel modelo2 = (DefaultTableModel) tablamateria.getModel();
+        modelo2.setRowCount(0);
+
         }
 
     }//GEN-LAST:event_ModificarActionPerformed
