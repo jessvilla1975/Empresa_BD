@@ -60,8 +60,8 @@ INSERT INTO INVENTARIO (Codigo, Cantidad_Existente, Descripcion) VALUES
 
 -- Insertar dos registros en la tabla PROVEEDOR
 INSERT INTO PROVEEDOR (Nit, Nombre, Nom_contacto, Telefono, Direccion) VALUES
-    (3, 'Telas de Calidad', 'Contacto3', '555555555', 'Dirección3'),
-    (4, 'Botones Rápidos', 'Contacto4', '111111111', 'Dirección4');
+    (3, 'Telas de Calidad', 'Kim Kardaishan', '555-1111', 'Dirección3'),
+    (4, 'Botones Rápidos', 'Vin Diesel', '555-1010', 'Dirección4');
 
 -- Insertar dos registros en la tabla materia
 INSERT INTO MATERIA (Codigo, Tipo, Descripcion, Cantidad_Exist, Unidad_Medida) VALUES
@@ -84,5 +84,99 @@ INSERT INTO UTILIZA (Cod_prod, Cod_Materia)
 VALUES
     ('PT3', 503),
     ('PT4', 504);
+-- pruebas
+-- INSERTAR DATOS CLIENTE
+INSERT INTO CLIENTE (ID, NOMBRE, TELEFONO) VALUES (10, 'Luis Hernandez', '555-3456');
+
+-- INSERTAR DATOS PEDIDO
+INSERT INTO PEDIDO (Num_pedido, Id_Cliente, Estado, Abono, Fecha_Encargo, Fecha_Entrega, articulo) VALUES
+    (110, 10, 'En proceso', 25000, '2023-08-20', '2023-08-30', 'Prenda4');
+
+-- INSERTAR DATOS COLEGIO
+INSERT INTO COLEGIO (Id, Nombre) VALUES (8, 'Colegio H');
+
+-- Insertar un registro de ejemplo en la tabla PRODUCTO_TERMINADO
+INSERT INTO PRODUCTO_TERMINADO (Codigo, Num_pedido, Descripcion, Cantidad_Existente, Sexo, Precio_venta, Talla, Medidas) VALUES
+    ('PT10', 110, 'Falda', 10, 'Mujer', 80000, 'S', '34-36');
+
+-- Insertar un registro de ejemplo en la tabla UNIFORME
+INSERT INTO UNIFORME (Codigo, Id_Colegio, Tipo, Caracteristicas) VALUES
+    ('U6', 8, 'Deportivo', 'Azul-Poliéster-Sí');
+
+-- Insertar un registro de ejemplo en la tabla INVENTARIO
+INSERT INTO INVENTARIO (Codigo, Cantidad_Existente, Descripcion) VALUES
+    ('PT10', 10, 'Falda');
+
+-- Insertar un registro en la tabla PROVEEDOR
+INSERT INTO PROVEEDOR (Nit, Nombre, Nom_contacto, Telefono, Direccion) VALUES
+    (6, 'Telas Elegantes', 'Maria Lopez', '555-5555', 'Dirección5');
+
+-- Insertar un registro en la tabla MATERIA
+INSERT INTO MATERIA (Codigo, Tipo, Descripcion, Cantidad_Exist, Unidad_Medida) VALUES
+    (506, 'Cierre', 'Cierres dorados', 20, 'Unidades');
+
+-- Insertar un registro en la tabla VENTA
+INSERT INTO VENTA (Codigo_Fact, Num_pedido, Id_Cliente, Monto_Final) VALUES
+    ('VF3', 110, 10, 80000);
+
+-- Insertar un registro de ejemplo en la tabla DESCUENTA
+INSERT INTO DESCUENTA (Codigo_Fact, CODIGO) VALUES
+    ('VF3', 'PT10');
+
+-- Insertar un registro en la tabla SUMINISTRA
+INSERT INTO SUMINISTRA (Nit_Proveedor, Codigo_Materia) VALUES
+    (6, 506);
+
+-- Insertar un registro en la tabla UTILIZA
+INSERT INTO UTILIZA (Cod_prod, Cod_Materia) VALUES
+    ('PT10', 506);
+
+--pruebas 2
+-- INSERTAR DATOS CLIENTE
+INSERT INTO CLIENTE (ID, NOMBRE, TELEFONO) VALUES (11, 'Maria Arjona', '555-6789');
+
+-- INSERTAR DATOS PEDIDO
+INSERT INTO PEDIDO (Num_pedido, Id_Cliente, Estado, Abono, Fecha_Encargo, Fecha_Entrega, articulo) VALUES
+    (111, 11, 'En proceso', 30000, '2023-09-05', '2023-09-15', 'Prenda5');
+
+-- INSERTAR DATOS COLEGIO
+INSERT INTO COLEGIO (Id, Nombre) VALUES (9, 'Colegio I');
+
+-- Insertar un registro de ejemplo en la tabla PRODUCTO_TERMINADO
+INSERT INTO PRODUCTO_TERMINADO (Codigo, Num_pedido, Descripcion, Cantidad_Existente, Sexo, Precio_venta, Talla, Medidas) VALUES
+    ('PT11', 111, 'Pantalón', 12, 'Hombre', 60000, 'M', '32-34');
+
+-- Insertar un registro de ejemplo en la tabla UNIFORME
+INSERT INTO UNIFORME (Codigo, Id_Colegio, Tipo, Caracteristicas) VALUES
+    ('U7', 9, 'Diario', 'Azul-Algodón-Sí');
+
+-- Insertar un registro de ejemplo en la tabla INVENTARIO
+INSERT INTO INVENTARIO (Codigo, Cantidad_Existente, Descripcion) VALUES
+    ('PT11', 12, 'Pantalón');
+
+-- Insertar un registro en la tabla PROVEEDOR
+INSERT INTO PROVEEDOR (Nit, Nombre, Nom_contacto, Telefono, Direccion) VALUES
+    (7, 'Telas Elegantes', 'Juan Pérez', '555-7777', 'Dirección7');
+
+-- Insertar un registro en la tabla MATERIA
+INSERT INTO MATERIA (Codigo, Tipo, Descripcion, Cantidad_Exist, Unidad_Medida) VALUES
+    (507, 'Botones', 'Botones dorados', 25, 'Unidades');
+
+-- Insertar un registro en la tabla VENTA
+INSERT INTO VENTA (Codigo_Fact, Num_pedido, Id_Cliente, Monto_Final) VALUES
+    ('VF4', 111, 11, 60000);
+
+-- Insertar un registro de ejemplo en la tabla DESCUENTA
+INSERT INTO DESCUENTA (Codigo_Fact, CODIGO) VALUES
+    ('VF4', 'PT11');
+
+-- Insertar un registro en la tabla SUMINISTRA
+INSERT INTO SUMINISTRA (Nit_Proveedor, Codigo_Materia) VALUES
+    (7, 507);
+
+-- Insertar un registro en la tabla UTILIZA
+INSERT INTO UTILIZA (Cod_prod, Cod_Materia) VALUES
+    ('PT11', 507);
+
 
 
