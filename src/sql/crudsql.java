@@ -381,6 +381,19 @@ public ResultSet buscarPedidoPorNumero(int numPedido) {
         return null;
     }
 }
+    public ResultSet buscarProductoTerminadoEnInventarioTabla() {
+    try {
+        Connection conexion = conectar();
+        String sql = "SELECT * FROM producto_terminado INNER JOIN inventario ON producto_terminado.Codigo = inventario.Codigo";
+
+        PreparedStatement ps = conexion.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        return rs;
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al buscar producto terminado en inventario: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+        return null;
+    }
+}
     
     
 

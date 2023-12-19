@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import vistas.tablasVistas.tablas;
 
 /**
  *
@@ -151,6 +152,9 @@ public class Tablas2 extends javax.swing.JFrame {
         bus2 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tablapro = new javax.swing.JTable();
+        ta = new javax.swing.JLabel();
+        ta1 = new javax.swing.JLabel();
+        ta2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(430, 140));
@@ -394,6 +398,33 @@ public class Tablas2 extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tablapro);
 
+        ta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/tabla.png"))); // NOI18N
+        ta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ta.setFocusable(false);
+        ta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                taMouseClicked(evt);
+            }
+        });
+
+        ta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/tabla.png"))); // NOI18N
+        ta1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ta1.setFocusable(false);
+        ta1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ta1MouseClicked(evt);
+            }
+        });
+
+        ta2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/tabla.png"))); // NOI18N
+        ta2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ta2.setFocusable(false);
+        ta2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ta2MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelColegioLayout = new javax.swing.GroupLayout(PanelColegio);
         PanelColegio.setLayout(PanelColegioLayout);
         PanelColegioLayout.setHorizontalGroup(
@@ -416,15 +447,26 @@ public class Tablas2 extends javax.swing.JFrame {
                                         .addComponent(Buscamat, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(Text5))
                                     .addGap(375, 375, 375))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanelColegioLayout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(bus1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(PanelColegioLayout.createSequentialGroup()
+                                        .addComponent(bus2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(ta2))
+                                    .addGroup(PanelColegioLayout.createSequentialGroup()
+                                        .addGap(2, 2, 2)
+                                        .addComponent(bus1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(ta1)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(bus, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(bus2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 89, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ta)
+                                .addGap(52, 52, 52))))
                     .addComponent(jScrollPane1)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane3))
@@ -432,44 +474,47 @@ public class Tablas2 extends javax.swing.JFrame {
             .addGroup(PanelColegioLayout.createSequentialGroup()
                 .addGap(320, 320, 320)
                 .addComponent(Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelColegioLayout.setVerticalGroup(
             PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addGap(17, 17, 17)
                 .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
+                    .addGroup(PanelColegioLayout.createSequentialGroup()
                         .addComponent(Text3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Buscar_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(3, 3, 3)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
+                        .addComponent(Buscar_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(bus, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)))
+                        .addComponent(ta)))
+                .addGap(3, 3, 3)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
-                .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
+                .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(PanelColegioLayout.createSequentialGroup()
                         .addComponent(Text4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Buscaprove, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
-                        .addComponent(bus1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PanelColegioLayout.createSequentialGroup()
+                        .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(ta1)
+                            .addComponent(bus1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(13, 13, 13)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
+                .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(PanelColegioLayout.createSequentialGroup()
                         .addComponent(Text5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Buscamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(bus2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bus2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ta2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -483,7 +528,7 @@ public class Tablas2 extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelColegio, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+            .addComponent(PanelColegio, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -662,6 +707,59 @@ public class Tablas2 extends javax.swing.JFrame {
     private void tablaproMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaproMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_tablaproMouseClicked
+
+    private void taMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_taMouseClicked
+        System.out.println("generar tabla");
+        tablas ventana = new tablas();
+        ResultSet resultados = crud.buscar("Producto_terminado");
+        String[] nombresColumnas = {
+            "Codigo",
+            "Num_pedido",
+            "Descripcion",
+            "Cantidad_Existente",
+            "Sexo",
+            "Precio_venta",
+            "Talla",
+            "Medidas"
+        };
+
+        // Llamar al método actualizarTabla con los resultados y nombres de columnas
+        ventana.actualizarTabla(resultados, nombresColumnas);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_taMouseClicked
+
+    private void ta1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ta1MouseClicked
+        System.out.println("generar tabla");
+        tablas ventana = new tablas();
+        ResultSet resultados = crud.buscar("Proveedor");
+        String[] nombresColumnas = {
+            "Nit",
+            "Nombre",
+            "Nom_contacto",
+            "Telefono",
+            "Direccion"
+        };
+        // Llamar al método actualizarTabla con los resultados y nombres de columnas
+        ventana.actualizarTabla(resultados, nombresColumnas);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_ta1MouseClicked
+
+    private void ta2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ta2MouseClicked
+        System.out.println("generar tabla");
+        tablas ventana = new tablas();
+        ResultSet resultados = crud.buscar("materia");
+        String[] nombresColumnas = {
+            "Codigo",
+            "Tipo",
+            "Descripcion",
+            "Cantidad_Exist",
+            "Unidad_Medida"
+        };
+
+        // Llamar al método actualizarTabla con los resultados y nombres de columnas
+        ventana.actualizarTabla(resultados, nombresColumnas);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_ta2MouseClicked
     
 
     /**
@@ -694,7 +792,7 @@ public class Tablas2 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new IngresarColegio().setVisible(true);
+                new Tablas2().setVisible(true);
             }
         });
     }
@@ -717,6 +815,9 @@ public class Tablas2 extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    public javax.swing.JLabel ta;
+    public javax.swing.JLabel ta1;
+    public javax.swing.JLabel ta2;
     private javax.swing.JTable tablamateria;
     private javax.swing.JTable tablapro;
     private javax.swing.JTable tablaprodu;
