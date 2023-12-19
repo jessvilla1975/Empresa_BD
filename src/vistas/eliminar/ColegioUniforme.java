@@ -11,17 +11,18 @@ import java.sql.ResultSet;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import vistas.tablasVistas.tablas;
 
 /**
  *
  * @author Jess
  */
-public class TablaEliminar2 extends javax.swing.JFrame {
+public class ColegioUniforme extends javax.swing.JFrame {
 
     /**
      * Creates new form IngresarColegio
      */
-    public TablaEliminar2() {
+    public ColegioUniforme() {
         initComponents();
         
     }
@@ -105,6 +106,8 @@ public class TablaEliminar2 extends javax.swing.JFrame {
         bus2 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tablauniforme = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(430, 140));
@@ -271,6 +274,24 @@ public class TablaEliminar2 extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tablauniforme);
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/tabla.png"))); // NOI18N
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.setFocusable(false);
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/tabla.png"))); // NOI18N
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel2.setFocusable(false);
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelColegioLayout = new javax.swing.GroupLayout(PanelColegio);
         PanelColegio.setLayout(PanelColegioLayout);
         PanelColegioLayout.setHorizontalGroup(
@@ -285,6 +306,8 @@ public class TablaEliminar2 extends javax.swing.JFrame {
                             .addComponent(Text3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(bus1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel1)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(PanelColegioLayout.createSequentialGroup()
                         .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -293,7 +316,9 @@ public class TablaEliminar2 extends javax.swing.JFrame {
                             .addComponent(Text4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bus2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(125, 125, 125))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2)
+                        .addGap(81, 81, 81))))
             .addGroup(PanelColegioLayout.createSequentialGroup()
                 .addGap(332, 332, 332)
                 .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -317,17 +342,24 @@ public class TablaEliminar2 extends javax.swing.JFrame {
                         .addGap(3, 3, 3))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(bus1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(bus1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(PanelColegioLayout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
-                        .addComponent(Text4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BuscarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PanelColegioLayout.createSequentialGroup()
+                                .addGap(45, 45, 45)
+                                .addComponent(Text4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BuscarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2))))
                     .addComponent(bus2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -458,6 +490,32 @@ public class TablaEliminar2 extends javax.swing.JFrame {
     private void tablauniformeAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tablauniformeAncestorAdded
         // TODO add your handling code here:
     }//GEN-LAST:event_tablauniformeAncestorAdded
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        System.out.println("generar tabla");
+        tablas ventana = new tablas();
+        ResultSet resultados = crud.buscar("Colegio");
+        String[] nombresColumnas = {"ID", "NOMBRE COLEGIO"};
+        // Llamar al método actualizarTabla con los resultados y nombres de columnas
+        ventana.actualizarTabla(resultados, nombresColumnas);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        System.out.println("generar tabla");
+        tablas ventana = new tablas();
+        ResultSet resultados = crud.buscar("Uniforme");
+        String[] nombresColumnas = {
+                "Codigo",
+                "Id_Colegio",
+                "Tipo",
+                "Caracteristicas",
+                "Codigo_Prod"
+            };
+        // Llamar al método actualizarTabla con los resultados y nombres de columnas
+        ventana.actualizarTabla(resultados, nombresColumnas);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_jLabel2MouseClicked
     
 
     /**
@@ -490,7 +548,7 @@ public class TablaEliminar2 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new IngresarColegio().setVisible(true);
+                new ColegioUniforme().setVisible(true);
             }
         });
     }
@@ -504,6 +562,8 @@ public class TablaEliminar2 extends javax.swing.JFrame {
     private javax.swing.JLabel Text4;
     private javax.swing.JButton bus1;
     private javax.swing.JButton bus2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;

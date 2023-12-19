@@ -5,18 +5,19 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import sql.crudsql;
 import java.sql.ResultSet;
+import vistas.tablasVistas.tablas;
 
 
 /**
  *
  * @author Jess
  */
-public class TablaEliminar4 extends javax.swing.JFrame {
+public class ProveedorMateria extends javax.swing.JFrame {
 
     /**
      * Creates new form IngresarColegio
      */
-    public TablaEliminar4() {
+    public ProveedorMateria() {
         initComponents();
         
     }
@@ -108,6 +109,8 @@ public class TablaEliminar4 extends javax.swing.JFrame {
         bus2 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tablapro = new javax.swing.JTable();
+        ta = new javax.swing.JLabel();
+        ta1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(430, 140));
@@ -279,6 +282,24 @@ public class TablaEliminar4 extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tablapro);
 
+        ta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/tabla.png"))); // NOI18N
+        ta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ta.setFocusable(false);
+        ta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                taMouseClicked(evt);
+            }
+        });
+
+        ta1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/tabla.png"))); // NOI18N
+        ta1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ta1.setFocusable(false);
+        ta1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ta1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelColegioLayout = new javax.swing.GroupLayout(PanelColegio);
         PanelColegio.setLayout(PanelColegioLayout);
         PanelColegioLayout.setHorizontalGroup(
@@ -302,9 +323,14 @@ public class TablaEliminar4 extends javax.swing.JFrame {
                         .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanelColegioLayout.createSequentialGroup()
                                 .addGap(2, 2, 2)
-                                .addComponent(bus1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(bus2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 95, Short.MAX_VALUE))
+                                .addComponent(bus1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ta))
+                            .addGroup(PanelColegioLayout.createSequentialGroup()
+                                .addComponent(bus2, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ta1)))
+                        .addGap(0, 53, Short.MAX_VALUE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane3)))
             .addGroup(PanelColegioLayout.createSequentialGroup()
@@ -324,17 +350,20 @@ public class TablaEliminar4 extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
-                        .addComponent(bus1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(ta)
+                            .addComponent(bus1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(13, 13, 13)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
+                .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(PanelColegioLayout.createSequentialGroup()
                         .addComponent(Text5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Buscamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(bus2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bus2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ta1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -469,6 +498,39 @@ public class TablaEliminar4 extends javax.swing.JFrame {
     private void tablaproMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaproMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_tablaproMouseClicked
+
+    private void taMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_taMouseClicked
+        System.out.println("generar tabla");
+        tablas ventana = new tablas();
+        ResultSet resultados = crud.buscar("Proveedor");
+        String[] nombresColumnas = {
+            "Nit",
+            "Nombre",
+            "Nom_contacto",
+            "Telefono",
+            "Direccion"
+        };
+        // Llamar al método actualizarTabla con los resultados y nombres de columnas
+        ventana.actualizarTabla(resultados, nombresColumnas);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_taMouseClicked
+
+    private void ta1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ta1MouseClicked
+        System.out.println("generar tabla");
+        tablas ventana = new tablas();
+        ResultSet resultados = crud.buscar("materia");
+        String[] nombresColumnas = {
+            "Codigo",
+            "Tipo",
+            "Descripcion",
+            "Cantidad_Exist",
+            "Unidad_Medida"
+        };
+
+        // Llamar al método actualizarTabla con los resultados y nombres de columnas
+        ventana.actualizarTabla(resultados, nombresColumnas);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_ta1MouseClicked
     
 
     /**
@@ -501,7 +563,7 @@ public class TablaEliminar4 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new IngresarColegio().setVisible(true);
+                new ProveedorMateria().setVisible(true);
             }
         });
     }
@@ -519,6 +581,8 @@ public class TablaEliminar4 extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    public javax.swing.JLabel ta;
+    public javax.swing.JLabel ta1;
     private javax.swing.JTable tablamateria;
     private javax.swing.JTable tablapro;
     // End of variables declaration//GEN-END:variables

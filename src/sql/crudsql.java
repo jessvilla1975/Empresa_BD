@@ -201,6 +201,13 @@ public class crudsql extends conexionsql {
     }
 }
     
+    
+    
+    
+    
+    
+     
+    
 public ResultSet buscarPedidoPorNumero(int numPedido) {
     try {
         Connection conexion = conectar();
@@ -347,6 +354,35 @@ public ResultSet buscarPedidoPorNumero(int numPedido) {
         return null;
     }
 }
+    
+    public ResultSet buscarClientePedido() {
+    try {
+        Connection conexion = conectar();
+        String sql = "SELECT * FROM cliente INNER JOIN pedido ON cliente.id = pedido.id_cliente";
+
+        PreparedStatement ps = conexion.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        return rs;
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al buscar cliente por ID: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+        return null;
+    }
+}
+    public ResultSet buscarColegioUniforme() {
+    try {
+        Connection conexion = conectar();
+        String sql = "SELECT * FROM colegio INNER JOIN uniforme ON colegio.id = uniforme.id_colegio";
+
+        PreparedStatement ps = conexion.prepareStatement(sql);
+        ResultSet rs = ps.executeQuery();
+        return rs;
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Error al buscar cliente por ID: " + e, "Mensaje", JOptionPane.ERROR_MESSAGE);
+        return null;
+    }
+}
+    
+    
 
 
     

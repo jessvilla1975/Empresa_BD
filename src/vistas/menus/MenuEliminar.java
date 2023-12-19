@@ -4,10 +4,10 @@
  */
 package vistas.menus;
 
-import vistas.eliminar.TablaEliminar2;
-import vistas.eliminar.TablaEliminar4;
-import vistas.eliminar.TablaEliminar3;
-import vistas.eliminar.TablaEliminar;
+import vistas.eliminar.ColegioUniforme;
+import vistas.eliminar.ProveedorMateria;
+import vistas.eliminar.Venta;
+import vistas.eliminar.ClientePedido;
 import vistas.*;
 
 /**
@@ -22,10 +22,10 @@ public class MenuEliminar extends javax.swing.JFrame {
     public MenuEliminar() {
         initComponents();
     }
-    TablaEliminar at = new TablaEliminar();
-    TablaEliminar2 at1 = new TablaEliminar2();
-    TablaEliminar3 at3 = new TablaEliminar3();
-    TablaEliminar4 at4 = new TablaEliminar4();
+    ClientePedido at = new ClientePedido();
+    ColegioUniforme at1 = new ColegioUniforme();
+    Venta at3 = new Venta();
+    ProveedorMateria at4 = new ProveedorMateria();
 
     /**
      * This method is called from within the constructor to initialize the form.

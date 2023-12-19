@@ -11,17 +11,18 @@ import java.sql.ResultSet;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import vistas.tablasVistas.tablas;
 
 /**
  *
  * @author Jess
  */
-public class TablaEliminar3 extends javax.swing.JFrame {
+public class Venta extends javax.swing.JFrame {
 
     /**
      * Creates new form IngresarColegio
      */
-    public TablaEliminar3() {
+    public Venta() {
         initComponents();
         
     }
@@ -76,6 +77,7 @@ public class TablaEliminar3 extends javax.swing.JFrame {
         bus1 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tablaventa = new javax.swing.JTable();
+        ta = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(430, 140));
@@ -176,6 +178,15 @@ public class TablaEliminar3 extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tablaventa);
 
+        ta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/tabla.png"))); // NOI18N
+        ta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ta.setFocusable(false);
+        ta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                taMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelColegioLayout = new javax.swing.GroupLayout(PanelColegio);
         PanelColegio.setLayout(PanelColegioLayout);
         PanelColegioLayout.setHorizontalGroup(
@@ -192,7 +203,9 @@ public class TablaEliminar3 extends javax.swing.JFrame {
                     .addComponent(Text3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bus1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ta)
+                .addGap(36, 36, 36))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane3)
@@ -209,7 +222,9 @@ public class TablaEliminar3 extends javax.swing.JFrame {
                         .addComponent(Buscar_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(3, 3, 3))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelColegioLayout.createSequentialGroup()
-                        .addComponent(bus1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(PanelColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(ta)
+                            .addComponent(bus1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -289,6 +304,22 @@ public class TablaEliminar3 extends javax.swing.JFrame {
     private void tablaventaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaventaMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_tablaventaMouseClicked
+
+    private void taMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_taMouseClicked
+        System.out.println("generar tabla");
+        tablas ventana = new tablas();
+        ResultSet resultados = crud.buscar("Venta");
+        String[] nombresColumnas = {
+            "Codigo_Fact",
+            "Num_pedido",
+            "Id_Cliente",
+            "Monto_Final"
+        };
+
+        // Llamar al método actualizarTabla con los resultados y nombres de columnas
+        ventana.actualizarTabla(resultados, nombresColumnas);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_taMouseClicked
     
 
     /**
@@ -321,7 +352,7 @@ public class TablaEliminar3 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new IngresarColegio().setVisible(true);
+                new Venta().setVisible(true);
             }
         });
     }
@@ -334,6 +365,7 @@ public class TablaEliminar3 extends javax.swing.JFrame {
     private javax.swing.JButton bus1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
+    public javax.swing.JLabel ta;
     private javax.swing.JTable tablaventa;
     // End of variables declaration//GEN-END:variables
 }

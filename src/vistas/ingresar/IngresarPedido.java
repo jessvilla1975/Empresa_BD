@@ -541,7 +541,6 @@ public class IngresarPedido extends javax.swing.JFrame {
             "Fecha_Entrega",
             "articulo"
         };
-
         // Llamar al método actualizarTabla con los resultados y nombres de columnas
         ventana.actualizarTabla(resultados, nombresColumnas);
         ventana.setVisible(true);
