@@ -13,31 +13,51 @@ En resumen, se busca crear una herramienta que optimice la administración de la
 4. Inserta los datos proporcionados en las sentencias de inserts.txt correspondientes.
 5. Actualiza la dirección URL, nombre de usuario y contraseña en tu servidor de PgAdmin4 según las configuraciones necesarias.
 
+```java
+public class conexionsql {
+    Connection conn = null;
+    String url = "jdbc:postgresql://localhost/empresa";
+    String usuario = "postgres";
+    String clave = "1111";
 
-    public class conexionsql {
-        Connection conn=null;
-        String url="jdbc:postgresql://localhost/empresa";
-        String usuario="postgres";
-        String clave="Manuel3312";
-        
-        public Connection conectar(){
-            try {
-                Class.forName("org.postgresql.Driver");
-                conn=DriverManager.getConnection(url,usuario,clave);
-                
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null,"Error al conectar "+e,"Error",JOptionPane.ERROR_MESSAGE);
-            }
-        return conn;
+    public Connection conectar() {
+        try {
+            Class.forName("org.postgresql.Driver");
+            conn = DriverManager.getConnection(url, usuario, clave);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error al conectar " + e, "Error", JOptionPane.ERROR_MESSAGE);
         }
-        
+        return conn;
     }
+}
+```
+
+
+    
 ## Instrucciones para Acceder al Sistema
 Una vez que el programa esté en ejecución, accede al módulo de inicio de sesión.
 Utiliza las credenciales predeterminadas:
-:fa-user: Usuario: admin
-:fa-lock: Contraseña: admin
 
-##Interfaz Login
+![Icono de Usuario](https://img.shields.io/badge/-Usuario-%2300f?style=flat-square&logo=user): admin
+![Icono de Contraseña](https://img.shields.io/badge/-Contraseña-%2300f?style=flat-square&logo=lock) :admin
+
+## Interfaz Login
 
 ![](https://github.com/jessvilla1975/Empresa_BD/blob/main/InterfazBD/LOGIN.JPG)
+
+## Interfaz Menu Principal
+![](https://github.com/jessvilla1975/Empresa_BD/blob/main/InterfazBD/MENUPRINCIPAL.JPG)
+
+## Interfaz Menu Ingresar
+![](https://github.com/jessvilla1975/Empresa_BD/blob/main/InterfazBD/INGRESO.JPG)
+
+## Interfaz Menu Actualizar
+
+![](https://github.com/jessvilla1975/Empresa_BD/blob/main/InterfazBD/MENUACTUALIZAR.JPG)
+
+## Interfaz Menu Consultar
+
+![](https://github.com/jessvilla1975/Empresa_BD/blob/main/InterfazBD/MENULISTADOS.JPG)
+
+
+
